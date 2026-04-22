@@ -3,368 +3,614 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gym Recipe Book</title>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<title>Gym Recipe Book & Wellness Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--ease:cubic-bezier(.4,0,.2,1);--bounce:cubic-bezier(.34,1.56,.64,1);--tt:.5s}
-[data-theme="dark"]{
---bg:#0b0b0f;--bg2:#111116;--bg3:#18181e;
---glass:rgba(255,255,255,.045);--glass-h:rgba(255,255,255,.07);--glass-b:rgba(255,255,255,.07);--glass-s:rgba(255,255,255,.1);
---text:#eae6df;--text2:#8e8a82;--text3:#55524c;
---accent:#d4a54a;--accent-dim:rgba(212,165,74,.12);--accent2:#e06840;
---soya:#2dd4bf;--soya-dim:rgba(45,212,191,.1);--soya-b:rgba(45,212,191,.18);
---paneer:#f59e0b;--paneer-dim:rgba(245,158,11,.1);--paneer-b:rgba(245,158,11,.18);
---chicken:#ef4444;--chicken-dim:rgba(239,68,68,.1);--chicken-b:rgba(239,68,68,.18);
---egg:#a78bfa;--egg-dim:rgba(167,139,250,.1);--egg-b:rgba(167,139,250,.18);
---pizza:#3b82f6;--pizza-dim:rgba(59,130,246,.1);--pizza-b:rgba(59,130,246,.18);
---veg:#4ade80;--veg-bg:rgba(74,222,128,.08);--veg-b:rgba(74,222,128,.15);
---nv:#f87171;--nv-bg:rgba(248,113,113,.08);--nv-b:rgba(248,113,113,.15);
---card-bg:rgba(255,255,255,.03);--card-hover:rgba(255,255,255,.055);
---divider:rgba(255,255,255,.05);--shadow:0 8px 40px rgba(0,0,0,.4);--shadow-l:0 30px 80px rgba(0,0,0,.55);
---modal-bg:rgba(14,14,18,.94);--input-bg:rgba(255,255,255,.04);
---ing-bg:rgba(255,255,255,.025);--step-line:rgba(255,255,255,.06);--step-dot:var(--accent);
---nutri:#10b981;--nutri-dim:rgba(16,185,129,.1);--nutri-b:rgba(16,185,129,.18);
---pro-c:#f59e0b;--carb-c:#3b82f6;--fat-c:#ef4444;--fiber-c:#10b981;--vita-c:#a78bfa;--mineral-c:#2dd4bf;--water-c:#06b6d4;
---bar-track:rgba(255,255,255,.06);
-}
-[data-theme="light"]{
---bg:#f6f2eb;--bg2:#ede8df;--bg3:#e4dfd6;
---glass:rgba(255,255,255,.6);--glass-h:rgba(255,255,255,.75);--glass-b:rgba(255,255,255,.8);--glass-s:rgba(255,255,255,.85);
---text:#1a1714;--text2:#6b6560;--text3:#a39e97;
---accent:#b8860b;--accent-dim:rgba(184,134,11,.1);--accent2:#c44a20;
---soya:#0d9488;--soya-dim:rgba(13,148,136,.08);--soya-b:rgba(13,148,136,.15);
---paneer:#b45309;--paneer-dim:rgba(180,83,9,.08);--paneer-b:rgba(180,83,9,.15);
---chicken:#dc2626;--chicken-dim:rgba(220,38,38,.08);--chicken-b:rgba(220,38,38,.15);
---egg:#7c3aed;--egg-dim:rgba(124,58,237,.08);--egg-b:rgba(124,58,237,.15);
---pizza:#2563eb;--pizza-dim:rgba(37,99,235,.08);--pizza-b:rgba(37,99,235,.15);
---veg:#16a34a;--veg-bg:rgba(22,163,74,.07);--veg-b:rgba(22,163,74,.12);
---nv:#dc2626;--nv-bg:rgba(220,38,38,.07);--nv-b:rgba(220,38,38,.12);
---card-bg:rgba(255,255,255,.5);--card-hover:rgba(255,255,255,.7);
---divider:rgba(0,0,0,.06);--shadow:0 8px 40px rgba(0,0,0,.06);--shadow-l:0 30px 80px rgba(0,0,0,.1);
---modal-bg:rgba(246,242,235,.95);--input-bg:rgba(0,0,0,.03);
---ing-bg:rgba(0,0,0,.02);--step-line:rgba(0,0,0,.06);--step-dot:var(--accent);
---nutri:#059669;--nutri-dim:rgba(5,150,105,.08);--nutri-b:rgba(5,150,105,.15);
---pro-c:#b45309;--carb-c:#2563eb;--fat-c:#dc2626;--fiber-c:#059669;--vita-c:#7c3aed;--mineral-c:#0d9488;--water-c:#0891b2;
---bar-track:rgba(0,0,0,.06);
-}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;transition:background var(--tt) var(--ease),color var(--tt) var(--ease)}
+:root{--ease:cubic-bezier(.4,0,.2,1)}
+[data-theme="dark"]{--bg:#0b0b0f;--text:#eae6df;--text2:#8e8a82;--text3:#55524c;--glass:rgba(255,255,255,.045);--glass-b:rgba(255,255,255,.07);--glass-s:rgba(255,255,255,.1);--card:rgba(255,255,255,.03);--card-h:rgba(255,255,255,.055);--accent:#d4a54a;--accent-dim:rgba(212,165,74,.12);--divider:rgba(255,255,255,.05);--input:rgba(255,255,255,.04);--modal:rgba(14,14,18,.94);--shadow:0 8px 40px rgba(0,0,0,.4);--shadow-l:0 30px 80px rgba(0,0,0,.55);--veg:#4ade80;--veg-bg:rgba(74,222,128,.08);--nv:#f87171;--nv-bg:rgba(248,113,113,.08);--bar-t:rgba(255,255,255,.06)}
+[data-theme="light"]{--bg:#f6f2eb;--text:#1a1714;--text2:#6b6560;--text3:#a39e97;--glass:rgba(255,255,255,.6);--glass-b:rgba(255,255,255,.8);--glass-s:rgba(255,255,255,.85);--card:rgba(255,255,255,.5);--card-h:rgba(255,255,255,.7);--accent:#b8860b;--accent-dim:rgba(184,134,11,.1);--divider:rgba(0,0,0,.06);--input:rgba(0,0,0,.03);--modal:rgba(246,242,235,.95);--shadow:0 8px 40px rgba(0,0,0,.06);--shadow-l:0 30px 80px rgba(0,0,0,.1);--veg:#16a34a;--veg-bg:rgba(22,163,74,.07);--nv:#dc2626;--nv-bg:rgba(220,38,38,.07);--bar-t:rgba(0,0,0,.06)}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;transition:background .5s,color .5s}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--divider);border-radius:3px}
-.ambient{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.ambient .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5}
-.ambient .o1{width:500px;height:500px;top:-10%;left:-5%;background:radial-gradient(circle,rgba(212,165,74,.08),transparent 70%)}
-.ambient .o2{width:600px;height:600px;bottom:-15%;right:-10%;background:radial-gradient(circle,rgba(224,104,64,.05),transparent 70%)}
-.ambient .o3{width:400px;height:400px;top:40%;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(45,212,191,.04),transparent 70%)}
-.theme-btn{position:fixed;top:18px;right:18px;z-index:200;width:44px;height:44px;border-radius:14px;background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--glass-b);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;transition:all .3s;box-shadow:var(--shadow)}
-.theme-btn:hover{transform:scale(1.08);border-color:var(--accent);box-shadow:0 0 24px var(--accent-dim)}
-
-/* ─── NAV TABS (top-level: Recipes / Nutrition) ─── */
-.nav{display:flex;justify-content:center;gap:8px;padding:20px 16px 0;position:relative;z-index:2}
-.nav-btn{padding:10px 28px;border-radius:14px;border:1px solid var(--glass-b);background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:var(--text2);font-size:14px;font-weight:600;cursor:pointer;transition:all .3s;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:8px}
-.nav-btn:hover{border-color:var(--accent);color:var(--text);transform:translateY(-1px)}
-.nav-btn.on{background:var(--accent);color:var(--bg);border-color:var(--accent);box-shadow:0 4px 20px var(--accent-dim)}
-.nav-btn .nav-icon{font-size:16px}
-
-/* ─── HERO ─── */
-.hero{position:relative;z-index:1;padding:24px 20px 28px;text-align:center}
-@media(min-width:768px){.hero{padding:32px 40px 36px}}
-.hero h1{font-family:'Instrument Serif',serif;font-size:clamp(2.6rem,8vw,5.5rem);font-weight:400;letter-spacing:-.03em;line-height:.92}
-.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero .tagline{margin-top:10px;font-size:clamp(12px,1.8vw,15px);color:var(--text3);letter-spacing:.2em;text-transform:uppercase;font-weight:400}
-.stats{display:flex;justify-content:center;gap:10px;margin-top:28px;flex-wrap:wrap}
-.stat{padding:12px 22px;background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--glass-b);border-radius:16px;display:flex;align-items:center;gap:10px;transition:all .35s}
-.stat:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 12px 32px var(--accent-dim)}
-.stat b{font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--accent)}
-.stat span{font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:.1em;font-weight:500}
-
-/* ─── CONTROLS ─── */
-.controls{max-width:1440px;margin:0 auto;padding:0 16px;position:relative;z-index:1}
-@media(min-width:768px){.controls{padding:0 32px}}
-.search{position:relative;margin-bottom:20px}
-.search input{width:100%;padding:15px 20px 15px 50px;background:var(--glass);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--glass-b);border-radius:16px;color:var(--text);font-size:15px;font-family:'DM Sans',sans-serif;outline:none;transition:all .35s;box-shadow:var(--shadow)}
-.search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-dim),var(--shadow)}
-.search input::placeholder{color:var(--text3)}
-.search svg{position:absolute;left:17px;top:50%;transform:translateY(-50%);color:var(--text3);transition:color .3s}
-.search input:focus~svg{color:var(--accent)}
-.search .badge{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--text3);background:var(--input-bg);padding:4px 12px;border-radius:10px;font-weight:500}
-.tab-scroll{overflow-x:auto;scrollbar-width:none;margin-bottom:14px;-webkit-overflow-scrolling:touch}
-.tab-scroll::-webkit-scrollbar{display:none}
-.tabs{display:flex;gap:7px;width:max-content;min-width:100%}
-.tab{flex-shrink:0;padding:9px 20px;border-radius:12px;border:1px solid var(--glass-b);background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:var(--text2);font-size:13px;font-weight:500;cursor:pointer;transition:all .3s;font-family:'DM Sans',sans-serif;white-space:nowrap;position:relative;overflow:hidden}
-.tab::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent),var(--accent2));opacity:0;transition:opacity .3s}
-.tab:hover{border-color:rgba(212,165,74,.2);color:var(--text);transform:translateY(-1px)}
-.tab.on{border-color:var(--accent);color:var(--bg);font-weight:600}
-.tab.on::before{opacity:1}
-.tab i{position:relative;z-index:1;font-style:normal}
-.tab .n{margin-left:5px;opacity:.55;font-size:11px}
-.type-filters{display:flex;gap:7px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
-.type-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;font-weight:600;margin-right:4px}
-.tf{padding:7px 18px;border-radius:11px;border:1px solid var(--glass-b);background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--text2);font-size:12px;cursor:pointer;transition:all .3s;font-family:'DM Sans',sans-serif;font-weight:500;display:inline-flex;align-items:center;gap:6px}
-.tf:hover{border-color:rgba(255,255,255,.12);color:var(--text);transform:translateY(-1px)}
-.tf .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.tf.all-type.on{background:var(--glass-s);color:var(--text);border-color:var(--accent);font-weight:600}
-.tf.veg-type .dot{background:var(--veg)}.tf.veg-type.on{background:var(--veg-bg);color:var(--veg);border-color:var(--veg-b);font-weight:600}
-.tf.nv-type .dot{background:var(--nv)}.tf.nv-type.on{background:var(--nv-bg);color:var(--nv);border-color:var(--nv-b);font-weight:600}
-.subs{display:flex;gap:6px;margin-bottom:22px;flex-wrap:wrap}
-.sub{padding:6px 15px;border-radius:10px;border:1px solid transparent;background:var(--input-bg);color:var(--text3);font-size:12px;cursor:pointer;transition:all .25s;font-family:'DM Sans',sans-serif;font-weight:500}
-.sub:hover{color:var(--text2);background:var(--glass-h)}
-.sub.on{background:var(--glass-s);color:var(--text);border-color:var(--glass-b);backdrop-filter:blur(12px)}
-
-/* ─── GRID ─── */
-.grid{display:grid;grid-template-columns:1fr;gap:14px;padding:0 16px 80px;max-width:1440px;margin:0 auto;position:relative;z-index:1}
-@media(min-width:540px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:900px){.grid{grid-template-columns:repeat(3,1fr);gap:16px;padding:0 32px 80px}}
-@media(min-width:1280px){.grid{grid-template-columns:repeat(4,1fr)}}
-
-/* ─── CARD ─── */
-.card{background:var(--card-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--glass-b);border-radius:20px;padding:0;cursor:pointer;transition:all .4s var(--ease);position:relative;overflow:hidden;display:flex;flex-direction:column}
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;opacity:0;transition:opacity .3s}
-.card:hover{transform:translateY(-5px);border-color:rgba(212,165,74,.12);box-shadow:var(--shadow-l);background:var(--card-hover)}
-.card:hover::before{opacity:1}
-.card[data-c="soya"]::before{background:var(--soya)}.card[data-c="soya"] .card-cat{color:var(--soya);background:var(--soya-dim);border-color:var(--soya-b)}
-.card[data-c="paneer"]::before{background:var(--paneer)}.card[data-c="paneer"] .card-cat{color:var(--paneer);background:var(--paneer-dim);border-color:var(--paneer-b)}
-.card[data-c="chicken"]::before{background:var(--chicken)}.card[data-c="chicken"] .card-cat{color:var(--chicken);background:var(--chicken-dim);border-color:var(--chicken-b)}
-.card[data-c="egg"]::before{background:var(--egg)}.card[data-c="egg"] .card-cat{color:var(--egg);background:var(--egg-dim);border-color:var(--egg-b)}
-.card[data-c="pizza"]::before{background:var(--pizza)}.card[data-c="pizza"] .card-cat{color:var(--pizza);background:var(--pizza-dim);border-color:var(--pizza-b)}
-.card-body{padding:20px 20px 0;flex:1}
-.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:6px}
-.card-name{font-family:'Instrument Serif',serif;font-size:1.15rem;line-height:1.25;flex:1}
-.card-type{flex-shrink:0;font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:100px}
-.card-type.v{color:var(--veg);background:var(--veg-bg);border:1px solid var(--veg-b)}
-.card-type.nv{color:var(--nv);background:var(--nv-bg);border:1px solid var(--nv-b)}
-.card-tags{display:flex;gap:5px;margin-bottom:12px;flex-wrap:wrap}
-.card-cat{font-size:10px;font-weight:600;padding:3px 10px;border-radius:8px;border:1px solid transparent;letter-spacing:.03em}
-.card-sub{font-size:10px;color:var(--text3);padding:3px 9px;background:var(--input-bg);border-radius:8px}
-.card-ing{padding:12px 0 0;border-top:1px solid var(--divider)}
-.card-ing-title{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);font-weight:600;margin-bottom:6px}
-.card-ing-list{display:flex;flex-wrap:wrap;gap:4px}
-.card-pill{font-size:11px;color:var(--text2);padding:3px 8px;background:var(--ing-bg);border-radius:6px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.card-foot{padding:10px 20px 14px;display:flex;align-items:center;justify-content:space-between}
-.card-cook{font-size:10px;color:var(--text3);display:flex;align-items:center;gap:4px}
-.card-cook svg{width:12px;height:12px;opacity:.5}
-.card-arrow{font-size:11px;color:var(--text3);opacity:0;transition:opacity .25s;display:flex;align-items:center;gap:3px}
-.card:hover .card-arrow{opacity:1}
-
-/* ─── MODAL ─── */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:1000;display:none;align-items:flex-start;justify-content:center;padding:24px;overflow-y:auto}
-.overlay.open{display:flex}
-.modal{background:var(--modal-bg);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border:1px solid var(--glass-b);border-radius:28px;max-width:680px;width:100%;padding:0;position:relative;animation:mIn .45s var(--bounce);box-shadow:var(--shadow-l);margin:auto 0;overflow:hidden}
-@keyframes mIn{from{opacity:0;transform:scale(.94) translateY(20px)}to{opacity:1;transform:none}}
-.m-close{position:absolute;top:16px;right:16px;z-index:10;width:38px;height:38px;border-radius:12px;background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--glass-b);color:var(--text2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;transition:all .25s}
-.m-close:hover{background:var(--glass-s);color:var(--text);transform:rotate(90deg)}
-.m-header{padding:32px 32px 0;position:relative}
-.m-header::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
-.m-header[data-c="soya"]::before{background:var(--soya)}.m-header[data-c="paneer"]::before{background:var(--paneer)}.m-header[data-c="chicken"]::before{background:var(--chicken)}.m-header[data-c="egg"]::before{background:var(--egg)}.m-header[data-c="pizza"]::before{background:var(--pizza)}.m-header[data-c="nutri"]::before{background:var(--nutri)}
-.m-title{font-family:'Instrument Serif',serif;font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.15;padding-right:48px;margin-bottom:10px}
-.m-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-.m-tag{font-size:11px;padding:5px 14px;border-radius:100px;font-weight:500}
-.m-section{padding:0 32px}.m-section+.m-section{margin-top:20px}
-.m-label{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--text3);font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.m-label::after{content:'';flex:1;height:1px;background:var(--divider)}
-.ing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:6px}
-.ing-item{display:flex;align-items:flex-start;gap:8px;padding:8px 12px;background:var(--ing-bg);border-radius:10px;transition:background .2s}
-.ing-item:hover{background:var(--glass-h)}
-.ing-num{width:20px;height:20px;border-radius:6px;background:var(--accent-dim);color:var(--accent);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.ing-text{font-size:13px;color:var(--text2);line-height:1.4}
-.timeline{position:relative;padding-left:28px}
-.timeline::before{content:'';position:absolute;left:9px;top:6px;bottom:6px;width:1px;background:var(--step-line)}
-.tl-step{position:relative;margin-bottom:14px;animation:sIn .35s var(--ease) both}
-.tl-step:nth-child(1){animation-delay:.05s}.tl-step:nth-child(2){animation-delay:.1s}.tl-step:nth-child(3){animation-delay:.15s}.tl-step:nth-child(4){animation-delay:.2s}
-@keyframes sIn{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
-.tl-dot{position:absolute;left:-23px;top:5px;width:11px;height:11px;border-radius:50%;border:2px solid var(--step-dot);background:var(--bg)}
-.tl-text{font-size:14px;color:var(--text2);line-height:1.65;font-weight:300}
-.cook-info{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4px}
-.cook-pill{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:var(--accent-dim);border:1px solid rgba(212,165,74,.15);border-radius:12px;font-size:12px;color:var(--accent);font-weight:500}
-.cook-pill svg{width:14px;height:14px}
-.m-footer{padding:20px 32px 28px}
-
-/* ─── NUTRITION CARDS ─── */
-.nutri-card{background:var(--card-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--glass-b);border-radius:20px;overflow:hidden;transition:all .4s var(--ease)}
-.nutri-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-l);border-color:rgba(16,185,129,.15)}
-.nutri-head{padding:20px 20px 12px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
-.nutri-name{font-family:'Instrument Serif',serif;font-size:1.15rem;line-height:1.25;flex:1}
-.nutri-badge{font-size:10px;font-weight:600;padding:4px 12px;border-radius:100px;white-space:nowrap}
-.nutri-meta{padding:0 20px;display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
-.nutri-pill{font-size:10px;padding:3px 10px;border-radius:8px;font-weight:500}
-.nutri-bar-wrap{padding:0 20px 4px}
-.nutri-bar-label{display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-bottom:4px;font-weight:500}
-.nutri-bar{height:6px;border-radius:3px;background:var(--bar-track);overflow:hidden;margin-bottom:10px}
-.nutri-bar-fill{height:100%;border-radius:3px;transition:width .8s var(--ease)}
-.nutri-sources{padding:12px 20px 16px;border-top:1px solid var(--divider)}
-.nutri-sources-title{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);font-weight:600;margin-bottom:8px}
-.nutri-src-list{display:flex;flex-wrap:wrap;gap:4px}
-.nutri-src{font-size:11px;padding:4px 10px;border-radius:8px;background:var(--ing-bg);color:var(--text2);transition:background .2s}
-.nutri-src:hover{background:var(--glass-h)}
-
-/* ─── EMPTY ─── */
-.empty{grid-column:1/-1;text-align:center;padding:80px 24px}
-.empty-box{width:72px;height:72px;margin:0 auto 20px;border-radius:20px;background:var(--glass);border:1px solid var(--glass-b);display:flex;align-items:center;justify-content:center;font-size:28px}
-.empty h3{font-family:'Instrument Serif',serif;font-size:1.3rem;margin-bottom:4px}
-.empty p{color:var(--text3);font-size:13px}
-.fade{opacity:0;transform:translateY(14px);animation:fade .5s var(--ease) forwards}
-@keyframes fade{to{opacity:1;transform:none}}
-.hidden{display:none!important}
-@media(max-width:540px){.hero{padding:20px 16px 16px}.hero h1{font-size:2.3rem}.stats{gap:6px}.stat{padding:10px 16px}.stat b{font-size:1.2rem}.m-header,.m-section,.m-footer{padding-left:20px;padding-right:20px}.modal{border-radius:22px}.ing-grid{grid-template-columns:1fr}.theme-btn{top:12px;right:12px;width:40px;height:40px;border-radius:12px}}
+.cg{display:grid;grid-template-columns:1fr;gap:14px;max-width:1440px;margin:0 auto;padding:0 16px 80px}
+@media(min-width:540px){.cg{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.cg{grid-template-columns:repeat(3,1fr);padding:0 32px 80px}}
+@media(min-width:1280px){.cg{grid-template-columns:repeat(4,1fr)}}
+.gc{background:var(--card);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--glass-b);border-radius:20px;overflow:hidden;transition:all .35s;cursor:pointer}
+.gc:hover{transform:translateY(-5px);box-shadow:var(--shadow-l);background:var(--card-h)}
+.fr{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.fb{padding:7px 16px;border-radius:11px;border:1px solid var(--glass-b);background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--text2);font-size:12px;cursor:pointer;transition:all .25s;font-weight:500;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:5px}
+.fb:hover{color:var(--text);border-color:rgba(212,165,74,.2)}
+.fb.on{background:var(--accent-dim);color:var(--accent);border-color:rgba(212,165,74,.3);font-weight:600}
+.fb.veg-on{background:var(--veg-bg)!important;color:var(--veg)!important;border-color:rgba(74,222,128,.2)!important}
+.fb.nv-on{background:var(--nv-bg)!important;color:var(--nv)!important;border-color:rgba(248,113,113,.2)!important}
+.fl{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;font-weight:600;margin-right:4px}
+.si{width:100%;padding:15px 20px 15px 50px;background:var(--glass);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--glass-b);border-radius:16px;color:var(--text);font-size:15px;font-family:'DM Sans',sans-serif;outline:none;transition:all .35s;box-shadow:var(--shadow)}
+.si:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-dim),var(--shadow)}
+.si::placeholder{color:var(--text3)}
+.tr{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding:2px 0;margin-bottom:14px;-webkit-overflow-scrolling:touch}
+.tr::-webkit-scrollbar{display:none}
+.tb{flex-shrink:0;padding:9px 18px;border-radius:12px;border:1px solid var(--glass-b);background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:var(--text2);font-size:13px;font-weight:500;cursor:pointer;transition:all .3s;white-space:nowrap;font-family:'DM Sans',sans-serif}
+.tb:hover{border-color:rgba(212,165,74,.2);color:var(--text)}
+.tb.on{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:600}
+.ob{position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:1000;display:none;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto}
+.ob.open{display:flex}
+.mb{background:var(--modal);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border:1px solid var(--glass-b);border-radius:28px;max-width:680px;width:100%;position:relative;overflow:hidden;animation:mI .4s cubic-bezier(.34,1.56,.64,1);box-shadow:var(--shadow-l);margin:auto 0}
+@keyframes mI{from{opacity:0;transform:scale(.94) translateY(20px)}to{opacity:1;transform:none}}
+.mx{position:absolute;top:14px;right:14px;z-index:10;width:36px;height:36px;border-radius:12px;background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--glass-b);color:var(--text2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;transition:all .25s}
+.mx:hover{background:var(--glass-s);color:var(--text);transform:rotate(90deg)}
+.pill{font-size:11px;padding:5px 13px;border-radius:100px;font-weight:500;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.slabel{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:#888;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.slabel::after{content:'';flex:1;height:1px;background:rgba(128,128,128,.15)}
+.ig{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:6px}
+.ig-item{display:flex;gap:8px;padding:8px 12px;background:var(--input);border-radius:10px;transition:background .2s}
+.ig-item:hover{background:var(--glass-s)}
+.ig-num{width:20px;height:20px;border-radius:6px;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ig-text{font-size:13px;color:var(--text2);line-height:1.4}
+.tl{padding-left:22px;position:relative}
+.tl::before{content:'';position:absolute;left:7px;top:5px;bottom:5px;width:1px;background:var(--divider)}
+.tl-s{position:relative;margin-bottom:12px}
+.tl-d{position:absolute;left:-17px;top:5px;width:10px;height:10px;border-radius:50%;border:2px solid var(--accent);background:var(--bg)}
+.tl-t{font-size:14px;color:var(--text2);line-height:1.6;font-weight:300}
+.theme-btn{position:fixed;top:18px;right:18px;z-index:200;width:44px;height:44px;border-radius:14px;background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--glass-b);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;transition:all .3s;box-shadow:var(--shadow);color:var(--text)}
+.theme-btn:hover{transform:scale(1.08);border-color:var(--accent)}
+.serif{font-family:'Instrument Serif',serif}
+.hl{font-style:italic;background:linear-gradient(135deg,var(--accent),#e06840);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hl2{font-style:italic;background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hl3{font-style:italic;background:linear-gradient(135deg,#10b981,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hl4{font-style:italic;background:linear-gradient(135deg,#f59e0b,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+@media(max-width:540px){.hero-title{font-size:2rem!important}.theme-btn{top:12px;right:12px;width:40px;height:40px}}
 </style>
 </head>
 <body>
-<div class="ambient"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
-<button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme"><span id="ti">🌙</span></button>
-
-<!-- Top-level navigation -->
-<div class="nav">
-<button class="nav-btn on" id="navRecipes" onclick="switchView('recipes')"><span class="nav-icon">🍳</span> Recipes</button>
-<button class="nav-btn" id="navNutri" onclick="switchView('nutrition')"><span class="nav-icon">📊</span> Nutrition Guide</button>
+<button class="theme-btn" onclick="toggleTheme()" id="thBtn">🌙</button>
+<div style="display:flex;justify-content:center;gap:5px;padding:18px 12px 0;flex-wrap:wrap;position:relative;z-index:2" id="navBar"></div>
+<div style="text-align:center;padding:24px 20px 20px;position:relative;z-index:1">
+<h1 class="serif hero-title" id="heroTitle" style="font-size:clamp(2rem,7vw,4.2rem);font-weight:400;letter-spacing:-.03em;line-height:.95"></h1>
+<p id="heroSub" style="color:var(--text3);font-size:clamp(10px,1.5vw,13px);letter-spacing:.2em;text-transform:uppercase;margin-top:8px"></p>
 </div>
-
-<!-- ═══ RECIPES VIEW ═══ -->
-<div id="recipesView">
-<div class="hero">
-<h1>Gym <em>Recipe</em> Book</h1>
-<p class="tagline">High Protein · Meal Prep · Healthy Living</p>
-<div class="stats">
-<div class="stat"><b id="s1">0</b><span>Recipes</span></div>
-<div class="stat"><b id="s2">0</b><span>Vegetarian</span></div>
-<div class="stat"><b id="s3">0</b><span>Non-Veg</span></div>
-<div class="stat"><b>5</b><span>Categories</span></div>
+<div style="max-width:1440px;margin:0 auto;padding:0 16px;position:relative;z-index:1">
+<div style="position:relative;margin-bottom:18px">
+<input class="si" id="searchInput" placeholder="Search...">
+<span style="position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:16px">🔍</span>
+<span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--text3);background:var(--input);padding:4px 12px;border-radius:10px" id="countBadge"></span>
 </div>
+<div id="filterArea"></div>
 </div>
-<div class="controls">
-<div class="search"><input id="q" type="text" placeholder="Search recipes, ingredients, methods..."><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><span class="badge" id="cnt"></span></div>
-<div class="tab-scroll"><div class="tabs" id="tabs"></div></div>
-<div class="type-filters" id="typeFilters"><span class="type-label">Type</span><button class="tf all-type on" onclick="sTF('All')">All</button><button class="tf veg-type" onclick="sTF('Veg')"><span class="dot"></span>Vegetarian</button><button class="tf nv-type" onclick="sTF('Non-Veg')"><span class="dot"></span>Non-Veg</button></div>
-<div class="subs" id="subs"></div>
-</div>
-<div class="grid" id="grid"></div>
-</div>
-
-<!-- ═══ NUTRITION VIEW ═══ -->
-<div id="nutriView" class="hidden">
-<div class="hero">
-<h1>Daily <em>Nutrition</em> Guide</h1>
-<p class="tagline">Macros · Micros · Indian Food Sources</p>
-<div class="stats">
-<div class="stat"><b>7</b><span>Nutrients</span></div>
-<div class="stat"><b>3</b><span>Goals</span></div>
-<div class="stat"><b>70+</b><span>Food Sources</span></div>
+<div class="cg" id="grid"></div>
+<div class="ob" id="overlay" onclick="if(event.target===this)closeModal()">
+<div class="mb">
+<button class="mx" onclick="closeModal()">✕</button>
+<div style="padding:28px 24px 0" id="modalHead"></div>
+<div style="padding:0 24px 24px" id="modalBody"></div>
 </div>
 </div>
-<div class="controls">
-<div class="search"><input id="nq" type="text" placeholder="Search nutrients, foods, vitamins..."><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><span class="badge" id="ncnt"></span></div>
-<div class="tab-scroll"><div class="tabs" id="nGoalTabs"></div></div>
-<div class="type-filters" id="nTypeTabs"></div>
-</div>
-<div class="grid" id="nGrid"></div>
-</div>
-
-<!-- Modal -->
-<div class="overlay" id="ov" onclick="if(event.target===this)closeM()">
-<div class="modal">
-<button class="m-close" onclick="closeM()">✕</button>
-<div class="m-header" id="mH"><div class="m-title" id="mT"></div><div class="m-tags" id="mG"></div></div>
-<div id="mSections"></div>
-<div class="m-footer"></div>
-</div>
-</div>
-
 <script>
-// ═══════════ NUTRITION DATA ═══════════
-const ND=[
-{name:"Protein",type:"Macro",icon:"💪",unit:"g/day",goals:{Muscle_Gain:"1.6–2.2 g per kg body weight (100–160g for 70kg)",Fat_Loss:"1.8–2.4 g per kg body weight (130–170g for 70kg)",Maintenance:"1.0–1.4 g per kg body weight (70–100g for 70kg)"},why:"Builds and repairs muscle, supports recovery, boosts metabolism",color:"var(--pro-c)",pct:85,
-sources:{veg:["Paneer (100g = 18g)","Soya chunks (100g = 52g)","Chana / Chickpeas (100g = 19g)","Moong dal (100g = 24g)","Masoor dal (100g = 25g)","Rajma / Kidney beans (100g = 23g)","Tofu (100g = 17g)","Greek dahi / Hung curd (100g = 10g)","Peanuts (100g = 26g)","Whey protein (1 scoop = 24g)","Milk (250ml = 8g)","Oats (100g = 13g)"],nonveg:["Chicken breast (100g = 31g)","Eggs (1 whole = 6g, 1 white = 3.6g)","Fish / Rohu (100g = 17g)","Prawns (100g = 24g)","Mutton (100g = 25g)","Tuna (100g = 26g)"]}},
-{name:"Carbohydrates",type:"Macro",icon:"⚡",unit:"g/day",goals:{Muscle_Gain:"4–6 g per kg (280–420g for 70kg)",Fat_Loss:"2–3 g per kg (140–210g for 70kg)",Maintenance:"3–5 g per kg (210–350g for 70kg)"},why:"Primary energy source for workouts, brain function, and glycogen replenishment",color:"var(--carb-c)",pct:75,
-sources:{veg:["Brown rice (100g = 23g)","White rice (100g = 28g)","Roti / Chapati (1 = 15g)","Oats (100g = 67g)","Sweet potato / Shakarkandi (100g = 20g)","Potato (100g = 17g)","Banana (1 medium = 27g)","Poha / Flattened rice (100g = 77g)","Muesli (100g = 66g)","Quinoa (100g = 21g)","Sabudana (100g = 88g)","Jowar / Bajra roti (1 = 20g)"],nonveg:["Honey with chicken pre-workout","Egg + bread combo (2 bread = 30g carbs)"]}},
-{name:"Healthy Fats",type:"Macro",icon:"🥑",unit:"g/day",goals:{Muscle_Gain:"0.8–1.2 g per kg (55–85g for 70kg)",Fat_Loss:"0.6–1.0 g per kg (42–70g for 70kg)",Maintenance:"0.8–1.0 g per kg (55–70g for 70kg)"},why:"Hormone production (testosterone), joint health, nutrient absorption, satiety",color:"var(--fat-c)",pct:65,
-sources:{veg:["Ghee / Desi ghee (1 tbsp = 14g fat)","Peanut butter (2 tbsp = 16g)","Almonds / Badam (10 pcs = 7g)","Walnuts / Akhrot (5 pcs = 9g)","Flaxseeds / Alsi (1 tbsp = 4g)","Coconut oil (1 tbsp = 14g)","Mustard oil / Sarson ka tel","Sesame seeds / Til (1 tbsp = 4g)","Avocado (half = 15g)","Paneer (100g = 20g fat)"],nonveg:["Egg yolk (1 = 5g fat)","Salmon / Rawas (100g = 13g)","Fish oil supplement (1 cap = 1g omega-3)"]}},
-{name:"Fibre",type:"Macro",icon:"🌾",unit:"g/day",goals:{Muscle_Gain:"25–35g",Fat_Loss:"30–40g (high fibre = more satiety)",Maintenance:"25–30g"},why:"Gut health, digestion, blood sugar control, helps with satiety during cuts",color:"var(--fiber-c)",pct:55,
-sources:{veg:["Rajma (100g = 15g fibre)","Chana / Chole (100g = 12g)","Oats (100g = 10g)","Broccoli (100g = 2.6g)","Palak / Spinach (100g = 2.2g)","Guava / Amrood (1 = 5g)","Flaxseeds / Alsi (1 tbsp = 3g)","Isabgol / Psyllium husk (1 tsp = 5g)","Apple with skin (1 = 4g)","Daliya / Broken wheat (100g = 18g)","Methi / Fenugreek leaves","Karela / Bitter gourd"],nonveg:[]}},
-{name:"Vitamins",type:"Micro",icon:"🌈",unit:"various",goals:{Muscle_Gain:"Focus on B12, D3, C, E",Fat_Loss:"Focus on D3, B-complex, C",Maintenance:"Balanced intake of all vitamins"},why:"Immune function, energy metabolism, antioxidant protection, bone health",color:"var(--vita-c)",pct:70,
-sources:{veg:["Amla / Indian gooseberry (Vit C — 600mg/100g)","Haldi / Turmeric (antioxidant, anti-inflammatory)","Palak / Spinach (Vit A, K, Iron)","Gajar / Carrot (Vit A — beta carotene)","Nimbu / Lemon (Vit C)","Shakarkandi / Sweet potato (Vit A)","Dahi / Yogurt (B12 for vegetarians)","Sunlight exposure 15-20 min (Vit D3)","Papaya (Vit A, C)","Moongphali / Peanuts (Vit E)","Kela / Banana (Vit B6)","Aam / Mango (Vit A, C, seasonal)"],nonveg:["Eggs (B12, D3, A)","Chicken liver (B12, Iron, A)","Fish / Rawas (Omega-3, D3)","Mutton (B12, Iron, Zinc)"]}},
-{name:"Minerals",type:"Micro",icon:"⛏️",unit:"various",goals:{Muscle_Gain:"Focus on Calcium, Zinc, Magnesium, Iron",Fat_Loss:"Focus on Iron, Magnesium, Chromium",Maintenance:"Balanced mineral intake"},why:"Muscle contraction (calcium/magnesium), oxygen transport (iron), testosterone (zinc), bone density",color:"var(--mineral-c)",pct:60,
-sources:{veg:["Doodh / Milk (Calcium — 120mg/100ml)","Dahi / Yogurt (Calcium)","Ragi / Finger millet (Calcium — 344mg/100g)","Til / Sesame seeds (Calcium, Iron, Zinc)","Palak / Spinach (Iron — 2.7mg/100g)","Chana / Chickpeas (Iron, Zinc)","Kaju / Cashew (Magnesium, Zinc)","Badam / Almonds (Magnesium)","Kela / Banana (Potassium)","Nariyal pani / Coconut water (Potassium)","Namak / Himalayan pink salt (trace minerals)","Rajma / Kidney beans (Iron)"],nonveg:["Eggs (Iron, Zinc)","Red meat / Mutton (Iron, Zinc, B12)","Prawns / Jhinga (Zinc, Selenium)","Chicken (Phosphorus, Selenium)"]}},
-{name:"Water & Hydration",type:"Essential",icon:"💧",unit:"litres/day",goals:{Muscle_Gain:"3.5–4.5 litres",Fat_Loss:"3–4 litres (extra for metabolism)",Maintenance:"2.5–3.5 litres"},why:"Nutrient transport, temperature regulation, joint lubrication, kidney function, performance",color:"var(--water-c)",pct:90,
-sources:{veg:["Plain water (best source)","Nariyal pani / Coconut water","Nimbu pani / Lemon water","Chaas / Buttermilk","Dahi / Yogurt (hydrating)","Kheera / Cucumber (96% water)","Tarbooz / Watermelon (92% water)","Green tea / Herbal tea","Jaljeera","Aam panna (summer)","Sattu drink","Kokum sharbat"],nonveg:["Bone broth / Chicken soup (hydrating + protein)","Fish curry (liquid base)"]}}
+const RECIPES={"Soya":{k:"soya",r:[{n:"Soya Potato Sandwich",c:"Sandwich",t:"Veg",i:"50gm soya granules+boil+wash+squeeze+5gm oil+onion+tomato+chilli powder+haldi+coriander powder+garam masala+salt+chaat masala+cook 5 min+spread on bread"},{n:"Soya Tikki",c:"Snack",t:"Veg",i:"50gm soya+100gm boiled potato+onion+green chillies+salt+chaat masala+peri peri masala+make tikki=>chop garlic+tomato puree+peri peri+oregano+cook 2-3 min+40gm oats"},{n:"Soya Bhaji",c:"Gravy",t:"Veg",i:"Garlic+onion+green chilli+tomato+red chilli+cashew+mix=>peri peri+kitchen king masala+water+soya chunks"},{n:"Soya Bhurji",c:"Gravy",t:"Veg",i:"50gm soya granules+boil+wash+squeeze=>5ml oil+onion+tomato+chillies+fry 2-3 min=>besan+haldi+coriander powder+garam masala+dahi+chaat masala"},{n:"Soya Tikka Masala",c:"Gravy",t:"Veg",i:"50gm soya+boil+squeeze+100gm dahi+capsicum+onion+garlic 10 cloves+kashmiri red chilli+salt+garam masala+coriander powder+mustard oil+cook 5-10 min"},{n:"Soya Rice",c:"Rice",t:"Veg",i:"Oil+garlic+onion+capsicum+paneer+soya+chana+spices+100gm rice"},{n:"Chopper Rice",c:"Rice",t:"Veg",i:"Veggies+40gm soya chunks+50gm paneer+peri peri+coriander powder+haldi+salt+cook 4-5 min+rice+lemon+soya sauce"},{n:"Veg Kebab Soya",c:"Snack",t:"Veg",i:"Soya chunks 50gm+100gm paneer+onion+tomato+garlic+besan+spices=>airfry 200°C 8 min"},{n:"Burger Tikki",c:"Snack",t:"Veg",i:"50gm soya granules+boil+100gm boiled potato+chaat masala+roasted jeera+red chillies+salt+lemon"},{n:"Soya Chilli",c:"Gravy",t:"Veg",i:"Water+onion+tomato+capsicum+haldi+lal mirch+coriander powder+chaat masala+soya chunks+dahi+tomato ketchup"}]},"Paneer":{k:"paneer",r:[{n:"Paneer Sandwich",c:"Sandwich",t:"Veg",i:"Dahi+capsicum+cucumber+1 tbspn tomato+salt=>paneer+peri peri+fry+cheese slice+bread"},{n:"Paneer Tikka Roll",c:"Wrap",t:"Veg",i:"100gm dahi+haldi+lal mirch+garam masala+chaat masala+salt+coriander powder+onion+capsicum+100gm paneer+mustard oil+cook until dry+roti+wrap"},{n:"Paneer Wrap",c:"Wrap",t:"Veg",i:"Dahi+coriander+haldi+kashmiri lal mirch+mustard oil+capsicum+onion+tomato+chilli powder+lemon+100gm paneer+cook 5-6 min+wrap roti"},{n:"Paneer Schezwan Wrap",c:"Wrap",t:"Veg",i:"100gm paneer+veggies+schezwan sauce+salt+peri peri+cook 2-3 min+cheese+roti"},{n:"Paneer Taco",c:"Wrap",t:"Veg",i:"Capsicum+tomato+onion+oregano+chilli powder+100gm paneer+salt=>roti+sauce"},{n:"Burrito Paneer",c:"Wrap",t:"Veg",i:"50gm paneer+capsicum+onion+cheese+salt+garam masala+chaat masala+haldi+50gm dahi+cook 4-5 min+wrap roti"},{n:"Paneer Quesadilla",c:"Wrap",t:"Veg",i:"100gm paneer+corn+veggies+salt+black pepper+pizza sauce+roti+cheese+cook 5-6 min"},{n:"Paneer Fried Rice",c:"Rice",t:"Veg",i:"Dahi+garam masala+coriander+haldi+salt+oil+veggies+paneer+cook until dry+200gm rice"},{n:"Tawa Pulav",c:"Rice",t:"Veg",i:"1 tbspn oil+onion+veggies+spices+salt+ginger garlic paste+pav bhaji masala+100gm paneer+200gm rice"},{n:"Mexican Rice",c:"Rice",t:"Veg",i:"1 tbspn oil+onion+capsicum+salt+tomato puree+spices+rajma+lemon+black pepper+100gm paneer+rice"},{n:"Grilled Paneer",c:"Snack",t:"Veg",i:"Paneer+peri peri+oregano+chilli flakes+onion+capsicum+cucumber+chipotle sauce"},{n:"Paneer Tikka",c:"Snack",t:"Veg",i:"Capsicum+onion+tomato+100gm paneer+dahi+coriander powder+red chillies+garam masala+salt+ginger garlic paste+besan+marinate=>airfry 195°C 10 min"},{n:"Paneer Chilli",c:"Snack",t:"Veg",i:"5gm oil+chopped onion+capsicum+100gm paneer+soya sauce+schezwan sauce+red chilli sauce+water"},{n:"Pyaaz Wala Paneer",c:"Gravy",t:"Veg",i:"Onion+water+jeera=>sauté=>capsicum+tomato+tikka masala+haldi+coriander powder+mirch powder"},{n:"Cheese Paneer Ghotala",c:"Gravy",t:"Veg",i:"Onion+tomato+capsicum+garlic+ginger+coriander=>khada masala+salt+chaat masala+haldi+dahi=>butter+fry+paneer+milk+cheese"},{n:"Paneer Bhurji",c:"Gravy",t:"Veg",i:"250gm dahi+3 tbspn besan+red chillies+coriander powder+water=>1 tbspn oil+jeera+2 onion+salt+2 tomato+cook 7-8 min+100gm paneer"},{n:"High Protein Salad",c:"Salad",t:"Veg",i:"50gm paneer+salt+coriander powder+cook 2 min+onion+cucumber+tomato+50gm sprouts+lemon"},{n:"Cheesy Kebabs",c:"Snack",t:"Veg",i:"100gm potato+100gm paneer+spices+salt+onion/garlic+breadcrumb+airfry 185°C 12 min"},{n:"High Protein Tikki",c:"Snack",t:"Veg",i:"100gm chickpeas+grind+ginger garlic paste+red chilli+coriander powder+onions+100gm paneer+besan+airfry 180°C 20 min"}]},"Chicken":{k:"chicken",r:[{n:"Chicken Sandwich",c:"Sandwich",t:"NV",i:"Coriander powder+garam masala+garlic powder+chaat masala+salt=>marinate chicken+cook"},{n:"Healthy Shawarma",c:"Wrap",t:"NV",i:"100gm chicken+salt+garam masala+haldi+coriander powder+ginger-garlic=>marinate+cook 12-13 min=>wrap roti+onion+cucumber"},{n:"Chicken Wrap",c:"Wrap",t:"NV",i:"100gm chicken+carrot+cucumber+onion+red chilli powder+salt+garlic powder=>airfry 190°C 15 min=>roti+egg"},{n:"Chicken Keema Wrap",c:"Wrap",t:"NV",i:"100gm chicken+tomato+onion+salt+ginger garlic powder+red chillies+coriander powder+two eggs+roti+cheese"},{n:"Garlic Chicken Roll",c:"Wrap",t:"NV",i:"650gm chicken+garlic powder+onion powder+salt+pepper=>cheese+Greek yogurt+garlic paste+lemon/honey=>roti"},{n:"Chicken Tacos",c:"Wrap",t:"NV",i:"Coriander+ginger garlic paste+green chillies+lemon+dahi+salt=>300gm chicken deep cuts+red chilli powder+chilli flakes+soya sauce+mustard oil+marinate 15-20 min+airfry"},{n:"Chicken Rice",c:"Rice",t:"NV",i:"Chicken+haldi+chicken masala+salt+coriander powder+cook=>onion+tomato+100gm rice+water+boil"},{n:"Chicken Tawa Pulav",c:"Rice",t:"NV",i:"1 tbspn oil+garlic+onion+green chillies+capsicum+tomato+spices+pav bhaji masala+100gm chicken=>200gm rice"},{n:"Chicken Biryani",c:"Rice",t:"NV",i:"Chicken+ginger garlic paste+dahi+salt+spices=>1 tbspn oil+onion+tezpatta+tomato+marinated chicken+coriander"},{n:"Garlic Chicken Rice",c:"Rice",t:"NV",i:"200gm chicken+ginger garlic paste+red chillies+spices+salt+cook=>coriander powder+200gm cooked rice+mix"},{n:"Chicken Barra",c:"Snack",t:"NV",i:"Chicken+salt+lime=>garlic+ginger+green chilli+dahi+coriander=>mix batter+garam masala+oil+airfry"},{n:"Tandoori Chicken",c:"Snack",t:"NV",i:"Ginger garlic paste+dahi+red chilli powder+coriander powder+lime+salt+kasuri methi+garam masala+oil+cook"},{n:"Honey Garlic Chicken",c:"Snack",t:"NV",i:"Coat chicken flour+red chilli powder+salt+onion powder+garlic powder+whipped egg+cornflakes/oats+airfry 180°C 15-18 min=>honey+soya sauce+garlic+vinegar+cornflour"},{n:"Juicy Chicken",c:"Snack",t:"NV",i:"250gm chicken deep cuts+3 tbspn dahi+masalas+salt+marinate=>airfry 190°C 12 min"},{n:"Cheesy Chicken Bites",c:"Snack",t:"NV",i:"100gm boiled potato+100gm boiled chicken+onion+coriander+50gm cheese+spices+breadcrumb=>airfry 185°C 10 min"},{n:"Chicken Hariyali Tikka",c:"Snack",t:"NV",i:"Coriander+mint+garlic+ginger+chillies=>chicken+capsicum+onion+dahi+besan+salt+airfry 190°C 15 min"},{n:"Chicken Meatballs",c:"Snack",t:"NV",i:"Minced chicken+spices+salt=>balls+1 egg=>airfry 190°C 10 min=>garlic+onion+tomato+tomato puree"},{n:"Chicken Fries",c:"Snack",t:"NV",i:"100gm minced chicken+salt+black pepper+onion/garlic powder=>fries shape=>freeze=>rice flour+oregano+pepper=>airfry 180°C 12 min"},{n:"Chicken Chilli",c:"Snack",t:"NV",i:"1 tbspn oil+garlic+onion+capsicum+vinegar+chilli sauce+soya sauce+kashmiri lal mirch=>chicken+egg+oat flour+salt+airfry 190°C 15 min"},{n:"Chicken Nuggets",c:"Snack",t:"NV",i:"Minced chicken+egg+cheese+garlic/onion powder+salt+red chillies+black pepper+breadcrumb+airfry 200°C 10 min"},{n:"Chicken Kebab",c:"Snack",t:"NV",i:"200gm chicken+1 boiled potato+coriander powder+ginger garlic paste+haldi+salt=>airfry 180°C 20 min"},{n:"Butter Chicken",c:"Gravy",t:"NV",i:"Oil+khada masala+garlic+onion+2 tomato+soaked cashew+chilli+spices=>blend=>chicken+spices+dahi=>airfry 200°C 12 min+mix+cook"},{n:"Chinese Chicken",c:"Gravy",t:"NV",i:"Chicken+green chilli sauce+soya sauce+vinegar+ginger garlic paste+salt+rice flour+garlic powder+onion powder+airfry 195°C 15 min"},{n:"Chicken Masala",c:"Gravy",t:"NV",i:"Chicken+spices+dahi+marinate=>cook"},{n:"Chicken Pizza",c:"Pizza",t:"NV",i:"Boneless chicken+grind+salt+black pepper+onion/garlic powder+1 egg=>airfry 180°C 12 min=>pizza sauce+cheese+toppings+180°C 8 min"}]},"Egg":{k:"egg",r:[{n:"Egg Fried Rice",c:"Rice",t:"NV",i:"1 tbspn oil+2 eggs+rice+chilli sauce+salt+garlic+capsicum+onion+100gm paneer+schezwan sauce"},{n:"Egg Salad",c:"Salad",t:"NV",i:"3 boiled eggs+egg white+cucumber+onion+tomato+boiled potato=>egg yolk+dahi+peri peri+chaat masala"},{n:"Shakshuka",c:"Gravy",t:"NV",i:"1 spoon oil+garlic+onion+bell pepper+ketchup=>tomato+red chilli powder+paprika+oregano+salt+chilli flakes+jeera powder+water=>cook=>holes+eggs+cheese+coriander"},{n:"Boiled Egg Bhurji",c:"Gravy",t:"NV",i:"1 tbspn oil+jeera+2 onion+capsicum+green chillies+spices+tomato puree+cook 8-10 min+cheese+4 boiled eggs=>grate+coriander"},{n:"Airfry Egg",c:"Snack",t:"NV",i:"Veggies+salt+black pepper+2 eggs+airfry 170°C 15 min"},{n:"Protein Sauce",c:"Sauce",t:"NV",i:"3 boiled eggs+2 spoon ghee+kashmiri red chillies+garlic+salt+vinegar+blend"},{n:"Roti Egg Wrap",c:"Wrap",t:"NV",i:"Leftover roti+3 eggs+chaat masala+garam masala+salt+maggi masala+veggies+cheese"}]},"Pizza & Other":{k:"pizza",r:[{n:"Pizza Moong Dal",c:"Pizza",t:"Veg",i:"Moong dal+water=>paste+salt+jeera powder+red chilli+green chillies=>onion+tomato puree+oregano+chilli flakes+paneer"},{n:"Pizza Suji Base",c:"Pizza",t:"Veg",i:"50gm suji+25gm dahi+baking powder+salt=>pizza sauce+paneer+onion+cheese+oregano+peri peri"},{n:"Pizza Roti Base",c:"Pizza",t:"Veg",i:"Onion+capsicum+tomato+100gm paneer+roti+pizza sauce+cheese+mixed herbs"},{n:"Protein Brownie",c:"Dessert",t:"Veg",i:"Banana+peanut butter+whey protein+cocoa powder+baking soda+milk=>airfry 180°C 10-12 min"},{n:"Pizza Pasta Sauce",c:"Sauce",t:"Veg",i:"1 tbspn oil+2 tbspn garlic+1 onion+tomato 1/2 kg+oregano/chilli flakes+salt+cook 15 min=>grind"},{n:"Veg Sandwich",c:"Sandwich",t:"Veg",i:"Tomato+capsicum+onion+coriander powder+chaat masala+garam masala+cook+spread on bread"},{n:"Patties Chickpea",c:"Snack",t:"Veg",i:"100gm kabuli chana boiled+garam masala+red chillies+salt+cook 5-10 min+50gm paneer+onion=>tikki"},{n:"Veg Pea Kebab",c:"Snack",t:"Veg",i:"Overnight soaked chana+garlic+chillies+coriander+besan+salt=>blend=>airfry 180°C 12 min"}]}};
+
+const JUICES=[
+{n:"Amla Aloe Vera Juice",cat:"Immunity",season:"All Year",i:["Fresh amla 2-3","Aloe vera gel 2 tbspn","Honey 1 tsp","Water 1 glass","Pink salt pinch"],m:"Blend amla, add aloe gel, honey, pink salt and water. Strain and drink empty stomach.",b:"Rich in Vitamin C (600mg/100g), boosts immunity, improves skin glow, detoxifies liver"},
+{n:"Haldi Doodh (Golden Milk)",cat:"Immunity",season:"Winter",i:["Warm milk 1 glass","Haldi / turmeric 1/2 tsp","Black pepper pinch","Ghee 1/2 tsp","Honey 1 tsp"],m:"Warm milk, add haldi, pepper, ghee. Mix well. Add honey when slightly cool.",b:"Anti-inflammatory curcumin, piperine boosts absorption 2000%, promotes sleep, joint health"},
+{n:"Beetroot Carrot Juice",cat:"Blood",season:"All Year",i:["Beetroot 1 medium","Carrot 2","Amla 1","Ginger 1 inch","Lemon 1/2","Chia seeds 1 tsp"],m:"Juice beetroot, carrot, amla, ginger. Add lemon juice, top with soaked chia seeds.",b:"Increases hemoglobin, purifies blood, rich in iron and folate, chia adds omega-3"},
+{n:"Pomegranate Juice (Anaar)",cat:"Blood",season:"Winter",i:["Pomegranate 2 large","Pink salt pinch","Roasted jeera powder pinch"],m:"Extract pomegranate seeds, blend, strain. Add pink salt and jeera powder.",b:"Boosts RBC count, rich in iron and antioxidants, heart health, anti-anemic"},
+{n:"Palak Juice (Spinach)",cat:"Blood",season:"Winter",i:["Fresh palak 2 cups","Amla 1","Lemon 1","Ginger 1 inch","Flaxseed powder 1 tsp"],m:"Blend palak with amla, ginger. Strain, add lemon and flaxseed powder.",b:"Iron-rich, increases hemoglobin, flax adds omega-3 and fibre, detox powerhouse"},
+{n:"Aloe Vera Cucumber Juice",cat:"Skin",season:"Summer",i:["Aloe vera gel 2 tbspn","Cucumber 1","Mint leaves 8-10","Lemon 1/2","Honey 1 tsp","Sunflower seeds 1 tsp"],m:"Blend cucumber, aloe vera gel, mint. Add lemon, honey. Garnish with sunflower seeds.",b:"Hydrates skin, reduces acne, sunflower seeds add Vitamin E for anti-aging"},
+{n:"Carrot Tomato Juice",cat:"Skin",season:"Winter",i:["Carrot 2","Tomato 2","Beetroot 1/2","Lemon 1/2","Pink salt"],m:"Juice carrot, tomato, beetroot. Add lemon and pink salt.",b:"Beta-carotene for skin glow, lycopene for UV protection, collagen support"},
+{n:"Papaya Smoothie",cat:"Skin",season:"Summer",i:["Ripe papaya 1 cup","Dahi 1/2 cup","Honey 1 tsp","Haldi pinch","Chia seeds 1 tsp","Almonds 4-5"],m:"Blend papaya, dahi, honey, haldi, soaked chia and almonds. Serve fresh.",b:"Papain enzyme clears skin, Vitamin A & C, chia seeds for omega-3, reduces dark spots"},
+{n:"Jeera Ajwain Water",cat:"Digestion",season:"Rainy",i:["Jeera (cumin) 1 tsp","Ajwain (carom) 1/2 tsp","Saunf (fennel) 1/2 tsp","Water 2 glasses","Lemon 1/2"],m:"Boil jeera, ajwain, saunf in water 5 min. Strain, add lemon. Drink warm.",b:"Relieves bloating, gut motility, anti-bacterial for monsoon, thymol kills gut pathogens"},
+{n:"Pudina Nimbu Pani",cat:"Cooling",season:"Summer",i:["Fresh mint 15-20 leaves","Lemon 2","Pink salt 1/2 tsp","Roasted jeera powder 1/2 tsp","Jaggery 2 tsp","Chilled water 2 glasses"],m:"Blend mint. Mix with lemon juice, pink salt, jeera, jaggery and cold water.",b:"Cooling digestive, electrolyte balance, pink salt has 84 trace minerals vs regular salt"},
+{n:"Triphala Water",cat:"Digestion",season:"All Year",i:["Triphala powder 1 tsp","Warm water 1 glass","Honey 1/2 tsp"],m:"Soak triphala overnight or mix in warm water morning. Drink empty stomach.",b:"Three-fruit Ayurvedic formula (amla, haritaki, bibhitaki) — cleanses colon, detox king"},
+{n:"Aam Panna",cat:"Cooling",season:"Summer",i:["Raw mango (kairi) 2","Jaggery 4 tbspn","Roasted jeera 1 tsp","Pink salt 1/2 tsp","Mint 10 leaves","Water 4 glasses"],m:"Boil raw mangoes, peel, extract pulp. Blend with jaggery, jeera, pink salt, mint, water.",b:"Prevents heatstroke, electrolyte replenisher, Vitamin C, traditional Indian coolant"},
+{n:"Sattu Sharbat",cat:"Cooling",season:"Summer",i:["Sattu (roasted chana flour) 3 tbspn","Lemon 1","Pink salt 1/2 tsp","Roasted jeera 1/2 tsp","Water 2 glasses","Mint leaves"],m:"Mix sattu in cold water, add lemon, pink salt, jeera. Garnish with mint.",b:"Instant energy, cooling, 20g protein/serving, Bihar's traditional superfood, zero fat"},
+{n:"Kokum Sharbat",cat:"Cooling",season:"Summer",i:["Kokum syrup 3 tbspn","Cold water 1 glass","Roasted jeera 1/2 tsp","Pink salt pinch","Saunf powder pinch"],m:"Mix kokum syrup in cold water. Add jeera, pink salt, saunf. Serve with ice.",b:"Prevents dehydration, HCA (hydroxycitric acid) aids fat metabolism, Konkan treasure"},
+{n:"Tulsi Kadha",cat:"Herbal",season:"Winter",i:["Tulsi leaves 10-12","Ginger 1 inch","Black pepper 4-5","Dalchini stick 1","Laung (clove) 2","Honey 1 tsp","Water 2 cups"],m:"Boil all (except honey) in water 8-10 min. Strain, add honey when warm.",b:"Ayurvedic immunity powerhouse, anti-viral, clears respiratory tract, traditional cold remedy"},
+{n:"Ashwagandha Milk",cat:"Herbal",season:"Winter",i:["Ashwagandha powder 1/2 tsp","Warm milk 1 glass","Ghee 1/2 tsp","Honey 1 tsp","Elaichi pinch"],m:"Add ashwagandha to warm milk with ghee, sweetener and elaichi. Drink before bed.",b:"Reduces cortisol 30%, boosts testosterone, muscle recovery, better sleep, ancient adaptogen"},
+{n:"Giloy Juice",cat:"Herbal",season:"Rainy",i:["Fresh giloy stem 6 inches","Water 2 cups","Honey 1 tsp","Tulsi 4-5 leaves","Black pepper 2-3"],m:"Boil giloy with tulsi and pepper, reduce to half. Strain, add honey.",b:"Dengue/malaria prevention, boosts platelets, monsoon immunity, Ayurvedic powerhouse"},
+{n:"Gond Katira Sharbat",cat:"Cooling",season:"Summer",i:["Gond katira (tragacanth gum) 2 tbspn soaked overnight","Milk or water 1 glass","Rose water 1 tsp","Mishri (rock sugar) 2 tsp","Sabja (basil) seeds 1 tsp soaked","Elaichi pinch"],m:"Soak gond katira overnight — it swells 10x. Mix with chilled milk/water, rose water, mishri, sabja, elaichi.",b:"Nature's coolant — reduces body heat by 5-7°C, prevents heatstroke, rich in protein and calcium, Unani medicine staple"},
+{n:"Jaljeera",cat:"Cooling",season:"Summer",i:["Jeera powder 1 tsp","Pudina 10 leaves","Dry ginger powder 1/4 tsp","Hing pinch","Pink salt 1/2 tsp","Amchoor 1/2 tsp","Water 2 glasses"],m:"Blend mint with water. Add all dry spices. Serve with ice and boondi.",b:"Digestive coolant, prevents heat exhaustion, North Indian summer staple, appetizer"},
+{n:"Bael Sharbat",cat:"Digestion",season:"Summer",i:["Bael (wood apple) pulp 3 tbspn","Jaggery 2 tbspn","Pink salt pinch","Water 2 glasses"],m:"Soak bael pulp, mash, mix with jaggery and water. Strain and serve cold.",b:"IBS relief, prevents diarrhea, sacred Ayurvedic fruit, summer essential in UP/Bihar"},
+{n:"Thandai",cat:"Cooling",season:"Summer",i:["Badam 10","Kaju 5","Pista 5","Saunf 1 tsp","Khas khas (poppy) 1 tsp","Elaichi 3","Kali mirch 4-5","Milk 2 glasses","Mishri 3 tbspn","Rose water 1 tsp","Watermelon seeds 1 tsp"],m:"Soak all dry fruits/seeds overnight. Grind to paste. Boil milk, add paste, mishri, rose water. Chill.",b:"Traditional Holi drink, cooling, brain tonic, watermelon seeds add zinc and magnesium"},
+{n:"Neem Juice",cat:"Herbal",season:"Rainy",i:["Fresh neem leaves 15-20","Water 1 glass","Honey 1 tsp","Lemon 1/2","Haldi 1/4 tsp"],m:"Blend neem with water. Strain, add honey, lemon, haldi.",b:"Blood purifier, anti-fungal for monsoon, acne treatment, traditional detox bitter"},
+{n:"Mulethi Tea",cat:"Herbal",season:"Winter",i:["Mulethi (licorice) root 1 stick","Ginger 1/2 inch","Tulsi 4-5 leaves","Water 1.5 cups","Honey 1 tsp"],m:"Boil mulethi, ginger, tulsi in water 5-7 min. Strain, add honey.",b:"Soothes sore throat, cough remedy, adrenal support, voice clarity"},
+{n:"Brahmi Shankhpushpi Drink",cat:"Herbal",season:"All Year",i:["Brahmi powder 1/2 tsp","Shankhpushpi powder 1/2 tsp","Warm milk 1 glass","Honey 1 tsp","Badam 3-4"],m:"Mix powders in warm milk. Add honey and crushed almonds.",b:"Memory enhancer, reduces anxiety, brain tonic, Ayurvedic nootropic, exam season essential"},
 ];
 
-// ═══════════ RECIPE DATA (same as before, compact) ═══════════
-const D={"Soya Recipes":{k:"soya",recipes:[{n:"Soya Potato Sandwich",c:"Sandwich",t:"Veg",i:"50gm soya granules + boil + wash + squeeze + 5gm oil + onion + tomato + chilli powder + haldi + coriander powder + garam masala + salt + chaat masala + cook 5 min + spread on bread"},{n:"Soya Tikki",c:"Snack",t:"Veg",i:"50gm soya + 100gm boiled potato + onion + green chillies + salt + chaat masala + peri peri masala + make tikki => chop 1 garlic + 2 tomato puree + salt + peri peri + oregano + cook 2-3 min + onion + chaat masala + 40gm oats + cook until thick"},{n:"Soya Tikki (V2)",c:"Snack",t:"Veg",i:"100gm paneer + dahi + garlic 3-4 cloves + salt + black pepper + lemon + veggies => 50gm soya chunks + grind + 4 boiled potatoes + onion + coriander powder + salt + make tikki => airfry 180°C for 20 min"},{n:"Soya Bhaji",c:"Gravy",t:"Veg",i:"Garlic + onion + green chilli + tomato + red chilli + cashew + mix => transfer to pan + red chilli + peri peri + kitchen king masala + water + soya chunks"},{n:"Soya Bhurji",c:"Gravy",t:"Veg",i:"50gm soya granules + boil + wash + squeeze => 5ml oil + onion + tomato + chillies + fry 2-3 min => 1 tbspn besan + cook 2-3 min + haldi + coriander powder + garam masala + dahi + chaat masala"},{n:"Soya Tikka Masala",c:"Gravy",t:"Veg",i:"50gm soya + boil + squeeze + 100gm dahi + capsicum + onion + garlic (10 cloves) + kashmiri red chilli + salt + garam masala + coriander powder + 1 tbspn mustard oil + cook 5-10 min until thick"},{n:"Soya Rice",c:"Rice",t:"Veg",i:"Oil + garlic + onion + capsicum + paneer + soya + chana + spices + 100gm rice"},{n:"Chopper Rice (Soya)",c:"Rice",t:"Veg",i:"Veggies (carrot, onion, spring onion) + 40gm soya chunks + 50gm paneer + peri peri + coriander powder + haldi + salt + cook 4-5 min + rice + lemon + soya sauce + coriander"},{n:"Veg Kebab (Soya)",c:"Snack",t:"Veg",i:"Soya chunks (50gm) + 100gm paneer + onion + tomato + garlic + besan + spices => make kebab => airfry 200°C for 8 min"},{n:"Burger Tikki (Soya)",c:"Snack",t:"Veg",i:"50gm soya granules + boil + mix + 100gm boiled potato + chaat masala + roasted jeera + red chillies + salt + lemon => make tikki"},{n:"Burger Patties (Soya)",c:"Snack",t:"Veg",i:"50gm minced soya + 50gm paneer + boiled potato + salt + red chilli powder + jeera powder + garam masala + mix and make patties + airfry 180°C for 10 min"},{n:"Tikki (Soya Mix)",c:"Snack",t:"Veg",i:"Soaked soya chunks + mixer + carrot + beetroot + cabbage + potato + coriander powder + chaat masala + lal mirch + green chillies + red chilli powder + besan for binding"},{n:"Soya Chilli",c:"Gravy",t:"Veg",i:"Water + onion + tomato + capsicum + haldi + lal mirch + coriander powder + chaat masala + soya chunks + dahi (water + 100gm) + tomato ketchup + lal mirch"},{n:"No Base Sandwich (Soya)",c:"Sandwich",t:"Veg",i:"100gm soya + shred + onion + capsicum + vinegar + coriander + chillies + water + besan + salt + red chillies"}]},"Paneer Recipes":{k:"paneer",recipes:[{n:"Paneer Sandwich",c:"Sandwich",t:"Veg",i:"Dahi + capsicum + cucumber + 1 tbspn tomato + salt => paneer + peri peri + fry + cheese slice + above mixture + bread"},{n:"Mixed Sandwich",c:"Sandwich",t:"Veg",i:"Sliced cucumber + 50gm boiled black chana + oil with onion + garlic => 50gm paneer + garlic + salt + chaat masala + lemon => blend => spread on sandwich"},{n:"No Base Sandwich",c:"Sandwich",t:"Veg",i:"Veggies + 100gm paneer + dahi + besan + spices + water + spread in bread + airfry 7-8 min"},{n:"Paneer Tikka Roll",c:"Wrap",t:"Veg",i:"100gm dahi + haldi + lal mirch + garam masala + chaat masala + salt + coriander powder + onion + capsicum + 100gm paneer + 1 tbspn mustard oil + cook until dry + roti + wrap"},{n:"Paneer Wrap",c:"Wrap",t:"Veg",i:"Dahi + coriander + haldi + kashmiri lal mirch + mustard oil + capsicum + onion + tomato + chilli powder + lemon + 100gm paneer + cook 5-6 min + wrap around roti"},{n:"Paneer Veggies Wrap",c:"Wrap",t:"Veg",i:"Sprouts + spinach + ginger + garlic + chillies => blend + salt + garam masala + atta => make dosa => paneer + onion + chaat masala => fill and wrap"},{n:"Paneer Schezwan Wrap",c:"Wrap",t:"Veg",i:"100gm paneer + veggies + schezwan sauce + salt + peri peri + cook 2-3 min + cheese + roti"},{n:"Paneer Taco",c:"Wrap",t:"Veg",i:"Capsicum + tomato + onion + oregano + chilli powder + 100gm paneer + salt => 1 roti + sauce + above stuffing"},{n:"Burrito (Paneer)",c:"Wrap",t:"Veg",i:"50gm paneer + capsicum + onion + cheese + salt + garam masala + chaat masala + haldi + 50gm dahi + cook 4-5 min + wrap with roti"},{n:"Paneer Quesadilla",c:"Wrap",t:"Veg",i:"100gm paneer + corn + veggies + salt + black pepper + pizza/pasta sauce + roti + cheese + cook 5-6 min"},{n:"Paneer Fried Rice",c:"Rice",t:"Veg",i:"Dahi + garam masala + coriander + haldi + salt + oil + veggies + paneer + cook until dry + 200gm rice"},{n:"Tawa Pulav",c:"Rice",t:"Veg",i:"1 tbspn oil + onion + veggies + spices + salt + ginger garlic paste + pav bhaji masala + 100gm paneer + 200gm rice"},{n:"Mexican Rice",c:"Rice",t:"Veg",i:"1 tbspn oil + onion + capsicum + salt + tomato puree + spices + rajma + lemon + black pepper + 100gm paneer + rice => cook 5-7 min"},{n:"Dahi Paneer Kebab",c:"Snack",t:"Veg",i:"Dahi + veggies + salt + ginger garlic paste + grated paneer + make small tikki + coat with oats"},{n:"Palak Paneer Garlic Bread",c:"Snack",t:"Veg",i:"Boil palak + paneer + corn + green chillies + salt + butter + oregano/chilli flakes + grated garlic"},{n:"Grilled Paneer",c:"Snack",t:"Veg",i:"Paneer + peri peri + oregano + chilli flakes + onion + capsicum + cucumber + chipotle sauce"},{n:"Paneer Kebab/Tikki",c:"Snack",t:"Veg",i:"100gm grated paneer + coriander + green chillies + lemon + garam masala + chaat masala + oat flour + mix and make tikki"},{n:"Paneer Tikka",c:"Snack",t:"Veg",i:"Capsicum + onion + tomato + 100gm paneer + dahi + coriander powder + red chillies + garam masala + salt + ginger garlic paste + besan + marinate => airfry 195°C for 10 min"},{n:"Paneer Burritos",c:"Snack",t:"Veg",i:"100gm paneer + spices + ginger garlic paste + lemon + mix => 1 tbspn oil + onion + capsicum + make roti wrap"},{n:"Paneer Corn Chilli",c:"Snack",t:"Veg",i:"Oil + garlic + 2 capsicum + veggies + onion + paneer + salt + basic spices + 100gm paneer"},{n:"Paneer Chilli",c:"Snack",t:"Veg",i:"5gm oil + chopped onion + capsicum + 100gm paneer + soya sauce + schezwan sauce + red chilli sauce + water"},{n:"Pyaaz Wala Paneer",c:"Gravy",t:"Veg",i:"Onion + water + jeera => sauté => capsicum + tomato + tikka masala + haldi + coriander powder + mirch powder"},{n:"Cheese Paneer Ghotala",c:"Gravy",t:"Veg",i:"Chop onion + tomato + capsicum + garlic + ginger + coriander => khada masala + salt + chaat masala + red chilli powder + haldi + dahi => butter + fry + paneer + milk + cheese"},{n:"Paneer Bhurji",c:"Gravy",t:"Veg",i:"250gm dahi + 3 tbspn besan + red chillies + coriander powder + water mix => 1 tbspn oil + jeera + 2 onion + salt + 2 tomato + cook 7-8 min + add 100gm paneer"},{n:"Paneer Sauce",c:"Sauce",t:"Veg",i:"2 onion + 2 tomato => airfry 180°C for 15 min => blend + salt + 100gm paneer + red chilli powder + onion powder + garlic + water + blend"},{n:"High Protein Paratha",c:"Snack",t:"Veg",i:"Veggies + chilli + 100gm paneer + spices + besan (for binding) + water + mix"},{n:"Cheesy Kebabs",c:"Snack",t:"Veg",i:"100gm potato + 100gm paneer + spices + salt + onion/garlic + mix + breadcrumb + airfry 12 min at 185°C"},{n:"High Protein Tikki",c:"Snack",t:"Veg",i:"100gm soaked chickpeas + grind + ginger garlic paste + red chilli + coriander powder + chopped onions + 100gm paneer + 2 spoon besan + airfry 180°C for 20 min"},{n:"High Protein Salad",c:"Salad",t:"Veg",i:"50gm paneer + salt + coriander powder + cook 2 min + mix with onion + cucumber + tomato + 50gm sprouts + lemon + salt"},{n:"Pasta (Paneer)",c:"Snack",t:"Veg",i:"Boil pasta + oil + tomato + garlic + cook and grind => 100gm paneer into grind + cook paste + add veggies + salt + pasta"}]},"Chicken Recipes":{k:"chicken",recipes:[{n:"Chicken Sandwich",c:"Sandwich",t:"Non-Veg",i:"Coriander powder + garam masala + garlic powder + chaat masala + salt => mix and marinate chicken + cook without covering lid"},{n:"Lemon Chicken Roll",c:"Wrap",t:"Non-Veg",i:"Wrap: 50gm flour + 1 egg + chopped coriander + chaat masala => Sauce: dahi + garlic + lemon + salt + pepper => 100gm chicken + onion + garlic + spring onion + soya sauce + lemon + dahi + garam masala + cook 10-15 min"},{n:"Healthy Shawarma",c:"Wrap",t:"Non-Veg",i:"100gm chicken + salt + garam masala + haldi + coriander powder + ginger-garlic => marinate and cook 12-13 min => wrap around roti + onion + cucumber"},{n:"Chicken Wrap",c:"Wrap",t:"Non-Veg",i:"100gm chicken + carrot + cucumber + onion + red chilli powder + salt + garlic powder => airfry 190°C for 15 min => roti => wrap around one egg + above mix"},{n:"Chicken Keema Wrap",c:"Wrap",t:"Non-Veg",i:"100gm chicken + tomato + onion + salt + ginger/garlic powder + red chillies + coriander powder + two eggs + wrap around roti + cheese"},{n:"Garlic Chicken Roll",c:"Wrap",t:"Non-Veg",i:"650gm chicken + garlic powder + onion powder + 1 tsp salt + pepper => cheese + Greek yogurt + garlic paste + lemon/honey => spread over roti"},{n:"Chicken Tacos",c:"Wrap",t:"Non-Veg",i:"Chutney: coriander + ginger garlic paste + green chillies + lemon + dahi + salt => 300gm chicken + deep cuts + ginger garlic paste + red chilli powder + chilli flakes + soya sauce + mustard oil + marinate 15-20 min + airfry"},{n:"Chicken Rice",c:"Rice",t:"Non-Veg",i:"Chicken + haldi + chicken masala + salt + coriander powder + cook => onion + tomato + 100gm soaked rice + water + boil + add chicken"},{n:"Chicken Tawa Pulav",c:"Rice",t:"Non-Veg",i:"1 tbspn oil + garlic + onion + green chillies + capsicum + tomato + spices + pav bhaji masala + 100gm chicken => mix and cook with 200gm white rice"},{n:"High Protein Chicken Rice",c:"Rice",t:"Non-Veg",i:"5gm oil + garlic/onion + sauté + 300gm chicken + veggies + salt + pepper + soya + schezwan + cooked rice"},{n:"Chicken Biryani",c:"Rice",t:"Non-Veg",i:"Chicken + ginger garlic paste + dahi + salt + spices => 1 tbspn oil + chopped onion + tezpatta + tomato + marinated chicken + spices + coriander"},{n:"Garlic Chicken Rice",c:"Rice",t:"Non-Veg",i:"200gm chicken + ginger garlic paste + red chillies + spices + salt + cook => same pan + coriander powder + 200gm cooked rice + mix"},{n:"Chicken Barra",c:"Snack",t:"Non-Veg",i:"Chicken + salt + lime + rest aside => mixer: garlic + ginger + green chilli + dahi + coriander => mix batter with chicken + coriander powder + garam masala + oil + airfry"},{n:"Tandoori Chicken",c:"Snack",t:"Non-Veg",i:"Ginger garlic paste + dahi + red chilli powder + coriander powder + lime + salt + kasuri methi + garam masala + 1 tbspn oil + cook"},{n:"Pesto Chicken",c:"Snack",t:"Non-Veg",i:"Basil leaves + garlic + cashew + salt + pepper + oregano + lime + oil"},{n:"Honey/Garlic Chicken",c:"Snack",t:"Non-Veg",i:"Coat chicken with flour + red chilli powder + salt + onion powder + garlic powder + whipped egg + cornflakes/oats + airfry 15-18 min at 180°C => sauce: honey + soya sauce + garlic + vinegar + cornflour"},{n:"Juicy Chicken",c:"Snack",t:"Non-Veg",i:"250gm chicken + deep cuts + 3 tbspn dahi + masalas + salt + marinate => airfry 190°C for 12 min"},{n:"Subway Wrap",c:"Snack",t:"Non-Veg",i:"Chicken breast + cut in half + salt + black pepper + airfry 190°C for 12 min => fork => shred"},{n:"High Protein Bowl",c:"Snack",t:"Non-Veg",i:"100gm chicken + veggies + onion/garlic powder + 1 tbspn oil + airfry 190°C for 15 min"},{n:"Cheesy Chicken Bites",c:"Snack",t:"Non-Veg",i:"100gm boiled potato + 100gm boiled chicken + onion + coriander + 50gm cheese + spices + breadcrumb => airfry 10 min at 185°C"},{n:"Lazy Fried Chicken",c:"Snack",t:"Non-Veg",i:"100gm chicken + 1 egg + spices + breadcrumb + airfry 190°C for 15 min"},{n:"Chicken Hariyali Tikka",c:"Snack",t:"Non-Veg",i:"Coriander + mint + garlic + ginger + chillies => mix => chicken + capsicum + onion + dahi + besan + salt + airfry 15 min at 190°C"},{n:"Chicken Meatballs",c:"Snack",t:"Non-Veg",i:"Minced chicken + spices + salt => make balls + 1 egg => airfry 190°C for 10 min => sauce: garlic + onion + tomato + spices + tomato puree"},{n:"Chicken Fries",c:"Snack",t:"Non-Veg",i:"100gm minced chicken + salt + black pepper + onion/garlic powder => shape into fries => freeze 1 hour => rice flour + oregano/chilli flakes + black pepper => coat + airfry 12 min at 180°C"},{n:"Chicken/Crispy Potatoes",c:"Snack",t:"Non-Veg",i:"Garlic + chicken + spices + tomato puree + onion + 100gm potatoes + salt + oil + airfry 180°C for 15 min"},{n:"Chicken Chilli",c:"Snack",t:"Non-Veg",i:"1 tbspn oil + garlic + 1 onion + 1/2 capsicum + vinegar + chilli sauce + soya sauce + kashmiri lal mirch => chicken + 1 egg + oat flour + salt + airfry 190°C for 15 min"},{n:"Chicken Nuggets",c:"Snack",t:"Non-Veg",i:"Minced chicken + egg + cheese + garlic/onion powder + salt + red chillies + black pepper + breadcrumb + airfry 200°C for 10 min"},{n:"Chicken Burritos",c:"Snack",t:"Non-Veg",i:"100gm chicken + black pepper + spices + salt + dahi + garlic/onion + red chilli powder + coriander powder + cook + wrap around roti"},{n:"Chicken Kebab",c:"Snack",t:"Non-Veg",i:"200gm chicken + 1 boiled potato + coriander powder + ginger garlic paste + haldi + salt => airfry 180°C for 20 min"},{n:"Chinese Chicken",c:"Gravy",t:"Non-Veg",i:"Chicken + green chilli sauce + soya sauce + vinegar + ginger garlic paste + salt + rice flour + garlic powder + onion powder + marinate + airfry 195°C for 15 min"},{n:"Lazy Chicken",c:"Gravy",t:"Non-Veg",i:"250gm dahi + veggies (onion, capsicum) + spices + marinate + 1 tbspn oil + cook 15-20 min"},{n:"Butter Chicken",c:"Gravy",t:"Non-Veg",i:"Oil + khada masala + garlic + onion + 2 tomato + soaked cashew + chilli + spices => blend => chicken + spices + dahi => airfry 200°C for 12 min + mix + cook 3-5 min"},{n:"Chicken Masala",c:"Gravy",t:"Non-Veg",i:"Chicken + spices + dahi + marinate => cook"},{n:"Chicken Gravy",c:"Gravy",t:"Non-Veg",i:"200gm chicken + dahi + ginger garlic paste + haldi + lal mirch + chicken masala powder + mustard oil + lemon => 2 onion + 2 tomato + cook and grind + add chicken"},{n:"Chicken Pizza",c:"Pizza",t:"Non-Veg",i:"Base: boneless chicken + grind + salt + black pepper + onion/garlic powder + 1 egg => airfry 180°C for 12 min => pizza sauce + cheese + toppings + airfry 180°C for 8 min"},{n:"Mr. B Fit Chicken",c:"Snack",t:"Non-Veg",i:"100gm chicken + carrot + capsicum + onion + red chilli powder + salt + onion/garlic powder + black pepper + lemon juice => airfry 195°C for 25 min"},{n:"Pasta Salad (Chicken)",c:"Salad",t:"Non-Veg",i:"Veggies chopped + dahi + spices + red chillies => chicken + garlic + oregano => airfry => mix both"}]},"Egg Recipes":{k:"egg",recipes:[{n:"Egg Fried Rice",c:"Rice",t:"Non-Veg",i:"1 tbspn oil + 2 eggs + rice + chilli sauce + salt + garlic + capsicum + onion + 100gm paneer + schezwan sauce"},{n:"Egg Salad",c:"Salad",t:"Non-Veg",i:"3 boiled eggs + egg white chop + cucumber + onion + tomato + boiled potato => egg yolk + dahi + peri peri + chaat masala + salt => mix"},{n:"Egg Salad (V2)",c:"Salad",t:"Non-Veg",i:"4 boiled eggs + separate yolk + chaat masala + onion powder => spread => egg whites + cucumber + carrot + onion + chilli + lemon => mix both"},{n:"Egg Cube Salad",c:"Salad",t:"Non-Veg",i:"Cabbage + capsicum + carrot + tomato puree + salt + coriander + chaat masala + red chilli powder + haldi + paneer"},{n:"Shakshuka",c:"Gravy",t:"Non-Veg",i:"1 spoon oil + minced garlic + chopped onion + bell pepper + ketchup + cook 2-3 min => tomato + red chilli powder + paprika + oregano + salt + chilli flakes + jeera powder + water => cook => create holes + eggs + cheese + coriander"},{n:"Shakshuka (V2)",c:"Gravy",t:"Non-Veg",i:"1 tbspn oil + garlic + onion + 2 tomato + capsicum + salt + chilli flakes + tomato puree => cook 10-12 min => make hole + add 3 eggs + salt"},{n:"Boiled Egg Bhurji",c:"Gravy",t:"Non-Veg",i:"1 tbspn oil + jeera + 2 onion + capsicum + green chillies + spices + tomato puree + cook 8-10 min + cheese slices + 4 boiled eggs => grate and mix + coriander"},{n:"Airfry Egg",c:"Snack",t:"Non-Veg",i:"Veggies + salt + red + black pepper + 2 eggs + airfry 170°C for 15 min"},{n:"Egg Snack Mix",c:"Snack",t:"Non-Veg",i:"3 white eggs + veggies + oregano/chilli flakes + peri peri + salt + mozzarella cheese"},{n:"Protein Sauce",c:"Sauce",t:"Non-Veg",i:"3 boiled eggs + 2 spoon ghee + kashmiri red chillies + garlic + salt + vinegar + blend"},{n:"Spicy Sauce/Spread",c:"Sauce",t:"Non-Veg",i:"3 boiled eggs + garlic + chilli + salt + peri peri powder + vinegar + dahi + blend => 100gm dahi + roasted garlic + cashew + oregano + peri peri + salt"},{n:"Roti Egg Wrap",c:"Wrap",t:"Non-Veg",i:"Leftover roti + 3 whole eggs + chaat masala + garam masala + salt + maggi masala (optional) + veggies + cheese"}]},"Pizza & Other":{k:"pizza",recipes:[{n:"Pizza (Rice Base)",c:"Pizza",t:"Non-Veg",i:"Base: 100gm rice + 1 egg + ginger garlic paste + water + mixer => toppings: chicken breast + pizza sauce + ketchup + cheese"},{n:"Pizza (Rice Paper)",c:"Pizza",t:"Veg",i:"Base: rice paper => toppings: pizza sauce + cheese + grated paneer + dahi + veggies"},{n:"Pizza (Moong Dal)",c:"Pizza",t:"Veg",i:"Base: moong dal + water => paste + salt + jeera powder + red chilli + green chillies => toppings: onion + tomato puree + oregano + chilli flakes + paneer"},{n:"Pizza (Suji Base)",c:"Pizza",t:"Veg",i:"Base: 50gm suji + 25gm dahi + baking powder + salt => toppings: pizza sauce + paneer + onion + cheese + oregano + peri peri"},{n:"Pizza (Roti Base)",c:"Pizza",t:"Veg",i:"Onion + capsicum + tomato + 100gm paneer + roti + pizza sauce + cheese + mixed herbs"},{n:"Pizza (Bread Base)",c:"Pizza",t:"Veg",i:"Sauce: 2 tbspn oil + garlic + onion + tomato puree + salt + oregano => bread + sauce + paneer + capsicum + cheese => airfry 5 min at 190°C"},{n:"Pizza (Moong Batter)",c:"Pizza",t:"Veg",i:"100gm soaked moong dal => grind + suji + baking soda + salt + oil => batter + sauce + veggies + paneer + cheese"},{n:"Protein Brownie",c:"Dessert",t:"Veg",i:"Banana + peanut butter + whey protein + cocoa powder + baking soda + milk => airfry 180°C for 10-12 min"},{n:"Pizza/Pasta Sauce",c:"Sauce",t:"Veg",i:"1 tbspn oil + 2 tbspn garlic + 1 onion + tomato (1/2 kg) + oregano/chilli flakes + salt + cook 15 min => grind"},{n:"Pasta Sauce",c:"Sauce",t:"Veg",i:"1 onion + capsicum + garlic + tomato => airfry 10 min + 100gm paneer => mix and cook"},{n:"Spicy Garlic Sauce",c:"Sauce",t:"Veg",i:"Dahi + minced garlic + hot sauce + lime + coriander + paprika + salt + onion powder + oregano + pepper + chilli flakes"},{n:"Marination Base",c:"Basic",t:"Veg",i:"Dahi + haldi + coriander powder + garam masala + chaat masala + ginger garlic paste"},{n:"Veg Sandwich",c:"Sandwich",t:"Veg",i:"Tomato + capsicum + onion + coriander powder + chaat masala + garam masala + cook and spread on bread"},{n:"No Bread Sandwich",c:"Sandwich",t:"Veg",i:"1 cup moong dal + garlic + ginger + salt + water + grind => 100gm paneer + veggies + mix and make sandwich"},{n:"Roti Wrap (Veg)",c:"Wrap",t:"Veg",i:"Dahi + coriander powder + chaat masala + lal mirchi + salt + besan => mix boiled soybean + ginger + onion + garlic + paneer + capsicum"},{n:"Patties (Chickpea)",c:"Snack",t:"Veg",i:"100gm kabuli chana boiled + garam masala + red chillies + salt + cook 5-10 min + 50gm paneer + chopped onion => make tikki"},{n:"Veg/Pea Kebab",c:"Snack",t:"Veg",i:"Overnight soaked chana + garlic + chillies + lots of coriander + besan + salt => blend => airfry 180°C for 12 min"},{n:"Chopper Rice (Garlic)",c:"Rice",t:"Veg",i:"1 tbspn garlic + onion => brown => chilli + oregano + peri peri + salt + rice => mix"},{n:"Tawa Pulav (Soya)",c:"Rice",t:"Veg",i:"Oil + jeera + garlic/onion + capsicum + sauté + tomato + salt + spices + 50gm soya chunks + biryani masala + cooked rice"},{n:"Lemon Pepper Chicken",c:"Snack",t:"Non-Veg",i:"Dahi + garlic + lime + palak + salt + pepper"},{n:"Veg Salad Dressing",c:"Salad",t:"Veg",i:"Dahi + lemon + coriander + salt + pepper + garlic + chopped cucumber"}]}};
+const REMEDIES=[
+{n:"Haldi Doodh for Muscle Recovery",cat:"Fitness",season:"All Year",i:["Haldi 1/2 tsp","Warm milk 1 glass","Kali mirch pinch","Ghee 1/2 tsp"],b:"Anti-inflammatory curcumin reduces DOMS. Piperine in black pepper increases absorption by 2000%. Post-workout essential.",m:"Add haldi and pepper to warm milk with ghee. Drink 30 min before bed."},
+{n:"Methi Dana Water for Joint Pain",cat:"Fitness",season:"Winter",i:["Methi (fenugreek) seeds 1 tbspn","Water 1 glass soaked overnight"],b:"Diosgenin in methi reduces joint inflammation, lubricates joints. Gym essential for heavy lifters.",m:"Soak methi seeds overnight. Drink water and chew seeds empty stomach."},
+{n:"Ajwain + Saunf for Bloating",cat:"Digestion",season:"All Year",i:["Ajwain (carom) 1/2 tsp","Saunf (fennel) 1/2 tsp","Warm water 1 glass","Pink salt pinch"],b:"Thymol in ajwain + anethole in saunf — instant gas relief, stimulates digestive enzymes. Pink salt adds electrolytes.",m:"Chew ajwain and saunf, or boil in water 3 min. Add pink salt. Drink warm after meals."},
+{n:"Isabgol for Clean Gut",cat:"Digestion",season:"All Year",i:["Isabgol (psyllium husk) 1 tbspn","Warm water or milk 1 glass"],b:"Soluble fibre for regular bowel. Essential during high-protein diet to prevent constipation. 5g fibre per spoon.",m:"Mix isabgol in warm water/milk. Drink immediately before bed — it gels quickly."},
+{n:"Ginger Honey Lemon Throat Remedy",cat:"Cold & Flu",season:"Winter",i:["Ginger juice 1 tsp","Honey 1 tbspn","Lemon juice 1 tsp","Warm water 1 glass"],b:"Gingerol is anti-viral, honey soothes mucous membranes, Vitamin C from lemon boosts immunity.",m:"Mix ginger juice, honey, lemon in warm water. Sip slowly. 2-3x daily during cold."},
+{n:"Steam with Ajwain + Haldi",cat:"Cold & Flu",season:"Winter",i:["Ajwain 1 tsp","Haldi 1/2 tsp","Boiling water in bowl","Towel over head"],b:"Opens blocked sinuses, kills airborne bacteria. Ajwain steam is antiviral. 5-7 min, 2x daily.",m:"Add ajwain and haldi to boiling water. Cover head with towel and inhale steam deeply."},
+{n:"Coconut Oil + Neem Monsoon Skin",cat:"Skin",season:"Rainy",i:["Coconut oil 2 tbspn","Neem oil 4-5 drops","Haldi pinch"],b:"Anti-fungal neem prevents monsoon skin infections. Coconut moisturizes without clogging pores.",m:"Mix oils with haldi. Apply on affected areas. Leave 20 min, wash with mild soap."},
+{n:"Multani Mitti Summer Pack",cat:"Skin",season:"Summer",i:["Multani mitti 2 tbspn","Rose water 2 tbspn","Nimbu juice 1/2 tsp","Haldi pinch","Honey 1/2 tsp"],b:"Controls oil in summer heat, tightens pores, removes tan. Honey adds moisture.",m:"Mix into paste. Apply on face 15 min. Wash with cold water. 2x weekly."},
+{n:"Kalonji Seeds for Hair Growth",cat:"Hair",season:"All Year",i:["Kalonji (nigella) oil 1 tbspn","Coconut oil 2 tbspn"],b:"Thymoquinone stops hair fall, promotes regrowth. Prophet's medicine — modern studies confirm efficacy.",m:"Warm slightly, massage into scalp 5 min. Leave overnight, wash morning. 3x weekly."},
+{n:"Amla Bhringraj Hair Oil",cat:"Hair",season:"All Year",i:["Amla powder 2 tbspn","Bhringraj powder 1 tbspn","Coconut oil 100ml"],b:"Ayurvedic hair growth formula. Prevents premature greying, strengthens roots, adds shine.",m:"Cook powders in coconut oil on low heat 15 min. Cool, strain, store. Apply 2x weekly."},
+{n:"Dalchini Honey for Fat Loss",cat:"Weight Loss",season:"All Year",i:["Dalchini (cinnamon) 1/2 tsp","Honey 1 tsp","Warm water 1 glass"],b:"Cinnamon improves insulin sensitivity, reduces sugar cravings, boosts metabolism. Research-backed.",m:"Mix dalchini and honey in warm (not hot) water. Drink empty stomach morning."},
+{n:"Jeera Water for Belly Fat",cat:"Weight Loss",season:"All Year",i:["Jeera (cumin) 2 tsp","Water 1 glass soaked overnight or boiled"],b:"Boosts metabolism 25%, reduces belly bloat, improves fat oxidation. Simplest weight loss hack.",m:"Soak jeera overnight in water. Drink morning empty stomach. Or boil and strain."},
+{n:"Tulsi Kali Mirch Monsoon Kadha",cat:"Cold & Flu",season:"Rainy",i:["Tulsi leaves 10","Kali mirch 5 crushed","Ginger 1 inch","Water 2 cups","Jaggery 1 tsp"],b:"Traditional kadha for viral fevers during monsoon. Anti-pyretic, anti-microbial, immunity booster.",m:"Boil all ingredients 8 min. Strain, add jaggery. Drink hot. 2x daily during monsoon."},
+{n:"Hing Water for Gas & Cramps",cat:"Digestion",season:"All Year",i:["Hing (asafoetida) pinch","Warm water 1 glass","Ajwain 1/4 tsp","Pink salt pinch"],b:"Instant colic & gas relief. Hing is antispasmodic. Pink salt adds minerals. Grandmother's classic.",m:"Mix hing, ajwain and pink salt in warm water. Drink in one go after heavy meal."},
+{n:"Chandan Kesar Summer Glow",cat:"Skin",season:"Summer",i:["Chandan (sandalwood) powder 1 tsp","Kesar (saffron) 2-3 strands","Rose water 2 tbspn","Malai (cream) 1 tsp"],b:"Cools skin, removes tan, natural brightener. Royal Ayurvedic beauty recipe used for centuries.",m:"Soak kesar in rose water 10 min. Mix with chandan and malai. Apply 15 min, wash."},
+{n:"Adrak Shahad Pre-Workout",cat:"Fitness",season:"Winter",i:["Ginger (adrak) juice 1 tsp","Honey (shahad) 1 tbspn","Warm water 1 glass","Lemon 1/2"],b:"Natural pre-workout energizer. Gingerol boosts blood flow, honey provides instant glucose for lifts.",m:"Mix all in warm water. Drink 20 min before workout."},
+{n:"Flaxseed Gel for Skin & Hair",cat:"Skin",season:"All Year",i:["Flaxseeds (alsi) 2 tbspn","Water 1 cup"],b:"Rich in omega-3, reduces inflammation, natural hair gel, makes skin supple. Cheapest beauty hack.",m:"Boil flaxseeds in water until gel forms. Strain. Use as hair gel or face serum. Store in fridge 7 days."},
+{n:"Sunflower Seed Snack for Gym",cat:"Fitness",season:"All Year",i:["Sunflower seeds 30gm","Pink salt pinch","Chaat masala pinch","Lemon juice squeeze"],b:"19g protein/100g, rich in Vitamin E (anti-oxidant for muscles), magnesium for cramp prevention, selenium for recovery.",m:"Lightly roast seeds. Sprinkle pink salt, chaat masala and lemon. Perfect post-workout snack."},
+];
 
-// ═══ RECIPE ENGINE ═══
-function parse(inst){const steps=inst.split(/\s*=>\s*/),ings=[],methods=[],cooks=[],seen=new Set();const aw=['cook','fry','boil','mix','blend','grind','marinate','airfry','wrap','spread','make','coat','shred','freeze','shape','add','transfer','saute','sauté','rest','serve','create','brown'];steps.forEach(s=>{s.split(/\s*\+\s*/).forEach(p=>{p=p.trim();if(!p)return;if(/\d+\s*°?C|\d+\s*deg|\d+[\s-]*min\b/i.test(p))cooks.push(p);const isA=aw.some(w=>p.toLowerCase().includes(w))&&!/^\d/.test(p);if(isA&&p.length>3)methods.push(p);else{const k=p.toLowerCase();if(!seen.has(k)&&k.length>1){seen.add(k);ings.push(p)}}})});if(!methods.length)methods.push(...steps.filter(s=>s.trim()));return{ings,methods,cooks:[...new Set(cooks)]}}
+const SEEDS=[
+{n:"Chia Seeds (Sabja ka bada bhai)",icon:"⚫",season:"Summer",cat:"Seeds",per100:"17g protein, 34g fibre, 18g omega-3",daily:"1-2 tbspn (15-30g)",
+uses:["Soak in water 15 min — swells 12x, add to smoothies/dahi","Chia pudding: chia + milk + honey + overnight","Add to lemon water for hydration drink","Mix in atta for high-fibre roti","Top on salads, oats, or fruits"],
+benefits:"Omega-3 fatty acid king (more than salmon per gram), blood sugar control, keeps you full 4+ hours, calcium for bones, antioxidants",
+best:"Summer — cooling and hydrating when soaked"},
+{n:"Flaxseeds (Alsi)",icon:"🟤",season:"Winter",cat:"Seeds",per100:"18g protein, 27g fibre, 23g omega-3",daily:"1-2 tbspn ground (15-30g)",
+uses:["MUST grind before eating — whole seeds pass undigested","Add ground flax to roti atta, paratha stuffing","Flax + dahi + honey = gut health combo","Flax oil for salad dressing","Flax gel for hair (boil seeds, strain)"],
+benefits:"Richest plant source of omega-3 (ALA), lignans reduce cancer risk, lowers cholesterol, hormone balancer for men & women",
+best:"Winter — warming nature, helps dry skin"},
+{n:"Sunflower Seeds (Surajmukhi)",icon:"🌻",season:"All Year",cat:"Seeds",per100:"21g protein, 8.6g fibre, 51g healthy fats, 35mg Vitamin E",daily:"30-40g (small handful)",
+uses:["Roast with pink salt + chaat masala = gym snack","Add to trail mix with almonds, pumpkin seeds","Sprinkle on salads, poha, upma","Sunflower seed butter (grind roasted seeds)","Add to cookie/brownie batter for crunch"],
+benefits:"Vitamin E powerhouse (antioxidant for muscle recovery), magnesium prevents cramps, selenium for thyroid, copper for energy",
+best:"All year — perfect post-workout snack"},
+{n:"Pumpkin Seeds (Kaddu ke beej)",icon:"🎃",season:"Winter",cat:"Seeds",per100:"30g protein, 6g fibre, 49g fats, 7.8mg zinc",daily:"30g (2 tbspn)",
+uses:["Roast with haldi + pink salt + kali mirch","Add to smoothies and protein shakes","Pumpkin seed chutney (grind with coriander, chilli)","Mix in granola / muesli","Sprinkle on soups and dal"],
+benefits:"Zinc king (boosts testosterone, immunity), magnesium for sleep + recovery, iron for blood, tryptophan for serotonin production",
+best:"Winter — warming, zinc helps winter immunity"},
+{n:"Watermelon Seeds (Magaz / Tarbooz ke beej)",icon:"🍉",season:"Summer",cat:"Seeds",per100:"28g protein, 51g fats, 556mg magnesium",daily:"1-2 tbspn (15-20g)",
+uses:["Dry roast — snack with pink salt","Grind into powder — add to milk (traditional magaz drink)","Add to thandai recipe (traditional)","Sprinkle on fruit chaat","Mix in ladoo / energy balls"],
+benefits:"Hidden superfood — 28g protein/100g, massive magnesium, zinc for skin, iron for blood, traditionally used in Unani medicine",
+best:"Summer — cooling, traditionally eaten in garam regions"},
+{n:"Sabja Seeds (Basil / Tukmaria)",icon:"⚪",season:"Summer",cat:"Seeds",per100:"14g protein, 24g fibre",daily:"1-2 tsp soaked in water",
+uses:["Soak 15 min in water — swells with gel coating","Add to falooda, sherbet, nimbu pani","Mix in dahi/raita for cooling effect","Rose milk + sabja = summer drink","Kulfi with sabja seeds"],
+benefits:"Body coolant, prevents heatstroke, fibre controls appetite, iron-rich, traditional Indian cooling remedy since centuries",
+best:"Summer essential — soaked sabja in every drink"},
+{n:"Gond Katira (Tragacanth Gum)",icon:"🔶",season:"Summer",cat:"Superfoods",per100:"High in protein and calcium, natural coolant",daily:"1-2 tbspn soaked overnight",
+uses:["Soak overnight — swells 10x into jelly","Add to milk/sharbat with rose water + mishri","Mix in thandai or falooda","Gond katira + sabja + rose milk = ultimate cooler","Make ladoo with gond for winter strength"],
+benefits:"Reduces body heat 5-7°C, prevents heatstroke, high calcium and protein, Unani medicine staple, lubricates joints",
+best:"Summer — nature's AC, soak overnight and add to cold drinks"},
+{n:"Honey (Shahad)",icon:"🍯",season:"All Year",cat:"Superfoods",per100:"304 calories, 82g natural sugars, antibacterial enzymes",daily:"1-2 tbspn (raw, unprocessed)",
+uses:["Pre-workout: honey + warm water + lemon","Post-workout: honey + dahi + banana","Cough remedy: honey + ginger juice + tulsi","Face mask: honey + haldi + malai","Honey + dalchini water for fat loss"],
+benefits:"Natural antibiotic, wound healer, instant energy, soothes throat, pre-biotic for gut. NEVER heat above 40°C — destroys enzymes (Ayurveda rule)",
+best:"All year — warming in winter, use in room temp water in summer"},
+{n:"Pink Salt (Sendha Namak)",icon:"🩷",season:"All Year",cat:"Superfoods",per100:"84 trace minerals including potassium, magnesium, calcium, iron",daily:"Use as regular salt replacement (5-6g total salt/day)",
+uses:["Replace regular salt in all cooking","Sole water: pink salt + water overnight = mineral drink","Nimbu pani + pink salt = electrolyte drink","Post-workout salt lick with lemon","Gargle with pink salt water for sore throat"],
+benefits:"84 minerals vs 2 in table salt, balances pH, reduces cramps, improves hydration, Himalayan origin, used in Ayurveda and Navratri fasting",
+best:"All year — superior to regular salt in every way"},
+{n:"Jeera (Cumin Seeds)",icon:"🟫",season:"All Year",cat:"Herbal Spices",per100:"18g protein, 10g fibre, rich in iron and thymol",daily:"1-2 tsp whole or powder",
+uses:["Jeera water morning: soak overnight or boil, drink for metabolism","Tadka in every dal and sabzi","Roasted jeera powder: chaat masala base","Jeera rice: jeera + ghee + rice","Jaljeera: jeera + mint + amchoor + pink salt"],
+benefits:"Boosts metabolism 25%, iron-rich (66mg/100g — 5x daily need!), thymol improves digestion, carminative, weight loss aid",
+best:"All year — India's #1 kitchen spice with medicinal power"},
+{n:"Saunf (Fennel Seeds)",icon:"🫛",season:"All Year",cat:"Herbal Spices",per100:"16g protein, 40g fibre, anethole compound",daily:"1 tsp after meals or as tea",
+uses:["Chew after meals for digestion (restaurant tradition)","Saunf tea: boil 1 tsp in water, strain","Saunf + mishri = mouth freshener","Add to pickle masala and panch phoron","Saunf + ajwain water for bloating"],
+benefits:"Anethole relaxes gut muscles (anti-spasmodic), freshens breath, reduces bloating instantly, cooling nature, eye health, breast milk production",
+best:"All year — especially after heavy meals, cooling in summer"},
+{n:"Ajwain (Carom Seeds)",icon:"🌰",season:"Rainy",cat:"Herbal Spices",per100:"Rich in thymol (antibacterial), 16g protein, fibre",daily:"1/2 - 1 tsp",
+uses:["Ajwain water for instant gas relief","Ajwain paratha for kids' digestion","Steam inhalation during cold: ajwain in boiling water","Ajwain + jaggery for period cramp relief","Tadka: ajwain in hot ghee for dal"],
+benefits:"Thymol is nature's antibiotic — kills gut bacteria, relieves gas in minutes, anti-fungal for monsoon, respiratory relief, traditional colic remedy",
+best:"Rainy season essential — prevents waterborne gut infections"},
+{n:"Kalonji (Nigella / Black Seeds)",icon:"⬛",season:"All Year",cat:"Herbal Spices",per100:"Thymoquinone, 21g protein, omega-3 & 6",daily:"1/2 - 1 tsp seeds or oil",
+uses:["Chew 7 seeds empty stomach with honey (Prophetic medicine)","Kalonji oil for hair fall: massage into scalp","Add to naan, bread dough, pickle","Kalonji + honey + warm water = immunity shot","Add to raita and salads"],
+benefits:"Thymoquinone — anti-cancer, anti-diabetic, immune booster, hair growth, lung health. Called 'seed of blessing' — cures everything except death (Hadith)",
+best:"All year — most researched seed in modern medicine"},
+];
 
-const all=[];Object.entries(D).forEach(([cat,d])=>d.recipes.forEach(r=>{all.push({...r,cat,key:d.k,parsed:parse(r.i)})}));
+const NUTRITION=[
+{name:"Protein",type:"Macro",icon:"💪",unit:"g/day",timing:"Spread across 4-5 meals (30-40g per meal). Post-workout within 30 min is critical. Casein before bed for overnight repair.",tip:"Body can only absorb 30-40g protein per sitting. Eating 100g at once = wasted. Space it: breakfast 30g + lunch 30g + post-workout 30g + dinner 30g. Post-workout whey is fast-absorbing (30 min). Before-bed casein (paneer/milk) is slow (7-8 hours).",goals:{Muscle_Gain:"1.6–2.2g/kg (112–154g for 70kg)",Fat_Loss:"1.8–2.4g/kg (126–168g)",Maintenance:"1.0–1.4g/kg (70–98g)"},why:"Builds muscle, repairs tissue, boosts metabolism, essential for gym recovery",color:"#f59e0b",pct:85,veg:["Soya chunks (52g/100g)","Paneer (18g/100g)","Chana dal (25g/100g)","Moong dal (24g/100g)","Rajma (23g/100g)","Tofu (17g/100g)","Greek dahi (10g/100g)","Peanuts (26g/100g)","Sunflower seeds (21g/100g)","Pumpkin seeds (30g/100g)","Watermelon seeds (28g/100g)"],nv:["Chicken breast (31g/100g)","Eggs (6g each)","Fish/Rohu (17g/100g)","Prawns (24g/100g)"],vegT:[["Soya chunks (52g/100g)", "Lunch or dinner — heavy, avoid pre-workout"], ["Paneer (18g/100g)", "Dinner / before bed — casein, slow-digesting, overnight repair"], ["Chana dal (25g/100g)", "Lunch — needs time to digest, pairs with rice"], ["Moong dal (24g/100g)", "Dinner — lightest dal, easy to digest at night"], ["Rajma (23g/100g)", "Lunch only — heavy, causes gas if eaten at night"], ["Tofu (17g/100g)", "Any meal — light, versatile"], ["Greek dahi (10g/100g)", "Afternoon snack or lunch — probiotics. Avoid at night (Ayurveda)"], ["Peanuts (26g/100g)", "Mid-morning or afternoon snack — sustained energy"], ["Sunflower seeds (21g/100g)", "Post-workout snack — Vitamin E aids recovery"], ["Pumpkin seeds (30g/100g)", "Afternoon 4 PM — zinc absorbs away from calcium"], ["Watermelon seeds (28g/100g)", "Evening — magnesium promotes relaxation"], ["Whey protein (24g/scoop)", "Post-workout within 30 min — fastest absorbing"]],nvT:[["Chicken breast (31g/100g)", "Lunch or post-workout — lean, fast-digesting"], ["Eggs whole (6g each)", "Breakfast — complete protein + D3 from yolk"], ["Egg whites (3.6g each)", "Post-workout — pure protein, zero fat"], ["Fish / Rohu (17g/100g)", "Lunch or dinner — omega-3 at dinner aids overnight repair"], ["Prawns (24g/100g)", "Lunch — light protein, zinc-rich"]]},
+{name:"Carbohydrates",type:"Macro",icon:"⚡",unit:"g/day",timing:"Complex carbs at breakfast & lunch (energy for the day). Fast carbs pre-workout (30 min before) and post-workout (with protein). Low/no carbs at dinner.",tip:"Carb timing matters more than total amount for body composition. Morning + around workout = muscle fuel. Night carbs = fat storage (insulin sensitivity drops at night). Pre-workout banana/honey = instant glycogen. Post-workout rice/roti = replenishment.",goals:{Muscle_Gain:"4–6g/kg (280–420g)",Fat_Loss:"2–3g/kg (140–210g)",Maintenance:"3–5g/kg (210–350g)"},why:"Primary energy for workouts, brain fuel, glycogen replenishment",color:"#3b82f6",pct:75,veg:["Brown rice (23g/100g)","Roti/Chapati (15g each)","Oats (67g/100g)","Sweet potato (20g/100g)","Banana (27g each)","Poha (77g/100g)","Jowar/Bajra roti (20g)","Honey (82g/100g — instant energy)"],nv:["Egg + bread combo (30g carbs)"],vegT:[["Brown rice (23g/100g)", "Lunch — complex carbs for afternoon energy, avoid dinner"], ["Roti / Chapati (15g each)", "Breakfast + Lunch — sustained energy. Max 1 at dinner"], ["Oats (67g/100g)", "Breakfast — slow-releasing energy all morning"], ["Sweet potato (20g/100g)", "Pre-workout 1 hour before — sustained energy"], ["Banana (27g each)", "Pre-workout 30 min — instant glycogen. Post-workout too"], ["Poha (77g/100g)", "Breakfast — light, iron-rich with lemon"], ["Jowar/Bajra roti (20g)", "Lunch — high fibre, blood sugar stable"], ["Honey (82g/100g)", "Pre-workout warm water — instant energy. Never heat > 40\u00b0C"]],nvT:[["Egg + bread (30g carbs)", "Breakfast — quick pre-gym carb + protein"]]},
+{name:"Healthy Fats",type:"Macro",icon:"🥑",unit:"g/day",timing:"With meals (breakfast, lunch, dinner). Fat-soluble vitamins (A, D, E, K) NEED fat for absorption. Take ghee with roti, not separately. Omega-3 best at dinner for overnight anti-inflammation.",tip:"Never go zero-fat — testosterone crashes, skin dries, brain fogs. Minimum 0.5g/kg even on cuts. Morning: ghee with paratha + almonds. Lunch: ghee on dal. Evening: omega-3 (flax/fish oil). Avoid fats 30 min pre-workout — slows digestion.",goals:{Muscle_Gain:"0.8–1.2g/kg (56–84g)",Fat_Loss:"0.6–1.0g/kg (42–70g)",Maintenance:"0.8–1.0g/kg (56–70g)"},why:"Testosterone production, joint health, nutrient absorption, brain function",color:"#ef4444",pct:65,veg:["Desi ghee (14g/tbsp)","Peanut butter (16g/2tbsp)","Flaxseeds/Alsi (23g omega-3/100g)","Chia seeds (18g omega-3/100g)","Almonds (7g/10pcs)","Walnuts (9g/5pcs)","Coconut oil (14g/tbsp)","Sunflower seeds (51g fats/100g)"],nv:["Egg yolk (5g/yolk)","Fish oil (1g omega-3/cap)"],vegT:[["Desi ghee (14g/tbsp)", "Breakfast & lunch with roti — aids vitamin absorption"], ["Peanut butter (16g/2tbsp)", "Breakfast or pre-workout on toast — sustained energy"], ["Flaxseeds (23g omega-3)", "Breakfast — grind fresh, add to oats/dahi"], ["Chia seeds (18g omega-3)", "Breakfast — soak overnight, morning smoothie"], ["Almonds (7g/10pcs)", "Early morning soaked — brain fuel first thing"], ["Walnuts (9g/5pcs)", "Morning soaked — omega-3. Evening for melatonin (sleep)"], ["Coconut oil (14g/tbsp)", "Breakfast cooking — MCTs give quick energy"], ["Sunflower seeds (51g fats)", "Afternoon snack — Vitamin E peak, sustained energy"]],nvT:[["Egg yolk (5g fat)", "Breakfast — D3 + A need morning fat for absorption"], ["Fish oil (1g omega-3)", "Dinner — overnight anti-inflammatory repair"]]},
+{name:"Fibre",type:"Macro",icon:"🌾",unit:"g/day",timing:"Throughout the day with every meal. Isabgol before bed for overnight gut cleanse. Avoid high fibre immediately pre-workout (causes bloating). Morning: oats/daliya. Lunch: dal + sabzi. Night: isabgol.",tip:"High protein diet without fibre = constipation guaranteed. Add chia/flax to breakfast, sabzi at lunch, isabgol at night. Increase water with fibre or it backfires. 30g fibre + 3L water = perfect gut. Saunf after meals is traditional Indian fibre + digestive.",goals:{Muscle_Gain:"25–35g",Fat_Loss:"30–40g (more satiety)",Maintenance:"25–30g"},why:"Gut health, blood sugar control, satiety during cuts, prevents protein-diet constipation",color:"#10b981",pct:55,veg:["Chia seeds (34g/100g)","Flaxseeds (27g/100g)","Isabgol (5g/tsp)","Rajma (15g/100g)","Oats (10g/100g)","Saunf (40g/100g)","Guava (5g each)","Daliya (18g/100g)"],nv:[],vegT:[["Chia seeds (34g/100g)", "Breakfast — soak overnight, add to oats/smoothie"], ["Flaxseeds (27g/100g)", "Breakfast — grind and mix in atta/dahi"], ["Isabgol (5g/tsp)", "Before bed — overnight gut cleanse"], ["Rajma (15g/100g)", "Lunch — needs daylight hours to digest"], ["Oats (10g/100g)", "Breakfast — beta-glucan stabilizes blood sugar hours"], ["Saunf (40g/100g)", "After lunch & dinner — chew 1 tsp, traditional digestive"], ["Guava (5g each)", "Mid-morning snack — fibre + Vitamin C"], ["Daliya (18g/100g)", "Breakfast — traditional high-fibre, beats oats"]],nvT:[]},
+{name:"Vitamins",type:"Micro",icon:"🌈",unit:"various",timing:"Fat-soluble (A, D, E, K): WITH fatty meals (breakfast/dinner with ghee). Water-soluble (B, C): morning empty stomach or with meals, divided doses. B12: morning (energy). D3: morning with ghee. C: morning + evening.",tip:"D3 without fat = wasted money. Take with ghee/egg yolk. B12 sublingual absorbs better than swallowed. Vitamin C divided (morning + evening) maintains blood levels. Never take C with B12 together — C destroys B12. Gap of 2 hours minimum.",goals:{Muscle_Gain:"B12, D3, C, E focus",Fat_Loss:"D3, B-complex, C",Maintenance:"Balanced all"},why:"Immune function, energy metabolism, antioxidant protection, bone health",color:"#a78bfa",pct:70,veg:["Amla (600mg Vit C/100g)","Sunflower seeds (35mg Vit E/100g)","Palak (Vit A, K)","Gajar (Vit A)","Dahi (B12)","Sunlight 15-20 min (D3)","Kalonji seeds (immunity)"],nv:["Eggs (B12, D3, A)","Fish (Omega-3, D3)"],vegT:[["Amla (600mg Vit C)", "Morning empty stomach — juice or raw, absorbs best empty"], ["Sunflower seeds (35mg Vit E)", "Afternoon snack — fat-soluble, eat with fats/seeds"], ["Palak (Vit A, K)", "Lunch sabzi — fat-soluble, needs ghee/oil. Cook lightly"], ["Gajar (Vit A)", "Any meal with fat — gajar + ghee = perfect absorption"], ["Dahi (B12)", "Lunch — probiotics aid B12 absorption. Not at night"], ["Sunlight 15-20 min", "10 AM-2 PM — UV-B window for D3 synthesis"], ["Kalonji seeds", "Morning empty stomach — 7 seeds + honey, immunity"]],nvT:[["Eggs (B12, D3, A)", "Breakfast — yolk fat helps absorb D3 and A"], ["Fish (Omega-3, D3)", "Lunch or dinner — D3 + omega-3 double benefit"]]},
+{name:"Minerals",type:"Micro",icon:"⛏️",unit:"various",timing:"Iron: morning/lunch WITH Vitamin C, NEVER with tea/coffee/calcium. Calcium: night (absorbs during sleep, builds bone overnight). Zinc: afternoon, AWAY from calcium/iron. Magnesium: evening before bed (muscle relaxation + sleep).",tip:"Mineral timing is CRITICAL — they compete for absorption. Iron + Calcium together = both wasted. Zinc + Calcium together = both wasted. Tea with meals = iron blocked 60%. Golden rules: Iron at lunch + lemon. Calcium at dinner/night. Zinc at 4 PM snack. Magnesium before bed.",goals:{Muscle_Gain:"Ca, Zinc, Mg, Iron",Fat_Loss:"Iron, Mg, Chromium",Maintenance:"Balanced"},why:"Muscle contraction, oxygen transport (iron), testosterone (zinc), bone density",color:"#2dd4bf",pct:60,veg:["Pumpkin seeds (7.8mg zinc/100g)","Ragi (344mg Ca/100g)","Jeera (66mg iron/100g!)","Pink salt (84 minerals)","Til/Sesame (Ca, Iron, Zn)","Watermelon seeds (556mg Mg/100g)","Banana (Potassium)"],nv:["Eggs (Iron, Zinc)","Mutton (Iron, Zinc, B12)"],vegT:[["Pumpkin seeds (7.8mg zinc)", "Afternoon 4 PM — away from calcium and iron"], ["Ragi (344mg Ca)", "Dinner roti/dosa — calcium absorbs best at night"], ["Jeera (66mg iron!)", "Lunch — with lemon for iron absorption. Never with chai!"], ["Pink salt (84 minerals)", "Every meal — morning warm water + pink salt = mineral boost"], ["Til / Sesame (Ca, Iron, Zn)", "Lunch chutney — 975mg calcium/100g! More than milk"], ["Watermelon seeds (556mg Mg)", "Evening before bed — magnesium for deep sleep"], ["Banana (Potassium)", "Post-workout or mid-morning — replaces sweat loss"]],nvT:[["Eggs (Iron, Zinc)", "Breakfast — heme iron absorbs 40% vs 5% from plants"], ["Mutton (Iron, Zinc, B12)", "Lunch — heavy, needs daylight. Once a week max"]]},
+{name:"Water",type:"Essential",icon:"💧",unit:"litres/day",timing:"Morning: 2 glasses warm water (empty stomach, detox). Before meals: 1 glass 30 min before (aids digestion, prevents overeating). During workout: sip every 15 min. AVOID: during meals (dilutes digestive enzymes) and right before sleep (disrupts sleep).",tip:"Ayurveda says never drink cold water with meals — warm/room temp aids digestion. Drink 500ml first thing morning (hydrates after 8-hour fast). Pre-meal water reduces calorie intake 13%. Post-workout: nariyal pani + pink salt > plain water (electrolytes). Urine should be pale yellow — dark = dehydrated.",goals:{Muscle_Gain:"3.5–4.5 litres",Fat_Loss:"3–4 litres",Maintenance:"2.5–3.5 litres"},why:"Nutrient transport, temperature regulation, joint lubrication, kidney function",color:"#06b6d4",pct:90,veg:["Plain water","Nariyal pani","Nimbu pani with pink salt","Chaas/Buttermilk","Gond katira sharbat","Jaljeera","Sabja seed water","Sattu drink"],nv:["Bone broth"],vegT:[["Plain water", "Morning: 2 glasses warm (detox). 30 min before meals. Sip during gym"], ["Nariyal pani", "Post-workout — nature's best electrolyte, better than ORS"], ["Nimbu pani + Pink salt", "Mid-morning or pre-lunch — electrolytes + Vitamin C"], ["Chaas / Buttermilk", "With lunch — probiotics + hydration, traditional lunch drink"], ["Gond katira sharbat", "Summer evenings — soak overnight, drink cold. Cools body 5-7\u00b0C"], ["Jaljeera", "Before lunch — appetizer + digestive coolant"], ["Sabja seed water", "Summer anytime — cooling + fibre + hydrating"], ["Sattu drink", "Mid-morning summer — 20g protein + cooling + instant energy"]],nvT:[["Bone broth", "Dinner or post-workout winter — collagen + minerals + hydrating"]]},
+];
 
-let aT='All',aS='All',aF='All',q='';
-document.getElementById('s1').textContent=all.length;
-document.getElementById('s2').textContent=all.filter(r=>r.t==='Veg').length;
-document.getElementById('s3').textContent=all.filter(r=>r.t!=='Veg').length;
 
-function fil(){let f=all;if(aT!=='All')f=f.filter(r=>r.cat===aT);if(aF!=='All')f=f.filter(r=>r.t===aF);if(aS!=='All')f=f.filter(r=>r.c===aS);if(q){const s=q.toLowerCase();f=f.filter(r=>(r.n+' '+r.i+' '+r.c+' '+r.t+' '+r.cat).toLowerCase().includes(s))}return f}
-function rT(){document.getElementById('tabs').innerHTML=['All',...Object.keys(D)].map(c=>{const n=c==='All'?all.length:D[c].recipes.length;return`<button class="tab${aT===c?' on':''}" onclick="sT('${c}')"><i>${c==='All'?'All Recipes':c}<span class="n">${n}</span></i></button>`}).join('')}
-function rTF(){document.querySelectorAll('#typeFilters .tf').forEach(b=>b.classList.remove('on'));document.querySelector(aF==='All'?'.tf.all-type':aF==='Veg'?'.tf.veg-type':'.tf.nv-type').classList.add('on')}
-function rS(){const e=document.getElementById('subs'),f=aT==='All'?all:all.filter(r=>r.cat===aT),ff=aF==='All'?f:f.filter(r=>r.t===aF),cs=[...new Set(ff.map(r=>r.c))].sort();if(cs.length<=1){e.innerHTML='';return}e.innerHTML=['All',...cs].map(c=>`<button class="sub${aS===c?' on':''}" onclick="sS('${c}')">${c}</button>`).join('')}
-function rG(){const g=document.getElementById('grid'),f=fil();document.getElementById('cnt').textContent=q?f.length+' found':f.length+' recipes';
-if(!f.length){g.innerHTML='<div class="empty"><div class="empty-box">🍽️</div><h3>No recipes found</h3><p>Try adjusting your search or filters</p></div>';return}
-g.innerHTML=f.map((r,i)=>{const pills=r.parsed.ings.slice(0,6),ck=r.parsed.cooks.length?r.parsed.cooks[0].replace(/.*?(\d+\s*°?C.*)/i,'$1').substring(0,30):'';return`<div class="card fade" data-c="${r.key}" style="animation-delay:${Math.min(i*.03,.55)}s" onclick='oM(${i})'><div class="card-body"><div class="card-top"><div class="card-name">${r.n}</div><span class="card-type ${r.t==='Veg'?'v':'nv'}">${r.t==='Veg'?'● Veg':'● Non-Veg'}</span></div><div class="card-tags"><span class="card-cat">${r.cat}</span><span class="card-sub">${r.c}</span></div><div class="card-ing"><div class="card-ing-title">Ingredients (${r.parsed.ings.length})</div><div class="card-ing-list">${pills.map(p=>`<span class="card-pill">${p}</span>`).join('')}${r.parsed.ings.length>6?`<span class="card-pill">+${r.parsed.ings.length-6} more</span>`:''}</div></div></div><div class="card-foot"><div class="card-cook">${ck?`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>${ck}`:''}</div><div class="card-arrow">View recipe →</div></div></div>`}).join('')}
-function sT(t){aT=t;aS='All';aF='All';rT();rTF();rS();rG()}
-function sTF(v){aF=v;aS='All';rTF();rS();rG()}
-function sS(s){aS=s;rS();rG()}
-document.getElementById('q').addEventListener('input',e=>{q=e.target.value;rG()});
 
-// ═══ RECIPE MODAL ═══
-let curFil=[];
-function oM(idx){curFil=fil();const r=curFil[idx];if(!r)return;const o=document.getElementById('ov');document.getElementById('mH').setAttribute('data-c',r.key);document.getElementById('mT').textContent=r.n;const v=r.t==='Veg';document.getElementById('mG').innerHTML=`<span class="m-tag" style="background:var(--${r.key}-dim);color:var(--${r.key});border:1px solid var(--${r.key}-b)">${r.cat}</span><span class="m-tag" style="background:var(--input-bg);color:var(--text2)">${r.c}</span><span class="m-tag" style="background:${v?'var(--veg-bg)':'var(--nv-bg)'};color:${v?'var(--veg)':'var(--nv)'};border:1px solid ${v?'var(--veg-b)':'var(--nv-b)'}">${v?'● Vegetarian':'● Non-Veg'}</span>`;
-let h='';if(r.parsed.cooks.length)h+=`<div class="m-section"><div class="m-label">Cooking Info</div><div class="cook-info">${r.parsed.cooks.map(c=>`<div class="cook-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>${c}</div>`).join('')}</div></div>`;
-h+=`<div class="m-section"><div class="m-label">Ingredients · ${r.parsed.ings.length} items</div><div class="ing-grid">${r.parsed.ings.map((g,i)=>`<div class="ing-item"><div class="ing-num">${i+1}</div><div class="ing-text">${g}</div></div>`).join('')}</div></div>`;
-h+=`<div class="m-section"><div class="m-label">Method</div><div class="timeline">${r.parsed.methods.map(s=>`<div class="tl-step"><div class="tl-dot"></div><div class="tl-text">${s}</div></div>`).join('')}</div></div>`;
-document.getElementById('mSections').innerHTML=h;o.classList.add('open');document.body.style.overflow='hidden'}
 
-// ═══ NUTRITION MODAL ═══
-function oNM(idx){const n=nFil()[idx];if(!n)return;const o=document.getElementById('ov');document.getElementById('mH').setAttribute('data-c','nutri');document.getElementById('mT').textContent=n.icon+' '+n.name;
-document.getElementById('mG').innerHTML=`<span class="m-tag" style="background:var(--nutri-dim);color:var(--nutri);border:1px solid var(--nutri-b)">${n.type}</span><span class="m-tag" style="background:var(--input-bg);color:var(--text2)">${n.unit}</span>`;
-let h=`<div class="m-section"><div class="m-label">Why It Matters</div><div style="font-size:14px;color:var(--text2);line-height:1.7;font-weight:300">${n.why}</div></div>`;
-h+=`<div class="m-section"><div class="m-label">Daily Requirements by Goal</div>`;
-Object.entries(n.goals).forEach(([g,v])=>{h+=`<div style="margin-bottom:12px;padding:12px 16px;background:var(--ing-bg);border-radius:12px"><div style="font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">${g.replace('_',' ')}</div><div style="font-size:14px;color:var(--text2);line-height:1.5">${v}</div></div>`});h+=`</div>`;
-if(n.sources.veg.length){h+=`<div class="m-section"><div class="m-label">🥬 Vegetarian Indian Sources</div><div class="ing-grid">${n.sources.veg.map((s,i)=>`<div class="ing-item"><div class="ing-num" style="background:var(--veg-bg);color:var(--veg)">${i+1}</div><div class="ing-text">${s}</div></div>`).join('')}</div></div>`}
-if(n.sources.nonveg.length){h+=`<div class="m-section"><div class="m-label">🍗 Non-Veg Indian Sources</div><div class="ing-grid">${n.sources.nonveg.map((s,i)=>`<div class="ing-item"><div class="ing-num" style="background:var(--nv-bg);color:var(--nv)">${i+1}</div><div class="ing-text">${s}</div></div>`).join('')}</div></div>`}
-document.getElementById('mSections').innerHTML=h;o.classList.add('open');document.body.style.overflow='hidden'}
+var SCHEDULE=[
+{n:"Early Morning (5:30-6:30 AM)",time:"5:30-6:30 AM",icon:"🌅",cat:"Morning",items:[
+{what:"Warm Lemon + Honey Water",type:"Drink",timing:"First thing, empty stomach",why:"Kickstarts metabolism, flushes toxins from overnight fast, alkalizes body. Honey provides instant glucose for the brain.",sources:{veg:"Lemon 1 + Honey 1 tsp + Warm water 1 glass + Pink salt pinch",nv:"Same",herbal:"Add haldi 1/4 tsp for anti-inflammatory boost or ginger juice 1/2 tsp for digestion"}},
+{what:"Soaked Almonds (5-6) + Walnuts (2)",type:"Superfood",timing:"After lemon water, 10 min gap",why:"Overnight soaking removes phytic acid, makes nutrients bioavailable. Omega-3 from walnuts, Vitamin E from almonds — brain fuel for the day.",sources:{veg:"5 soaked badam + 2 akhrot + 2 kismis",nv:"Same",herbal:"Add soaked kalonji 7 seeds with honey (Prophetic medicine)"}},
+{what:"Jeera Water / Methi Water",type:"Herbal",timing:"15 min before breakfast",why:"Jeera boosts metabolism 25%. Methi (fenugreek) seeds soaked overnight regulate blood sugar, lubricate joints for gym.",sources:{veg:"Jeera 1 tsp soaked overnight OR Methi 1 tbspn soaked overnight — drink water + chew seeds",nv:"Same",herbal:"Triphala powder 1 tsp in warm water if constipated — best Ayurvedic colon cleanser"}}
+]},
+{n:"Breakfast (7:30-8:30 AM)",time:"7:30-8:30 AM",icon:"🍳",cat:"Meals",items:[
+{what:"High Protein Breakfast",type:"Meal",timing:"Within 1 hour of waking, post-morning routine",why:"Breaks 8-10 hour overnight fast. Protein at breakfast reduces cravings all day. Carbs refuel glycogen for morning energy.",sources:{veg:"Paneer paratha + dahi OR Moong dal chilla + chutney OR Besan chilla + veggies OR Oats + milk + banana + peanut butter + chia seeds",nv:"Egg white omelette (4 whites + 1 whole) + brown bread OR Boiled eggs 4 + toast OR Egg bhurji + roti",herbal:"Add flaxseed powder 1 tbspn to any breakfast for omega-3, or turmeric to omelette for anti-inflammatory"}},
+{what:"Multivitamin + Vitamin D3",type:"Supplement",timing:"With breakfast (fat-soluble vitamins need food)",why:"D3 needs fat for absorption — take with eggs/ghee. Indians are 70-80% Vitamin D deficient. Multivitamin covers micro gaps.",sources:{veg:"Vitamin D3 (2000 IU) + Multivitamin tablet + B12 (vegetarians are often deficient)",nv:"Vitamin D3 (1000 IU) + Fish oil (1000mg omega-3)",herbal:"Amla 1 raw or amla candy for natural Vitamin C (600mg/100g) — better absorbed than pills"}}
+]},
+{n:"Mid-Morning (10:00-10:30 AM)",time:"10:00-10:30 AM",icon:"🥜",cat:"Snacks",items:[
+{what:"Seed Mix / Trail Mix",type:"Superfood",timing:"2-2.5 hours after breakfast",why:"Prevents blood sugar crash. Seeds provide sustained energy from healthy fats + protein. Keeps metabolism active.",sources:{veg:"Pumpkin seeds 15g + Sunflower seeds 15g + Watermelon seeds 10g + Pink salt + Chaat masala OR Makhana (fox nuts) roasted with ghee + pink salt",nv:"Same + 2 boiled egg whites",herbal:"Dry roasted mix: kalonji 1/2 tsp + saunf 1 tsp + til (sesame) 1 tsp — ancient immunity snack"}},
+{what:"Green Tea / Herbal Tea",type:"Drink",timing:"With or after snack",why:"EGCG in green tea boosts fat burning 10-17%. Never drink on fully empty stomach — causes acidity.",sources:{veg:"Green tea OR Tulsi tea OR Cinnamon tea",nv:"Same",herbal:"Ashwagandha tea (1/2 tsp powder) for cortisol control — avoid if thyroid issues"}}
+]},
+{n:"Pre-Workout (30-45 min before gym)",time:"30-45 min before",icon:"⚡",cat:"Fitness",items:[
+{what:"Pre-Workout Fuel",type:"Meal",timing:"30-45 min before training, not closer",why:"Fast carbs for immediate energy + caffeine for focus. Banana glycemic index = instant muscle fuel. Coffee blocks adenosine = more alertness.",sources:{veg:"Banana 1 + Honey 1 tsp + Black coffee OR Banana + Peanut butter toast OR Sattu sharbat (20g protein, instant energy)",nv:"2 egg whites + 1 banana + black coffee OR Chicken sandwich (light) 30 min before",herbal:"Ginger juice 1 tsp + Honey 1 tbspn + Warm water — natural pre-workout, boosts blood flow to muscles"}},
+{what:"Creatine (if using)",type:"Supplement",timing:"Pre or post workout — timing less important than consistency",why:"Most researched supplement. 5g daily increases strength 10-15%, muscle water retention, ATP regeneration.",sources:{veg:"Creatine monohydrate 5g + water/juice",nv:"Same",herbal:"Beetroot juice (natural nitric oxide booster) — 250ml 30 min before gym increases endurance 16%"}}
+]},
+{n:"Post-Workout (within 30 min)",time:"Within 30 min",icon:"💪",cat:"Fitness",items:[
+{what:"Protein + Fast Carbs",type:"Meal",timing:"Within 30 min of finishing workout — anabolic window",why:"Muscles are primed for nutrient absorption. Protein starts repair. Fast carbs spike insulin which shuttles protein to muscles faster.",sources:{veg:"Whey protein 1 scoop (24g protein) + Banana + Milk OR Paneer bhurji + roti OR Soya chunks 50g + rice",nv:"Chicken breast 100g + White rice OR 4 egg whites + 2 bread + banana OR Whey + milk + banana",herbal:"Haldi doodh (golden milk) post-workout — curcumin reduces DOMS (delayed onset muscle soreness) by 48%"}},
+{what:"Electrolytes",type:"Drink",timing:"During and after workout",why:"You lose sodium, potassium, magnesium in sweat. Cramps = electrolyte deficiency. Pink salt has 84 minerals.",sources:{veg:"Nariyal pani (coconut water) OR Nimbu pani + Pink salt + Honey OR ORS homemade: pink salt + sugar + lemon + water",nv:"Same",herbal:"Gond katira soaked + cold water + pink salt — nature's electrolyte + body coolant (summer)"}}
+]},
+{n:"Lunch (1:00-2:00 PM)",time:"1:00-2:00 PM",icon:"🍱",cat:"Meals",items:[
+{what:"Balanced Meal — Largest of the day",type:"Meal",timing:"Agni (digestive fire) peaks at noon per Ayurveda — eat biggest meal now",why:"Pitta dosha is strongest midday. Protein + complex carbs + veggies + healthy fats. This meal fuels the entire afternoon.",sources:{veg:"Dal (protein) + Brown rice / Roti 2-3 + Sabzi (fibre) + Dahi / Raita (probiotics) + Salad + Ghee 1 tsp",nv:"Chicken curry / Fish curry + Rice / Roti 2-3 + Sabzi + Salad + Dahi",herbal:"Chew saunf (fennel) + mishri after lunch — traditional digestive. Or ajwain 1/2 tsp if heavy meal"}},
+{what:"Iron + Vitamin C combo",type:"Nutrition Tip",timing:"With lunch",why:"Vitamin C increases iron absorption by 6x. Pair iron-rich foods (palak, chana, rajma) with lemon/amla. Never drink tea/coffee with meals — tannins block iron 60%.",sources:{veg:"Palak/Chana/Rajma + Lemon squeeze + Amla chutney. Avoid chai for 1 hour after meals.",nv:"Chicken liver + lemon OR Egg curry + salad with lemon",herbal:"Hingwala pani (hing + warm water) if gas after lunch — instant antispasmodic"}}
+]},
+{n:"Afternoon (3:30-4:30 PM)",time:"3:30-4:30 PM",icon:"☕",cat:"Snacks",items:[
+{what:"Protein Snack + Tea",type:"Snack",timing:"3-4 hours after lunch, never skip — prevents evening binge",why:"Blood sugar dips at 3-4 PM (cortisol drop). Protein snack stabilizes energy. Prevents unhealthy evening cravings.",sources:{veg:"Roasted chana 50g + Green tea OR Peanut butter 2 tbspn + Apple OR Paneer cubes 50g + black pepper + pink salt OR Sprout chaat",nv:"Boiled eggs 2 + green tea OR Chicken tikka 2 pcs",herbal:"Mulethi (licorice) tea — adrenal support for afternoon fatigue, soothes throat. Or Brahmi tea for focus."}},
+{what:"Zinc supplement (if taking)",type:"Supplement",timing:"Afternoon with snack, away from calcium",why:"Zinc competes with calcium for absorption — never take together. Zinc boosts testosterone, immunity, skin repair.",sources:{veg:"Zinc 15mg tablet OR Pumpkin seeds 30g (7.8mg zinc/100g — nature's zinc pill)",nv:"Same",herbal:"Kalonji seeds 1/2 tsp + honey — traditional zinc + immunity booster"}}
+]},
+{n:"Evening (6:00-6:30 PM)",time:"6:00-6:30 PM",icon:"🌇",cat:"Drinks",items:[
+{what:"Seasonal Juice / Herbal Drink",type:"Drink",timing:"Before dinner, 30-45 min gap",why:"Hydration before dinner improves digestion. Seasonal ingredients align with body's needs per Ayurveda's ritucharya (seasonal routine).",sources:{veg:"Summer: Aam panna / Jaljeera / Sattu / Gond katira sharbat. Winter: Haldi doodh / Tulsi kadha. Rainy: Giloy juice / Jeera-ajwain water",nv:"Summer: Coconut water + lime. Winter: Bone broth. Rainy: Same herbal options",herbal:"Summer: Sabja seeds + rose milk. Winter: Ashwagandha milk. Rainy: Neem juice 2x weekly (blood purifier). All Year: Amla juice"}},
+{what:"Magnesium (if supplementing)",type:"Supplement",timing:"Evening — promotes muscle relaxation and sleep",why:"300-400mg daily. 75% Indians are Mg deficient. Prevents cramps, calms nervous system, improves sleep quality.",sources:{veg:"Magnesium glycinate 200-400mg OR Banana + Dark chocolate 2 squares + Almonds",nv:"Same",herbal:"Epsom salt (MgSO4) foot soak — absorbs through skin. 20 min soak = muscle recovery"}}
+]},
+{n:"Dinner (7:30-8:30 PM)",time:"7:30-8:30 PM",icon:"🍽️",cat:"Meals",items:[
+{what:"Light Protein + Veggies (Low Carb)",type:"Meal",timing:"At least 2-3 hours before sleep — Ayurveda says eat before sunset ideally",why:"Digestion slows at night. Heavy carbs = fat storage. Protein + veggies = repair without excess calories. Light = better sleep.",sources:{veg:"Paneer tikka + Salad OR Moong dal soup + Roti 1 OR Grilled veggies + Paneer + Dahi OR Soya bhurji + 1 roti",nv:"Grilled chicken 150g + Salad OR Fish curry (light) + Roti 1 OR Egg curry 2 eggs + Salad",herbal:"Triphala powder 1/2 tsp + warm water after dinner — gentle overnight colon cleanse. Or saunf chew."}},
+{what:"Omega-3 + Calcium",type:"Supplement",timing:"With dinner (fat-soluble, needs food)",why:"Omega-3 at night reduces inflammation during sleep-repair cycle. Calcium absorbs best at night, strengthens bones during rest.",sources:{veg:"Flaxseed oil 1 tsp OR Chia seeds in dahi + Calcium tablet 500mg OR Ragi roti (344mg Ca/100g)",nv:"Fish oil capsule 1000mg + Calcium",herbal:"Til (sesame) chutney with dinner — 975mg calcium/100g, iron, zinc. Ancient Indian calcium source."}}
+]},
+{n:"Before Bed (9:30-10:00 PM)",time:"9:30-10:00 PM",icon:"🌙",cat:"Night",items:[
+{what:"Casein / Slow Protein",type:"Nutrition",timing:"30 min before sleep",why:"Muscles repair during deep sleep (GH peaks at 10 PM-2 AM). Slow-digesting protein provides amino acids for 7-8 hours of repair.",sources:{veg:"Warm milk 1 glass + Haldi + Kesar OR Casein protein shake OR Paneer 50g (casein-rich) + handful cashews",nv:"Greek yogurt / Hung curd 200g OR Casein shake + milk",herbal:"Ashwagandha 1/2 tsp + Warm milk + Kesar + Ghee — Ayurvedic sleep + recovery formula. Reduces cortisol 30%."}},
+{what:"Isabgol / Gut Health",type:"Herbal",timing:"Last thing before bed",why:"Isabgol (psyllium husk) — 5g soluble fibre per spoon. Essential on high-protein diets to prevent constipation. Clean gut = better nutrient absorption.",sources:{veg:"Isabgol 1 tbspn + Warm water/milk",nv:"Same",herbal:"Triphala if not taken after dinner OR Aloe vera juice 2 tbspn for gut lining repair"}}
+]}
+];
 
-function closeM(){document.getElementById('ov').classList.remove('open');document.body.style.overflow=''}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
 
-// ═══ NUTRITION ENGINE ═══
-let nGoal='All',nType='All',nQ='';
-function nFil(){let f=[...ND];if(nGoal!=='All')f=f;if(nType!=='All')f=f.filter(n=>n.type===nType);if(nQ){const s=nQ.toLowerCase();f=f.filter(n=>(n.name+' '+n.type+' '+n.why+' '+n.sources.veg.join(' ')+' '+n.sources.nonveg.join(' ')).toLowerCase().includes(s))}return f}
-function rNGoals(){document.getElementById('nGoalTabs').innerHTML=['All','Muscle_Gain','Fat_Loss','Maintenance'].map(g=>`<button class="tab${nGoal===g?' on':''}" onclick="sNG('${g}')"><i>${g==='All'?'All Goals':g.replace('_',' ')}</i></button>`).join('')}
-function rNTypes(){document.getElementById('nTypeTabs').innerHTML='<span class="type-label">Nutrient Type</span>'+['All','Macro','Micro','Essential'].map(t=>`<button class="tf${nType===t?(t==='All'?' all-type on':' on'):t==='All'?' all-type':''}" onclick="sNT('${t}')" style="${t!=='All'&&nType===t?'background:var(--nutri-dim);color:var(--nutri);border-color:var(--nutri-b);font-weight:600':''}">${t}</button>`).join('')}
-function rNG(){const g=document.getElementById('nGrid'),f=nFil();document.getElementById('ncnt').textContent=f.length+' nutrients';
-if(!f.length){g.innerHTML='<div class="empty"><div class="empty-box">📊</div><h3>No nutrients found</h3><p>Try adjusting your filters</p></div>';return}
-g.innerHTML=f.map((n,i)=>{const goalKey=nGoal!=='All'?nGoal:'Muscle_Gain';const goalVal=n.goals[goalKey]||Object.values(n.goals)[0];const allSrc=[...n.sources.veg.slice(0,3),...n.sources.nonveg.slice(0,2)];
-return`<div class="nutri-card fade" style="animation-delay:${i*.06}s;cursor:pointer" onclick="oNM(${i})">
-<div class="nutri-head"><div class="nutri-name">${n.icon} ${n.name}</div><span class="nutri-badge" style="background:var(--nutri-dim);color:var(--nutri);border:1px solid var(--nutri-b)">${n.type}</span></div>
-<div class="nutri-meta"><span class="nutri-pill" style="background:var(--accent-dim);color:var(--accent)">${n.unit}</span></div>
-<div class="nutri-bar-wrap"><div class="nutri-bar-label"><span>${nGoal!=='All'?nGoal.replace('_',' '):'Muscle Gain'}</span><span style="color:var(--text)">${goalVal.split('(')[0].trim()}</span></div><div class="nutri-bar"><div class="nutri-bar-fill" style="width:${n.pct}%;background:${n.color}"></div></div></div>
-<div style="padding:0 20px 12px;font-size:12px;color:var(--text3);line-height:1.6">${n.why.substring(0,80)}...</div>
-<div class="nutri-sources"><div class="nutri-sources-title">Top Indian Sources</div><div class="nutri-src-list">${allSrc.map(s=>`<span class="nutri-src">${s.split('(')[0].trim()}</span>`).join('')}</div></div>
-</div>`}).join('')}
-function sNG(g){nGoal=g;rNGoals();rNG()}
-function sNT(t){nType=t;rNTypes();rNG()}
-document.getElementById('nq').addEventListener('input',e=>{nQ=e.target.value;rNG()});
+var VITALS=[
+{n:"Vitamin A (Retinol)",cat:"Vitamin",icon:"👁️",rda:"900 mcg (men) / 700 mcg (women)",timing:"With breakfast or lunch (fat-soluble — needs ghee/oil)",why:"Vision health, immune function, skin cell repair, reproductive health. Deficiency = night blindness, dry skin",veg:["Gajar / Carrot (835 mcg/100g)","Shakarkandi / Sweet potato (709 mcg)","Palak / Spinach (469 mcg)","Papaya (47 mcg)","Aam / Mango (54 mcg, seasonal)"],nv:["Chicken liver (6421 mcg — highest!)","Egg yolk (140 mcg)","Fish / Rohu (30 mcg)","Butter / Ghee (684 mcg)"],herbal:["Moringa (leaves) — 378 mcg, dried leaves powder 1 tsp daily","Brahmi leaves — traditional eye tonic"],best:"Take with ghee/oil for 6x better absorption. Carrot + ghee = traditional Indian wisdom backed by science."},
+{n:"Vitamin B12 (Cobalamin)",cat:"Vitamin",icon:"🧬",rda:"2.4 mcg daily",timing:"Morning with breakfast — energy vitamin, don't take at night",why:"Red blood cell formation, nerve function, DNA synthesis, energy. CRITICAL for vegetarians — 70% Indian vegetarians are deficient.",veg:["Dahi / Yogurt (0.6 mcg/100g)","Milk (0.5 mcg/100ml)","Paneer (0.8 mcg/100g)","Fortified cereals","B12 supplement 1000 mcg (MUST for pure veg)"],nv:["Chicken liver (16.6 mcg — 6x daily need!)","Eggs (1.1 mcg each)","Fish (2.8 mcg/100g)","Mutton (2.6 mcg/100g)"],herbal:["Spirulina (contains pseudoB12, controversial)","Nutritional yeast (fortified)","Fermented foods: kanji, idli batter (small amounts)"],best:"Morning with breakfast. Vegetarians MUST supplement — no reliable plant source exists. Sublingual tablet absorbs best."},
+{n:"Vitamin C (Ascorbic Acid)",cat:"Vitamin",icon:"🍊",rda:"90 mg (men) / 75 mg (women), smokers +35 mg",timing:"Divided doses — morning + evening. Empty stomach OK. With iron-rich meals to boost absorption 6x.",why:"Collagen synthesis (skin, joints), immune booster, antioxidant, iron absorption enhancer, wound healing.",veg:["Amla / Indian Gooseberry (600 mg/100g — 6x daily need in 1!)","Guava / Amrood (228 mg)","Capsicum / Shimla mirch (128 mg)","Nimbu / Lemon (53 mg)","Orange / Santra (53 mg)","Kiwi (93 mg)"],nv:["Chicken liver (23 mg)"],herbal:["Amla murabba — preserved, available year-round","Camu camu powder (most concentrated)","Rose hip tea (426 mg/100g)"],best:"Amla is India's Vitamin C king — 1 amla = 600mg. Eat raw, as murabba, or juice. Heat destroys Vitamin C, so eat raw where possible."},
+{n:"Vitamin D3 (Cholecalciferol)",cat:"Vitamin",icon:"☀️",rda:"600-2000 IU daily (most Indians need 2000+)",timing:"Morning with fatty breakfast (ghee, egg yolk, nuts). Sunlight 10 AM-2 PM, 15-20 min.",why:"Calcium absorption (useless without D3), bone density, immune modulation, testosterone, mood. 70-80% Indians deficient despite tropical sun.",veg:["Sunlight 15-20 min (10 AM-2 PM, arms+face exposed)","Fortified milk","Mushrooms (sun-dried)","D3 supplement 2000 IU with breakfast"],nv:["Egg yolk (37 IU each)","Salmon / Rawas (570 IU/100g)","Fish oil supplement (1000 IU/cap)","Cod liver oil"],herbal:["Morning sunlight + til (sesame) oil on skin — traditional Ayurvedic practice","Moringa powder (sun-dried)"],best:"Supplement 2000 IU daily with ghee/fatty food. 15 min sunlight between 10 AM-2 PM. Glass windows block UV-B — go outside."},
+{n:"Vitamin E (Tocopherol)",cat:"Vitamin",icon:"✨",rda:"15 mg / 22 IU daily",timing:"With lunch or dinner (fat-soluble). Best with healthy fat meal.",why:"Powerful antioxidant, skin health, muscle recovery from oxidative stress, fertility, heart protection, anti-aging.",veg:["Sunflower seeds (35 mg/100g — 2x daily need in handful!)","Almonds / Badam (25.6 mg)","Peanuts (8 mg)","Palak / Spinach (2 mg)","Avocado (2.1 mg)","Mustard oil (rich source)"],nv:["Egg yolk (1 mg each)","Salmon (1.8 mg)","Prawns (1.5 mg)"],herbal:["Wheat germ oil (20 mg/tbspn — richest source)","Moringa oil (applied topically for skin)","Argan oil (topical)"],best:"Sunflower seeds are the champion — 30g handful = daily need. Roast with pink salt for gym snack. Vitamin E + C together = synergistic antioxidant."},
+{n:"Iron (Fe)",cat:"Mineral",icon:"🩸",rda:"8 mg (men) / 18 mg (women, pre-menopause)",timing:"Morning or lunch. NEVER with tea/coffee (tannins block 60%). Always pair with Vitamin C (lemon) for 6x absorption.",why:"Oxygen transport in blood (hemoglobin), energy production, immune function. Most common deficiency worldwide. Low iron = fatigue, weakness.",veg:["Jeera / Cumin (66 mg/100g — phenomenal!)","Til / Sesame (14.6 mg)","Rajma / Kidney beans (8.2 mg)","Palak / Spinach (2.7 mg)","Chana / Chickpeas (6.2 mg)","Ragi / Finger millet (3.9 mg)","Jaggery / Gud (11 mg)"],nv:["Chicken liver (9 mg — heme iron, 40% absorbed vs 5% plant iron)","Mutton / Red meat (3.3 mg)","Eggs (1.2 mg each)","Prawns (2.4 mg)"],herbal:["Cook in cast iron kadhai — leaches iron into food (scientifically proven, 16% increase)","Beetroot + amla juice for hemoglobin","Moringa leaves (28 mg/100g dried)"],best:"Jeera has MORE iron than any food — 66mg/100g! Add to every meal. Cook in iron kadhai. Squeeze lemon on dal/sabzi. Wait 1 hour after meal before chai."},
+{n:"Calcium (Ca)",cat:"Mineral",icon:"🦴",rda:"1000 mg daily (19-50 years), 1200 mg (50+)",timing:"Evening/night — absorbs best during sleep. Split into 2 doses if >500 mg. NEVER with iron/zinc.",why:"Bone density, muscle contraction, nerve signaling, blood clotting. Needs Vitamin D3 for absorption. Without D3, calcium is useless.",veg:["Ragi / Finger millet (344 mg/100g — best plant source!)","Til / Sesame seeds (975 mg/100g — highest of all!)","Milk (120 mg/100ml)","Dahi / Yogurt (110 mg)","Paneer (208 mg)","Rajma (143 mg)","Broccoli (47 mg)"],nv:["Small fish with bones (sardines) (382 mg)","Eggs (56 mg)","Prawns (52 mg)"],herbal:["Praval pishti (coral calcium) — Ayurvedic calcium supplement","Hadjod (Cissus) — bone healer herb, 500mg extract daily","Moringa leaves (185 mg/100g)"],best:"Til (sesame) chutney = 975mg calcium/100g — more than milk! Take calcium + D3 together at night. Ragi roti/dosa for daily intake."},
+{n:"Zinc (Zn)",cat:"Mineral",icon:"🛡️",rda:"11 mg (men) / 8 mg (women)",timing:"Afternoon with snack. AWAY from calcium and iron (they compete for absorption). Empty stomach if tolerated.",why:"Testosterone production, immune function, wound healing, protein synthesis, taste/smell, sperm quality. Gym essential for muscle growth.",veg:["Pumpkin seeds (7.8 mg/100g — zinc king!)","Til / Sesame (7.8 mg)","Chana / Chickpeas (3.4 mg)","Kaju / Cashews (5.8 mg)","Rajma (2.8 mg)","Oats (3.6 mg)"],nv:["Mutton / Red meat (4.8 mg — heme zinc, better absorbed)","Chicken (2.4 mg)","Eggs (1.3 mg each)","Prawns (1.3 mg)"],herbal:["Kalonji (Nigella) seeds — zinc + thymoquinone","Ashwagandha — increases zinc utilization + testosterone","Shilajit — contains fulvic acid that enhances zinc absorption"],best:"Pumpkin seeds are nature's zinc pill. Take zinc away from dairy/calcium. Ashwagandha + Zinc = testosterone optimization stack."},
+{n:"Magnesium (Mg)",cat:"Mineral",icon:"😴",rda:"400 mg (men) / 310 mg (women)",timing:"Evening / Before bed — promotes muscle relaxation and deep sleep. Away from calcium.",why:"300+ enzymatic reactions, muscle relaxation (prevents cramps), nerve function, sleep quality, blood sugar control. 75% Indians deficient.",veg:["Watermelon seeds / Magaz (556 mg/100g — best source!)","Pumpkin seeds (550 mg)","Alsi / Flaxseeds (392 mg)","Kaju / Cashews (292 mg)","Badam / Almonds (270 mg)","Dark chocolate (146 mg)","Banana (27 mg)"],nv:["Fish / Mackerel (97 mg)","Chicken (22 mg)"],herbal:["Epsom salt bath (MgSO4) — transdermal absorption, 20 min soak = muscle recovery","Shankh bhasma — Ayurvedic Mg supplement","Ashwagandha — enhances Mg utilization for sleep"],best:"Watermelon seeds have MORE magnesium than any food — 556mg/100g. Evening dose prevents leg cramps. Epsom salt bath post heavy gym day."},
+{n:"Omega-3 Fatty Acids",cat:"Essential Fat",icon:"🐟",rda:"1.6g ALA (men) / 1.1g ALA + 250-500mg EPA+DHA",timing:"With dinner (fatty meal). Anti-inflammatory action works during overnight repair cycle.",why:"Brain health (60% brain is fat), joint lubrication, heart protection, reduces inflammation, muscle recovery, skin health, depression relief.",veg:["Alsi / Flaxseeds (23g ALA/100g — richest plant source!)","Chia seeds (18g ALA/100g)","Akhrot / Walnuts (9g ALA/100g)","Hemp seeds (8g)","Mustard oil (5.9g)"],nv:["Salmon / Rawas (2.3g EPA+DHA/100g — gold standard)","Fish oil supplement (1g EPA+DHA/cap)","Eggs (omega-3 enriched)","Sardines (1.5g)"],herbal:["Algae-based DHA supplement (vegan alternative to fish oil)","Perilla seed oil (Ayurvedic omega-3)","Sacha inchi oil"],best:"Flaxseeds = plant omega-3 king but body converts only 5-10% ALA to DHA. Vegetarians should consider algae DHA supplement. Grind flax fresh — whole seeds pass undigested."},
+{n:"Potassium (K)",cat:"Mineral",icon:"⚡",rda:"2600 mg (women) / 3400 mg (men)",timing:"Throughout the day with meals. Critical post-workout to prevent cramps.",why:"Electrolyte balance, blood pressure regulation, muscle contraction, nerve signaling. Sweating loses potassium rapidly — gym essential.",veg:["Nariyal pani / Coconut water (250 mg/100ml)","Banana (358 mg each)","Shakarkandi / Sweet potato (337 mg)","Palak / Spinach (558 mg)","Rajma (1406 mg/100g dried!)","Aam / Mango (168 mg)","Dahi (155 mg)"],nv:["Salmon (363 mg)","Chicken breast (256 mg)","Eggs (126 mg)"],herbal:["Jaljeera — electrolyte drink with jeera + mint + pink salt","Chaas / Buttermilk + pink salt — potassium + probiotics","Sattu drink — potassium + protein combo"],best:"Coconut water is nature's sports drink — better potassium than most ORS. Post-workout nariyal pani + pink salt = complete electrolyte replacement."}
+];
 
-// ═══ VIEW SWITCHING ═══
-function switchView(v){
-  document.getElementById('recipesView').classList.toggle('hidden',v!=='recipes');
-  document.getElementById('nutriView').classList.toggle('hidden',v!=='nutrition');
-  document.getElementById('navRecipes').classList.toggle('on',v==='recipes');
-  document.getElementById('navNutri').classList.toggle('on',v==='nutrition');
-  if(v==='nutrition'){rNGoals();rNTypes();rNG()}
+
+var DETOX=[
+{n:"Warm Lemon + Honey Water",cat:"Morning Detox",timing:"Empty stomach, first thing 6 AM",icon:"🍋",
+i:["Warm water 1 glass","Lemon 1/2 squeezed","Raw honey 1 tsp","Pink salt pinch (optional)"],
+m:"Warm water (not hot — heat kills honey enzymes). Squeeze lemon, add honey and pink salt. Sip slowly.",
+benefits:["Kickstarts liver detox after 8-hour overnight fast","Alkalizes body pH despite being acidic (turns alkaline inside)","Boosts metabolism 10-12% for the morning","Vitamin C from lemon strengthens immunity","Honey's enzymes cleanse digestive tract","Pink salt adds 84 trace minerals"],
+avoid:"Never use hot water with honey — Ayurveda says heated honey becomes toxic (ama). Always warm/lukewarm.",
+season:"All Year"},
+{n:"Jeera (Cumin) Detox Water",cat:"Morning Detox",timing:"Morning empty stomach OR before lunch",icon:"🫖",
+i:["Jeera (cumin) 2 tsp","Water 1 glass (soaked overnight or boiled 5 min)","Lemon 1/2","Pink salt pinch"],
+m:"Soak jeera overnight in water. Morning: strain or drink with seeds. Add lemon and pink salt.",
+benefits:["Boosts metabolism 25% (University of Iran study)","66mg iron/100g — richest iron source in any spice","Thymol stimulates digestive enzyme production","Reduces belly bloating within days","Flushes water retention — natural diuretic","Balances blood sugar spikes"],
+avoid:"Avoid during heavy periods — cumin is a mild blood thinner.",
+season:"All Year"},
+{n:"Haldi + Kali Mirch Detox Shot",cat:"Immunity Detox",timing:"Morning after lemon water OR before bed",icon:"🟡",
+i:["Haldi / turmeric 1/2 tsp","Kali mirch / black pepper 3-4 crushed","Warm water 1/2 glass","Honey 1 tsp","Ginger juice 1/2 tsp (optional)"],
+m:"Mix haldi and crushed kali mirch in warm water. Add honey and ginger juice. Drink as a shot.",
+benefits:["Curcumin is the most powerful natural anti-inflammatory known","Piperine in black pepper increases curcumin absorption by 2000%","Detoxifies liver — Phase 1 & Phase 2 liver detox pathways","Anti-cancer properties (blocks NF-kB pathway)","Clears skin from inside — blood purifier","Ginger adds gingerol — anti-nausea, circulation booster"],
+avoid:"Avoid on completely empty stomach if you have acid reflux. Take after lemon water.",
+season:"Winter"},
+{n:"Amla + Aloe Vera Detox",cat:"Liver Detox",timing:"Morning empty stomach, 30 min before breakfast",icon:"🫙",
+i:["Fresh amla juice 2 tbspn (or 1 amla grated)","Aloe vera gel 1 tbspn (fresh or food-grade)","Warm water 1/2 glass","Honey 1 tsp"],
+m:"Mix amla juice and aloe vera gel in warm water. Add honey. Drink fresh — don't store.",
+benefits:["Amla = 600mg Vitamin C per 100g — most potent natural source","Aloe vera heals gut lining (leaky gut repair)","Liver detoxification — flushes bilirubin and toxins","Clears skin acne and pigmentation from within","Boosts collagen production — anti-aging","Regulates blood sugar levels naturally"],
+avoid:"Aloe vera can cause loose stools initially — start with 1 tsp and increase. Pregnant women should avoid aloe internally.",
+season:"All Year"},
+{n:"Methi (Fenugreek) Detox Water",cat:"Morning Detox",timing:"Morning empty stomach — soak seeds night before",icon:"🌿",
+i:["Methi / fenugreek seeds 1 tbspn","Water 1 glass (soak overnight)","Lemon 1/2 (optional)","Honey 1/2 tsp (optional)"],
+m:"Soak methi seeds in water overnight (8-10 hours). Morning: drink the water AND chew the seeds.",
+benefits:["Galactomannan fibre absorbs sugar — controls diabetes naturally","Diosgenin reduces joint inflammation — gym essential for heavy lifters","Soluble fibre binds cholesterol in gut — lowers LDL","Detoxifies kidneys — natural diuretic","Boosts testosterone in men (4-week studies show 25% increase)","Improves breast milk production in new mothers"],
+avoid:"Avoid during pregnancy (can cause contractions). Diabetics on medication should monitor — may cause hypoglycemia.",
+season:"Winter"},
+{n:"Beetroot + Carrot + Amla Detox Juice",cat:"Blood Detox",timing:"Mid-morning 10-11 AM (not empty stomach — too strong)",icon:"🥤",
+i:["Beetroot 1 medium","Carrot 2","Amla 1","Ginger 1 inch","Lemon 1/2","Chia seeds 1 tsp soaked","Pink salt pinch"],
+m:"Juice beetroot, carrot, amla, ginger. Add lemon juice and pink salt. Top with soaked chia seeds.",
+benefits:["Beetroot: betalains detoxify liver Phase 2 enzymes","Nitric oxide from beetroot dilates blood vessels — BP reduction","Carrot: beta-carotene repairs liver cells","Amla: 600mg Vitamin C boosts glutathione (master antioxidant)","Iron from beetroot + Vitamin C from amla = maximum iron absorption","Chia adds omega-3 + fibre for gut cleanse"],
+avoid:"Urine/stool may turn pink/red — this is normal (beeturia). Reduce quantity if you have kidney stones (oxalate content).",
+season:"All Year"},
+{n:"Neem + Haldi Morning Detox",cat:"Blood Detox",timing:"Morning empty stomach, 2-3 times per week (not daily — too bitter)",icon:"🍃",
+i:["Fresh neem leaves 8-10 (or neem powder 1/2 tsp)","Haldi 1/4 tsp","Warm water 1 glass","Honey 1 tsp","Lemon 1/2"],
+m:"Blend neem leaves with warm water. Strain. Add haldi, honey, lemon. Drink immediately.",
+benefits:["Neem is the most powerful blood purifier in Ayurveda","Anti-fungal — clears candida, monsoon skin infections","Anti-bacterial — treats acne from the root cause (blood impurity)","Haldi adds anti-inflammatory support to the cleanse","Boosts liver function — metabolizes toxins faster","Nimbidin compound in neem is anti-tumor"],
+avoid:"Extremely bitter — honey + lemon make it tolerable. Not for daily use — 2-3x per week max. Avoid during pregnancy and if trying to conceive (natural contraceptive properties).",
+season:"Rainy"},
+{n:"Triphala Detox Water",cat:"Gut Detox",timing:"Before bed (10 PM) OR morning empty stomach",icon:"🫗",
+i:["Triphala powder 1 tsp (amla + haritaki + bibhitaki)","Warm water 1 glass","Honey 1/2 tsp (morning only — not at night)"],
+m:"Mix triphala in warm water. Night: drink plain without honey. Morning: add honey.",
+benefits:["Three-fruit Ayurvedic formula — 3000+ years of use","Amla: Vitamin C + antioxidant. Haritaki: colon cleanser. Bibhitaki: pulls toxins from tissues","Gentle overnight colon cleanse — not harsh like laxatives","Feeds good gut bacteria (prebiotic effect)","Improves nutrient absorption by cleaning gut lining","Balances all three doshas (Vata, Pitta, Kapha)"],
+avoid:"May cause loose stools first 2-3 days — body adjusting. Reduce to 1/2 tsp initially. Avoid during pregnancy.",
+season:"All Year"},
+{n:"Giloy + Tulsi Immunity Detox",cat:"Immunity Detox",timing:"Morning or evening — especially during monsoon/flu season",icon:"🛡️",
+i:["Fresh giloy stem 6 inches (or giloy powder 1/2 tsp)","Tulsi leaves 8-10","Black pepper 3-4","Water 2 cups","Honey 1 tsp"],
+m:"Boil giloy and tulsi with pepper in water. Reduce to half. Strain. Add honey when warm.",
+benefits:["Giloy (Guduchi): boosts platelet count — dengue prevention","Tulsi (Holy Basil): adaptogen, reduces cortisol stress","Detoxifies blood from heavy metals and pollutants","Builds white blood cell count — cancer prevention","Black pepper increases bioavailability of all compounds","Used in every Ayurvedic hospital during monsoon fevers"],
+avoid:"Giloy may lower blood sugar — diabetics on medication should monitor. Avoid in autoimmune conditions (it stimulates immunity).",
+season:"Rainy"},
+{n:"Aam Panna Electrolyte Detox",cat:"Summer Detox",timing:"Afternoon 2-4 PM — peak heat hours",icon:"🥭",
+i:["Raw mango (kairi) 2 boiled","Jaggery 4 tbspn","Roasted jeera 1 tsp","Pink salt 1/2 tsp","Kali mirch pinch","Mint leaves 10","Water 4 glasses"],
+m:"Boil raw mangoes, peel, mash pulp. Blend with jaggery, jeera, pink salt, pepper, mint, water. Serve cold.",
+benefits:["Prevents heatstroke — traditional Indian summer survival drink","Raw mango: massive Vitamin C (even more than ripe mango)","Electrolyte replacement — pink salt + jaggery = natural ORS","Jaggery: iron + minerals without refined sugar damage","Jeera aids digestion in summer heat","Alkalizes body — counters summer acidity"],
+avoid:"Avoid if you have diabetes (jaggery is still sugar). Can be made with stevia for sugar-free version.",
+season:"Summer"},
+{n:"Sabja + Rose Milk Coolant Detox",cat:"Summer Detox",timing:"Evening 5-6 PM or before bed in summer",icon:"🌹",
+i:["Sabja (basil) seeds 1 tsp soaked 15 min","Cold milk 1 glass","Rose water 1 tsp","Mishri (rock sugar) 2 tsp","Elaichi powder pinch","Kesar (saffron) 2-3 strands soaked"],
+m:"Soak sabja seeds 15 min. Soak kesar in 1 tsp warm milk. Mix everything in cold milk. Serve chilled.",
+benefits:["Sabja seeds reduce body heat — traditional Unani coolant","Rose water: anti-anxiety, calms mind for better sleep","Milk: tryptophan aids melatonin production (sleep hormone)","Kesar: antidepressant, improves mood, skin brightener","Elaichi: detoxifies kidneys, freshens breath","Combined effect: cools body + calms mind + detox kidneys"],
+avoid:"Skip if lactose intolerant — use coconut milk instead. Kesar should be genuine (test: real kesar colors milk slowly, fake does instantly).",
+season:"Summer"},
+{n:"Ajwain + Saunf + Jeera Triple Detox Tea",cat:"Gut Detox",timing:"After lunch or dinner — especially after heavy meals",icon:"🍵",
+i:["Ajwain (carom) 1/2 tsp","Saunf (fennel) 1/2 tsp","Jeera (cumin) 1/2 tsp","Water 1.5 cups","Pink salt pinch","Lemon 1/4 (optional)"],
+m:"Boil all three seeds in water for 5 minutes. Strain. Add pink salt and lemon if desired. Drink warm.",
+benefits:["Triple-action gut cleanse: thymol (ajwain) + anethole (saunf) + cuminaldehyde (jeera)","Kills bad gut bacteria without harming good ones","Relieves bloating and gas within 15 minutes","Stimulates all digestive enzymes simultaneously","Prevents monsoon waterborne gut infections","Traditional Indian grandmother's remedy — works every time"],
+avoid:"Avoid on completely empty stomach if you have ulcers. Ajwain can increase pitta — reduce quantity if you feel heat.",
+season:"Rainy"},
+{n:"Kokum + Jeera Digestive Detox",cat:"Gut Detox",timing:"Before or with lunch — traditional Konkan appetizer",icon:"🟣",
+i:["Kokum syrup 3 tbspn (or 4-5 dried kokum soaked)","Cold water 1 glass","Roasted jeera 1/2 tsp","Pink salt pinch","Saunf powder pinch","Hing (asafoetida) tiny pinch"],
+m:"Mix kokum syrup in cold water. Add jeera, pink salt, saunf, hing. Stir well. Serve with ice.",
+benefits:["HCA (hydroxycitric acid) in kokum blocks fat storage enzyme","Natural appetite controller — Konkani secret to staying lean","Garcinol: powerful antioxidant, anti-cancer properties","Hing: instant gas relief, antispasmodic","Jeera + saunf: complete digestive enzyme activation","Traditional Goan/Maharashtrian sol kadhi base"],
+avoid:"Commercial kokum syrups may have added sugar — check labels. Best to use dried kokum soaked in water.",
+season:"Summer"},
+{n:"Gond Katira + Sabja Cooling Detox",cat:"Summer Detox",timing:"Evening or before bed in peak summer",icon:"❄️",
+i:["Gond katira 2 tbspn soaked overnight","Sabja seeds 1 tsp soaked 15 min","Cold milk or water 1 glass","Rose water 1 tsp","Mishri 2 tsp","Elaichi pinch"],
+m:"Soak gond katira overnight (swells 10x). Soak sabja 15 min. Mix everything in cold milk/water.",
+benefits:["Gond katira reduces body temperature 5-7°C naturally","High calcium and protein content — muscle + bone repair","Sabja adds fibre + extra cooling effect","Prevents heatstroke during Indian summers (45°C+)","Lubricates joints — helps with gym-related wear","Unani medicine staple for 1000+ years"],
+avoid:"Always soak gond katira overnight — raw is hard to digest. Avoid in winter (too cooling). Not for people with cold constitution.",
+season:"Summer"},
+{n:"Cinnamon + Apple Cider Vinegar Detox",cat:"Liver Detox",timing:"Morning 15 min before breakfast OR before bed",icon:"🍎",
+i:["Apple cider vinegar (with mother) 1 tbspn","Dalchini (cinnamon) powder 1/2 tsp","Warm water 1 glass","Honey 1 tsp","Lemon 1/2"],
+m:"Mix ACV and dalchini in warm water. Add honey and lemon. Never drink ACV undiluted — damages enamel.",
+benefits:["Acetic acid in ACV: liver detox + fat mobilization","Cinnamon: improves insulin sensitivity by 20% (reduces sugar cravings)","Kills harmful gut bacteria (H. pylori, candida)","Boosts stomach acid production — better protein digestion","Lowers LDL cholesterol and triglycerides","The 'mother' in ACV = probiotic bacteria for gut health"],
+avoid:"Always dilute ACV — neat ACV erodes tooth enamel. Rinse mouth after. Avoid if you have acid reflux or stomach ulcers. Max 2 tbspn/day.",
+season:"All Year"}
+];
+
+const SE={Summer:'\u2600\uFE0F',Winter:'\u2744\uFE0F',Rainy:'\uD83C\uDF27\uFE0F',"All Year":'\uD83D\uDD04'};
+const CE={Immunity:'\uD83D\uDEE1\uFE0F',Blood:'\uD83E\uDE78',Skin:'\u2728',Digestion:'\uD83E\uDEC4',Cooling:'\uD83E\uDDCA',Herbal:'\uD83C\uDF3F',Fitness:'\uD83D\uDCAA',"Cold & Flu":'\uD83E\uDD27',Hair:'\uD83D\uDC87',"Weight Loss":'\u2696\uFE0F',Seeds:'\uD83C\uDF31',Superfoods:'\u2B50',"Herbal Spices":'\uD83E\uDED6'};
+const CC={soya:'#2dd4bf',paneer:'#f59e0b',chicken:'#ef4444',egg:'#a78bfa',pizza:'#3b82f6'};
+const SLIST=["All Year","Summer","Winter","Rainy"];
+
+function parseR(inst){var steps=inst.split(/\s*=>\s*/),ings=[],methods=[],cooks=[],seen={};var aw=['cook','fry','boil','mix','blend','grind','marinate','airfry','wrap','spread','make','coat','shred','freeze','shape','add','transfer','saute'];steps.forEach(function(s){s.split(/\s*\+\s*/).forEach(function(p){p=p.trim();if(!p)return;if(/\d+\s*°?C|\d+\s*deg|\d+[\s-]*min\b/i.test(p))cooks.push(p);var isA=aw.some(function(w){return p.toLowerCase().indexOf(w)>=0})&&!/^\d/.test(p);if(isA&&p.length>3)methods.push(p);else{var k=p.toLowerCase();if(!seen[k]&&k.length>1){seen[k]=1;ings.push(p)}}})});if(!methods.length)methods=steps.filter(function(s){return s.trim()});var uniqCooks={};cooks.forEach(function(c){uniqCooks[c]=1});return{ings:ings,methods:methods,cooks:Object.keys(uniqCooks)}}
+
+var allR=[];Object.keys(RECIPES).forEach(function(cat){var d=RECIPES[cat];d.r.forEach(function(r){allR.push({n:r.n,c:r.c,t:r.t==='NV'?'Non-Veg':r.t,i:r.i,cat:cat,key:d.k,parsed:parseR(r.i)})})});
+
+var view='recipes',search='',schCat='All',vitCat='All',detCat='All',detSeason='All',rCat='All',rType='All',rSub='All',nGoal='All',nType='All',jCat='All',jSeason='All',remCat='All',remSeason='All',sCat='All',sSeason='All';
+
+var TABS=[{id:'recipes',l:'🍳 Recipes',c:allR.length},{id:'nutrition',l:'📊 Nutrition',c:NUTRITION.length},{id:'juices',l:'🧃 Juices',c:JUICES.length},{id:'remedies',l:'🌿 Remedies',c:REMEDIES.length},{id:'seeds',l:'🌱 Seeds',c:SEEDS.length},{id:'schedule',l:'⏰ Daily Schedule',c:SCHEDULE.length},{id:'vitals',l:'💊 Vitals Guide',c:VITALS.length},{id:'detox',l:'🧹 Detox Drinks',c:DETOX.length}];
+
+var heroData={recipes:['Gym <em class="hl">Recipe</em> Book','High Protein · Meal Prep · Healthy Living'],nutrition:['Daily <em class="hl">Nutrition</em> Guide','Macros · Micros · Indian Food Sources'],juices:['Indian <em class="hl2">Juices</em> & Drinks','Seasonal · Herbal · Ayurvedic · Indian Ingredients'],remedies:['Desi <em class="hl3">Home</em> Remedies','Ayurveda · Natural Healing · Grandmother\'s Wisdom'],seeds:['Seeds & <em class="hl4">Superfoods</em> Guide','Jeera · Pink Salt · Chia · Flax · Gond Katira · Honey'],schedule:['Daily <em class="hl">Timing</em> Guide','When to Eat · Supplements · Ayurvedic Routine'],vitals:['<em class="hl2">Vitals</em> & Micronutrients','Vitamins · Minerals · Omega-3 · Best Timing · Indian Sources'],detox:['Indian <em class="hl2">Detox</em> Drinks','Liver · Blood · Gut · Immunity · Summer Coolants']};
+
+function filR(){var f=allR;if(rCat!=='All')f=f.filter(function(r){return r.cat===rCat});if(rType!=='All')f=f.filter(function(r){return r.t===rType});if(rSub!=='All')f=f.filter(function(r){return r.c===rSub});if(search){var s=search.toLowerCase();f=f.filter(function(r){return(r.n+r.i+r.c+r.t+r.cat).toLowerCase().indexOf(s)>=0})}return f}
+function filN(){var f=NUTRITION.slice();if(nType!=='All')f=f.filter(function(n){return n.type===nType});if(search){var s=search.toLowerCase();f=f.filter(function(n){return(n.name+n.type+n.why+n.veg.join(' ')+n.nv.join(' ')).toLowerCase().indexOf(s)>=0})}return f}
+function filJ(){var f=JUICES.slice();if(jCat!=='All')f=f.filter(function(j){return j.cat===jCat});if(jSeason!=='All')f=f.filter(function(j){return j.season===jSeason});if(search){var s=search.toLowerCase();f=f.filter(function(j){return(j.n+j.cat+j.season+j.b+j.i.join(' ')).toLowerCase().indexOf(s)>=0})}return f}
+function filRem(){var f=REMEDIES.slice();if(remCat!=='All')f=f.filter(function(r){return r.cat===remCat});if(remSeason!=='All')f=f.filter(function(r){return r.season===remSeason});if(search){var s=search.toLowerCase();f=f.filter(function(r){return(r.n+r.cat+r.season+r.b+r.i.join(' ')).toLowerCase().indexOf(s)>=0})}return f}
+function filS(){var f=SEEDS.slice();if(sCat!=='All')f=f.filter(function(s){return s.cat===sCat});if(sSeason!=='All')f=f.filter(function(s){return s.season===sSeason});if(search){var s2=search.toLowerCase();f=f.filter(function(d){return(d.n+d.cat+d.season+d.benefits+d.uses.join(' ')+d.per100).toLowerCase().indexOf(s2)>=0})}return f}
+
+function filSch(){var f=SCHEDULE.slice();if(schCat!=='All')f=f.filter(function(s){return s.cat===schCat});if(search){var s=search.toLowerCase();f=f.filter(function(d){return(d.n+d.cat+d.items.map(function(i){return i.what+i.why+i.sources.veg+i.sources.nv+i.sources.herbal}).join(' ')).toLowerCase().indexOf(s)>=0})}return f}
+function filVit(){var f=VITALS.slice();if(vitCat!=='All')f=f.filter(function(v){return v.cat===vitCat});if(search){var s=search.toLowerCase();f=f.filter(function(v){return(v.n+v.cat+v.why+v.rda+v.timing+v.best+v.veg.join(' ')+v.nv.join(' ')+v.herbal.join(' ')).toLowerCase().indexOf(s)>=0})}return f}
+function filDet(){var f=DETOX.slice();if(detCat!=='All')f=f.filter(function(d){return d.cat===detCat});if(detSeason!=='All')f=f.filter(function(d){return d.season===detSeason});if(search){var s=search.toLowerCase();f=f.filter(function(d){return(d.n+d.cat+d.season+d.benefits.join(' ')+d.i.join(' ')+d.timing).toLowerCase().indexOf(s)>=0})}return f}
+function getCount(){if(view==='recipes')return filR().length;if(view==='nutrition')return filN().length;if(view==='juices')return filJ().length;if(view==='remedies')return filRem().length;if(view==='seeds')return filS().length;if(view==='schedule')return filSch().length;if(view==='vitals')return filVit().length;return filDet().length}
+
+function renderNav(){document.getElementById('navBar').innerHTML=TABS.map(function(t){return '<button class="fb '+(view===t.id?'on':'')+'" onclick="switchView(\''+t.id+'\')" style="padding:10px 16px;font-size:12px;border-radius:14px">'+t.l+' <span style="opacity:.5;font-size:10px">'+t.c+'</span></button>'}).join('')}
+
+function switchView(v){view=v;search='';rCat='All';rType='All';rSub='All';nGoal='All';nType='All';jCat='All';jSeason='All';remCat='All';remSeason='All';sCat='All';sSeason='All';schCat='All';vitCat='All';detCat='All';detSeason='All';document.getElementById('searchInput').value='';renderNav();renderHero();renderFilters();renderGrid()}
+
+function renderHero(){var d=heroData[view];document.getElementById('heroTitle').innerHTML=d[0];document.getElementById('heroSub').textContent=d[1]}
+
+function makeFilterBtn(label,val,currentVal,setter){
+  var isOn=val===currentVal;
+  var cls='fb'+(isOn?' on':'');
+  if(val==='Veg'&&isOn)cls='fb veg-on';
+  if(val==='Non-Veg'&&isOn)cls='fb nv-on';
+  var dot='';
+  if(val==='Veg')dot='<span style="width:7px;height:7px;border-radius:50%;background:var(--veg)"></span>';
+  if(val==='Non-Veg')dot='<span style="width:7px;height:7px;border-radius:50%;background:var(--nv)"></span>';
+  var icon=(CE[val]||'')+(val!=='All'&&CE[val]?' ':'');
+  var sIcon=(SE[val]||'')+(val!=='All'&&SE[val]?' ':'');
+  var display=label==='season'?sIcon+val:label==='cat'?icon+val:dot+val;
+  return '<button class="'+cls+'" onclick="'+setter+'">'+display+'</button>';
 }
 
-// ═══ THEME ═══
-function toggleTheme(){const h=document.documentElement,n=h.dataset.theme==='dark'?'light':'dark';h.dataset.theme=n;document.getElementById('ti').textContent=n==='dark'?'🌙':'☀️';try{localStorage.setItem('t',n)}catch(e){}}
-try{const s=localStorage.getItem('t');if(s){document.documentElement.dataset.theme=s;document.getElementById('ti').textContent=s==='dark'?'🌙':'☀️'}}catch(e){}
+function renderFilters(){
+  var a=document.getElementById('filterArea');
+  var h='';
+  if(view==='recipes'){
+    h+='<div class="tr">';
+    ['All'].concat(Object.keys(RECIPES)).forEach(function(c){
+      var cnt=c==='All'?allR.length:RECIPES[c].r.length;
+      h+='<button class="tb '+(rCat===c?'on':'')+'" onclick="rCat=\''+c+'\';rSub=\'All\';renderFilters();renderGrid()">'+c+' <span style="opacity:.5;font-size:11px">'+cnt+'</span></button>';
+    });
+    h+='</div>';
+    h+='<div class="fr"><span class="fl">Type</span>';
+    ['All','Veg','Non-Veg'].forEach(function(v){h+=makeFilterBtn('type',v,rType,"rType='"+v+"';rSub='All';renderFilters();renderGrid()")});
+    h+='</div>';
+    var f=allR;if(rCat!=='All')f=f.filter(function(r){return r.cat===rCat});if(rType!=='All')f=f.filter(function(r){return r.t===rType});
+    var subs={};f.forEach(function(r){subs[r.c]=1});subs=Object.keys(subs).sort();
+    if(subs.length>1){h+='<div class="fr">';['All'].concat(subs).forEach(function(s){h+='<button class="fb '+(rSub===s?'on':'')+'" onclick="rSub=\''+s+'\';renderFilters();renderGrid()" style="padding:5px 13px;font-size:11px">'+s+'</button>'});h+='</div>'}
+  }
+  if(view==='nutrition'){
+    h+='<div class="fr"><span class="fl">Type</span>';
+    ['All','Macro','Micro','Essential'].forEach(function(t){h+=makeFilterBtn('',t,nType,"nType='"+t+"';renderFilters();renderGrid()")});
+    h+='<span class="fl" style="margin-left:10px">Goal</span>';
+    ['All','Muscle_Gain','Fat_Loss','Maintenance'].forEach(function(g){var label=g==='All'?'All':g.replace('_',' ');h+='<button class="fb '+(nGoal===g?'on':'')+'" onclick="nGoal=\''+g+'\';renderGrid()">'+label+'</button>'});
+    h+='</div>';
+  }
+  if(view==='juices'){
+    var jcats={};JUICES.forEach(function(j){jcats[j.cat]=1});jcats=Object.keys(jcats);
+    h+='<div class="fr"><span class="fl">Category</span>';['All'].concat(jcats).forEach(function(c){h+=makeFilterBtn('cat',c,jCat,"jCat='"+c+"';renderGrid()")});h+='</div>';
+    h+='<div class="fr"><span class="fl">Season</span>';['All'].concat(SLIST).forEach(function(s){h+=makeFilterBtn('season',s,jSeason,"jSeason='"+s+"';renderGrid()")});h+='</div>';
+  }
+  if(view==='remedies'){
+    var rcats={};REMEDIES.forEach(function(r){rcats[r.cat]=1});rcats=Object.keys(rcats);
+    h+='<div class="fr"><span class="fl">Category</span>';['All'].concat(rcats).forEach(function(c){h+=makeFilterBtn('cat',c,remCat,"remCat='"+c+"';renderGrid()")});h+='</div>';
+    h+='<div class="fr"><span class="fl">Season</span>';['All'].concat(SLIST).forEach(function(s){h+=makeFilterBtn('season',s,remSeason,"remSeason='"+s+"';renderGrid()")});h+='</div>';
+  }
+  if(view==='seeds'){
+    var scats={};SEEDS.forEach(function(s){scats[s.cat]=1});scats=Object.keys(scats);
+    h+='<div class="fr"><span class="fl">Category</span>';['All'].concat(scats).forEach(function(c){h+=makeFilterBtn('cat',c,sCat,"sCat='"+c+"';renderGrid()")});h+='</div>';
+    h+='<div class="fr"><span class="fl">Season</span>';['All'].concat(SLIST).forEach(function(s){h+=makeFilterBtn('season',s,sSeason,"sSeason='"+s+"';renderGrid()")});h+='</div>';
+  }
+    if(view==='schedule'){
+    var schcats={};SCHEDULE.forEach(function(s){schcats[s.cat]=1});schcats=Object.keys(schcats);
+    h+='<div class="fr"><span class="fl">Time of Day</span>';['All'].concat(schcats).forEach(function(c){h+='<button class="fb '+(schCat===c?'on':'')+'" onclick="schCat=\''+c+'\';renderGrid()">'+c+'</button>'});h+='</div>';
+  }
+  if(view==='vitals'){
+    var vcats={};VITALS.forEach(function(v){vcats[v.cat]=1});vcats=Object.keys(vcats);
+    h+='<div class="fr"><span class="fl">Type</span>';['All'].concat(vcats).forEach(function(c){h+='<button class="fb '+(vitCat===c?'on':'')+'" onclick="vitCat=\''+c+'\';renderGrid()">'+c+'</button>'});h+='</div>';
+  }
+  if(view==='detox'){
+    var dcats={};DETOX.forEach(function(d){dcats[d.cat]=1});dcats=Object.keys(dcats);
+    h+='<div class="fr"><span class="fl">Category</span>';['All'].concat(dcats).forEach(function(c){h+='<button class="fb '+(detCat===c?'on':'')+'" onclick="detCat=\''+c+'\';renderGrid()">'+c+'</button>'});h+='</div>';
+    h+='<div class="fr"><span class="fl">Season</span>';['All'].concat(SLIST).forEach(function(s){h+=makeFilterBtn('season',s,detSeason,"detSeason='"+s+"';renderGrid()")});h+='</div>';
+  }
+  a.innerHTML=h;
+}
 
-rT();rTF();rS();rG();
+function esc(s){return s.replace(/'/g,"\\'")}
+function emptyState(icon,text){return '<div style="grid-column:1/-1;text-align:center;padding:80px 24px"><p style="font-size:48px;opacity:.3">'+icon+'</p><h3 class="serif" style="font-size:1.3rem">'+text+'</h3></div>'}
+function pillH(text,color,bg){return '<span class="pill" style="color:'+(color||'var(--text2)')+';background:'+(bg||'rgba(128,128,128,.08)')+'">'+text+'</span>'}
+function slabelH(text){return '<div class="slabel">'+text+'</div>'}
+function igridH(items,color){var c=color||'var(--accent)';return '<div class="ig">'+items.map(function(g,i){return '<div class="ig-item"><span class="ig-num" style="background:'+c+'18;color:'+c+'">'+(i+1)+'</span><span class="ig-text">'+g+'</span></div>'}).join('')+'</div>'}
+
+function renderGrid(){
+  var g=document.getElementById('grid');
+  document.getElementById('countBadge').textContent=getCount()+' items';
+
+  if(view==='recipes'){var f=filR();if(!f.length){g.innerHTML=emptyState('🍽️','No recipes found');return}
+    g.innerHTML=f.map(function(r,i){var col=CC[r.key]||'#888';return '<div class="gc" onclick="openRecipe('+i+')" style="border-top:3px solid '+col+'"><div style="padding:16px 16px 0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:5px"><span class="serif" style="font-size:1.05rem;line-height:1.25;flex:1">'+r.n+'</span><span class="pill" style="font-size:9px;color:'+(r.t==='Veg'?'var(--veg)':'var(--nv)')+';background:'+(r.t==='Veg'?'var(--veg-bg)':'var(--nv-bg)')+'">● '+r.t+'</span></div><div style="display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap"><span class="pill" style="font-size:10px;padding:3px 9px;color:'+col+';background:'+col+'18">'+r.cat+'</span><span class="pill" style="font-size:10px;padding:3px 9px;background:var(--input);color:var(--text3)">'+r.c+'</span></div><div style="border-top:1px solid var(--divider);padding-top:8px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);font-weight:600;margin-bottom:4px">Ingredients ('+r.parsed.ings.length+')</div><div style="display:flex;flex-wrap:wrap;gap:3px">'+r.parsed.ings.slice(0,5).map(function(p){return '<span style="font-size:10px;color:var(--text2);padding:2px 6px;background:var(--input);border-radius:5px">'+p+'</span>'}).join('')+(r.parsed.ings.length>5?'<span style="font-size:10px;color:var(--text3);padding:2px 6px;background:var(--input);border-radius:5px">+'+(r.parsed.ings.length-5)+'</span>':'')+'</div></div></div><div style="padding:8px 16px 12px;font-size:10px;color:var(--text3)">'+(r.parsed.cooks[0]?r.parsed.cooks[0].substring(0,30):'')+'</div></div>'}).join('')}
+
+  if(view==='nutrition'){var f=filN();g.innerHTML=f.map(function(n,i){var gk=nGoal!=='All'?nGoal:'Muscle_Gain';var gv=n.goals[gk]||Object.values(n.goals)[0];return '<div class="gc" onclick="openNutri('+i+')" style="border-top:3px solid '+n.color+'"><div style="padding:16px"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span class="serif" style="font-size:1.1rem">'+n.icon+' '+n.name+'</span><span class="pill" style="font-size:10px;padding:3px 9px;color:'+n.color+';background:'+n.color+'18">'+n.type+'</span></div><div style="font-size:11px;color:var(--text3);margin-bottom:8px">'+gv+'</div>'+(n.timing?'<div style="font-size:10px;color:#06b6d4;background:rgba(6,182,212,.08);padding:4px 10px;border-radius:7px;margin-bottom:6px;display:flex;align-items:center;gap:4px"><span style="font-size:12px">⏰</span>'+n.timing.split('.')[0]+'</div>':'')+'<div style="height:5px;border-radius:3px;background:var(--bar-t);margin-bottom:8px"><div style="height:100%;border-radius:3px;width:'+n.pct+'%;background:'+n.color+';transition:width .8s"></div></div><div style="font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:8px">'+n.why.substring(0,80)+'...</div><div style="display:flex;flex-wrap:wrap;gap:3px">'+n.veg.slice(0,3).map(function(s){return '<span style="font-size:10px;padding:2px 7px;background:var(--input);border-radius:5px;color:var(--text2)">'+s.split('(')[0].trim()+'</span>'}).join('')+'</div></div></div>'}).join('')}
+
+  if(view==='juices'){var f=filJ();if(!f.length){g.innerHTML=emptyState('🧃','No juices found');return}
+    g.innerHTML=f.map(function(j,i){return '<div class="gc" onclick="openJuice('+i+')" style="border-top:3px solid #10b981"><div style="padding:16px"><div class="serif" style="font-size:1.05rem;margin-bottom:6px">'+j.n+'</div><div style="display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap"><span class="pill" style="font-size:10px;padding:3px 9px;color:#10b981;background:rgba(16,185,129,.1)">'+(CE[j.cat]||'')+' '+j.cat+'</span><span class="pill" style="font-size:10px;padding:3px 9px;color:#06b6d4;background:rgba(6,182,212,.1)">'+(SE[j.season]||'')+' '+j.season+'</span></div><div style="font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:8px">'+j.b.substring(0,90)+'...</div><div style="display:flex;flex-wrap:wrap;gap:3px">'+j.i.slice(0,4).map(function(x){return '<span style="font-size:10px;padding:2px 7px;background:var(--input);border-radius:5px;color:var(--text2)">'+x+'</span>'}).join('')+'</div></div></div>'}).join('')}
+
+  if(view==='remedies'){var f=filRem();if(!f.length){g.innerHTML=emptyState('🌿','No remedies found');return}
+    g.innerHTML=f.map(function(r,i){return '<div class="gc" onclick="openRemedy('+i+')" style="border-top:3px solid #a78bfa"><div style="padding:16px"><div class="serif" style="font-size:1.05rem;margin-bottom:6px">'+r.n+'</div><div style="display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap"><span class="pill" style="font-size:10px;padding:3px 9px;color:#a78bfa;background:rgba(167,139,250,.1)">'+(CE[r.cat]||'🌿')+' '+r.cat+'</span><span class="pill" style="font-size:10px;padding:3px 9px;color:#06b6d4;background:rgba(6,182,212,.1)">'+(SE[r.season]||'')+' '+r.season+'</span></div><div style="font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:8px">'+r.b.substring(0,100)+'...</div><div style="display:flex;flex-wrap:wrap;gap:3px">'+r.i.slice(0,3).map(function(x){return '<span style="font-size:10px;padding:2px 7px;background:var(--input);border-radius:5px;color:var(--text2)">'+x+'</span>'}).join('')+'</div></div></div>'}).join('')}
+
+  if(view==='seeds'){var f=filS();if(!f.length){g.innerHTML=emptyState('🌱','No items found');return}
+    g.innerHTML=f.map(function(s,i){return '<div class="gc" onclick="openSeed('+i+')" style="border-top:3px solid #f59e0b"><div style="padding:16px"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span class="serif" style="font-size:1.1rem">'+s.icon+' '+s.n+'</span><span class="pill" style="font-size:10px;padding:3px 9px;color:#f59e0b;background:rgba(245,158,11,.1)">'+s.cat+'</span></div><div style="display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap"><span class="pill" style="font-size:10px;padding:3px 9px;color:#06b6d4;background:rgba(6,182,212,.1)">'+(SE[s.season]||'')+' '+s.season+'</span><span class="pill" style="font-size:10px;padding:3px 9px;background:var(--input);color:var(--text3)">'+s.daily+'</span></div><div style="font-size:11px;color:var(--accent);background:var(--accent-dim);padding:6px 12px;border-radius:8px;margin-bottom:8px;font-weight:500">'+s.per100+'</div><div style="font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:8px">'+s.benefits.substring(0,100)+'...</div><div style="display:flex;flex-wrap:wrap;gap:3px">'+s.uses.slice(0,2).map(function(u){return '<span style="font-size:10px;padding:2px 7px;background:var(--input);border-radius:5px;color:var(--text2)">'+u.substring(0,35)+'...</span>'}).join('')+'</div></div></div>'}).join('')}
+
+  if(view==='schedule'){var f=filSch();if(!f.length){g.innerHTML=emptyState('⏰','No schedule items found');return}
+    g.innerHTML=f.map(function(s,i){return '<div class="gc" onclick="openSchedule('+i+')" style="border-top:3px solid var(--accent)"><div style="padding:16px"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span class="serif" style="font-size:1.1rem">'+s.icon+' '+s.n+'</span><span class="pill" style="font-size:10px;padding:3px 9px;color:var(--accent);background:var(--accent-dim)">'+s.cat+'</span></div><div style="font-size:12px;color:var(--accent);background:var(--accent-dim);padding:6px 12px;border-radius:8px;margin-bottom:8px;font-weight:500">'+s.time+'</div><div style="display:flex;flex-direction:column;gap:4px">'+s.items.map(function(it){return '<div style="display:flex;gap:6px;align-items:center"><span style="font-size:9px;padding:2px 8px;border-radius:6px;background:var(--input);color:var(--text3);font-weight:600">'+it.type+'</span><span style="font-size:12px;color:var(--text2)">'+it.what+'</span></div>'}).join('')+'</div></div></div>'}).join('')}
+
+  if(view==='vitals'){var f=filVit();if(!f.length){g.innerHTML=emptyState('💊','No vitals found');return}
+    g.innerHTML=f.map(function(v,i){return '<div class="gc" onclick="openVital('+i+')" style="border-top:3px solid '+({Vitamin:'#f59e0b',Mineral:'#2dd4bf',"Essential Fat":'#ef4444'}[v.cat]||'#a78bfa')+'"><div style="padding:16px"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span class="serif" style="font-size:1.1rem">'+v.icon+' '+v.n+'</span><span class="pill" style="font-size:10px;padding:3px 9px;color:'+({Vitamin:'#f59e0b',Mineral:'#2dd4bf',"Essential Fat":'#ef4444'}[v.cat]||'#a78bfa')+';background:'+({Vitamin:'#f59e0b',Mineral:'#2dd4bf',"Essential Fat":'#ef4444'}[v.cat]||'#a78bfa')+'18">'+v.cat+'</span></div><div style="font-size:11px;color:var(--accent);background:var(--accent-dim);padding:5px 10px;border-radius:8px;margin-bottom:6px;font-weight:500">RDA: '+v.rda+'</div><div style="font-size:11px;color:#06b6d4;background:rgba(6,182,212,.1);padding:5px 10px;border-radius:8px;margin-bottom:8px">⏰ '+v.timing+'</div><div style="font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:8px">'+v.why.substring(0,90)+'...</div><div style="display:flex;flex-wrap:wrap;gap:3px">'+v.veg.slice(0,3).map(function(s){return '<span style="font-size:10px;padding:2px 7px;background:var(--input);border-radius:5px;color:var(--text2)">'+s.split('(')[0].trim()+'</span>'}).join('')+'</div></div></div>'}).join('')}
+
+  if(view==='detox'){var f=filDet();if(!f.length){g.innerHTML=emptyState('🧹','No detox drinks found');return}
+    g.innerHTML=f.map(function(d,i){return '<div class="gc" onclick="openDetox('+i+')" style="border-top:3px solid #10b981"><div style="padding:16px"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span class="serif" style="font-size:1.1rem">'+d.icon+' '+d.n+'</span><span class="pill" style="font-size:10px;padding:3px 9px;color:#10b981;background:rgba(16,185,129,.1)">'+d.cat+'</span></div><div style="display:flex;gap:4px;margin-bottom:6px;flex-wrap:wrap"><span class="pill" style="font-size:10px;padding:3px 9px;color:#06b6d4;background:rgba(6,182,212,.1)">'+(SE[d.season]||'')+' '+d.season+'</span><span class="pill" style="font-size:10px;padding:3px 9px;color:var(--accent);background:var(--accent-dim)">⏰ '+d.timing.split(' — ')[0]+'</span></div><div style="font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:8px">'+d.benefits.slice(0,2).join('. ')+'...</div><div style="display:flex;flex-wrap:wrap;gap:3px">'+d.i.slice(0,4).map(function(x){return '<span style="font-size:10px;padding:2px 7px;background:var(--input);border-radius:5px;color:var(--text2)">'+x+'</span>'}).join('')+'</div></div></div>'}).join('')}
+
+
+}
+
+function openModal(head,body){document.getElementById('modalHead').innerHTML=head;document.getElementById('modalBody').innerHTML=body;document.getElementById('overlay').classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(){document.getElementById('overlay').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});
+
+function openRecipe(idx){var r=filR()[idx];if(!r)return;var col=CC[r.key]||'#888';
+  var h='<h2 class="serif" style="font-size:clamp(1.4rem,4vw,1.9rem);line-height:1.15;padding-right:44px;margin-bottom:8px">'+r.n+'</h2><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px">'+pillH(r.cat,col,col+'18')+pillH(r.c)+pillH('● '+r.t,r.t==='Veg'?'var(--veg)':'var(--nv)',r.t==='Veg'?'var(--veg-bg)':'var(--nv-bg)')+'</div>';
+  var b='';
+  if(r.parsed.cooks.length)b+='<div style="margin-bottom:18px">'+slabelH('Cooking Info')+'<div style="display:flex;flex-wrap:wrap;gap:6px">'+r.parsed.cooks.map(function(c){return '<span style="padding:7px 14px;background:var(--accent-dim);border:1px solid rgba(212,165,74,.15);border-radius:10px;font-size:12px;color:var(--accent);font-weight:500">⏱️ '+c+'</span>'}).join('')+'</div></div>';
+  b+='<div style="margin-bottom:18px">'+slabelH('Ingredients · '+r.parsed.ings.length)+igridH(r.parsed.ings,'var(--accent)')+'</div>';
+  b+='<div>'+slabelH('Method')+'<div class="tl">'+r.parsed.methods.map(function(s){return '<div class="tl-s"><div class="tl-d"></div><div class="tl-t">'+s+'</div></div>'}).join('')+'</div></div>';
+  openModal(h,b)}
+
+function openNutri(idx){var n=filN()[idx];
+  var h='<h2 class="serif" style="font-size:clamp(1.4rem,4vw,1.9rem);padding-right:44px;margin-bottom:8px">'+n.icon+' '+n.name+'</h2><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px">'+pillH(n.type,n.color,n.color+'18')+pillH(n.unit)+'</div>';
+  var b='<div style="margin-bottom:18px">'+slabelH('Why It Matters')+'<p style="font-size:14px;color:var(--text2);line-height:1.7">'+n.why+'</p></div>';
+  if(n.timing)b+='<div style="margin-bottom:18px;padding:14px 16px;background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.12);border-radius:14px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#06b6d4;font-weight:600;margin-bottom:6px">⏰ Best Timing</div><div style="font-size:14px;color:var(--text2);line-height:1.7">'+n.timing+'</div></div>';
+  if(n.tip)b+='<div style="margin-bottom:18px;padding:14px 16px;background:var(--accent-dim);border:1px solid rgba(212,165,74,.12);border-radius:14px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:600;margin-bottom:6px">💡 Pro Tip</div><div style="font-size:14px;color:var(--text2);line-height:1.7">'+n.tip+'</div></div>';
+  b+='<div style="margin-bottom:18px">'+slabelH('Daily Needs by Goal');
+  Object.keys(n.goals).forEach(function(g){b+='<div style="margin-bottom:8px;padding:10px 14px;background:var(--input);border-radius:10px"><div style="font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px">'+g.replace('_',' ')+'</div><div style="font-size:13px;color:var(--text2)">'+n.goals[g]+'</div></div>'});
+  b+='</div>';
+  if(n.vegT&&n.vegT.length){b+='<div style="margin-bottom:18px">'+slabelH('🥬 Veg Sources + Best Timing');
+    b+='<div style="display:flex;flex-direction:column;gap:8px">';
+    n.vegT.forEach(function(item,i){
+      b+='<div style="display:flex;gap:10px;padding:10px 14px;background:var(--input);border-radius:12px;border-left:3px solid var(--veg)">';
+      b+='<span class="ig-num" style="background:rgba(74,222,128,.12);color:var(--veg);flex-shrink:0;margin-top:2px">'+(i+1)+'</span>';
+      b+='<div style="flex:1"><div style="font-size:13px;color:var(--text);font-weight:500;margin-bottom:3px">'+item[0]+'</div>';
+      b+='<div style="font-size:12px;color:#06b6d4;display:flex;align-items:flex-start;gap:4px"><span style="flex-shrink:0">⏰</span><span>'+item[1]+'</span></div></div></div>';
+    });
+    b+='</div></div>';
+  } else if(n.veg&&n.veg.length){b+='<div style="margin-bottom:18px">'+slabelH('🥬 Veg Sources')+igridH(n.veg,'var(--veg)')+'</div>';}
+  if(n.nvT&&n.nvT.length){b+='<div style="margin-bottom:18px">'+slabelH('🍗 Non-Veg Sources + Best Timing');
+    b+='<div style="display:flex;flex-direction:column;gap:8px">';
+    n.nvT.forEach(function(item,i){
+      b+='<div style="display:flex;gap:10px;padding:10px 14px;background:var(--input);border-radius:12px;border-left:3px solid var(--nv)">';
+      b+='<span class="ig-num" style="background:rgba(248,113,113,.12);color:var(--nv);flex-shrink:0;margin-top:2px">'+(i+1)+'</span>';
+      b+='<div style="flex:1"><div style="font-size:13px;color:var(--text);font-weight:500;margin-bottom:3px">'+item[0]+'</div>';
+      b+='<div style="font-size:12px;color:#06b6d4;display:flex;align-items:flex-start;gap:4px"><span style="flex-shrink:0">⏰</span><span>'+item[1]+'</span></div></div></div>';
+    });
+    b+='</div></div>';
+  } else if(n.nv&&n.nv.length){b+='<div>'+slabelH('🍗 Non-Veg Sources')+igridH(n.nv,'var(--nv)')+'</div>';}
+  openModal(h,b)}
+
+function openJuice(idx){var j=filJ()[idx];
+  var h='<h2 class="serif" style="font-size:clamp(1.4rem,4vw,1.9rem);padding-right:44px;margin-bottom:8px">'+j.n+'</h2><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px">'+pillH(j.cat,'#10b981','rgba(16,185,129,.1)')+pillH((SE[j.season]||'')+' '+j.season,'#06b6d4','rgba(6,182,212,.1)')+'</div>';
+  var b='<div style="margin-bottom:18px">'+slabelH('Health Benefits')+'<p style="font-size:14px;color:var(--text2);line-height:1.7">'+j.b+'</p></div>';
+  b+='<div style="margin-bottom:18px">'+slabelH('Ingredients · '+j.i.length)+igridH(j.i,'#10b981')+'</div>';
+  if(j.m)b+='<div>'+slabelH('Method')+'<p style="font-size:14px;color:var(--text2);line-height:1.8">'+j.m+'</p></div>';
+  openModal(h,b)}
+
+function openRemedy(idx){var r=filRem()[idx];
+  var h='<h2 class="serif" style="font-size:clamp(1.4rem,4vw,1.9rem);padding-right:44px;margin-bottom:8px">'+r.n+'</h2><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px">'+pillH(r.cat,'#a78bfa','rgba(167,139,250,.1)')+pillH((SE[r.season]||'')+' '+r.season,'#06b6d4','rgba(6,182,212,.1)')+'</div>';
+  var b='<div style="margin-bottom:18px">'+slabelH('How It Helps')+'<p style="font-size:14px;color:var(--text2);line-height:1.7">'+r.b+'</p></div>';
+  b+='<div style="margin-bottom:18px">'+slabelH('Ingredients · '+r.i.length)+igridH(r.i,'#a78bfa')+'</div>';
+  if(r.m)b+='<div>'+slabelH('Method')+'<p style="font-size:14px;color:var(--text2);line-height:1.8">'+r.m+'</p></div>';
+  openModal(h,b)}
+
+function openSeed(idx){var s=filS()[idx];
+  var h='<h2 class="serif" style="font-size:clamp(1.4rem,4vw,1.9rem);padding-right:44px;margin-bottom:8px">'+s.icon+' '+s.n+'</h2><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px">'+pillH(s.cat,'#f59e0b','rgba(245,158,11,.1)')+pillH((SE[s.season]||'')+' '+s.season,'#06b6d4','rgba(6,182,212,.1)')+pillH(s.daily)+'</div>';
+  var b='<div style="padding:10px 14px;background:var(--accent-dim);border:1px solid rgba(212,165,74,.15);border-radius:12px;margin-bottom:18px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:600;margin-bottom:3px">Per 100g</div><div style="font-size:14px;color:var(--text);font-weight:500">'+s.per100+'</div></div>';
+  b+='<div style="margin-bottom:18px">'+slabelH('Benefits & Science')+'<p style="font-size:14px;color:var(--text2);line-height:1.7">'+s.benefits+'</p></div>';
+  b+='<div style="margin-bottom:18px">'+slabelH('How to Use · '+s.uses.length+' ways')+igridH(s.uses,'#f59e0b')+'</div>';
+  b+='<div>'+slabelH('Best Season')+'<p style="font-size:14px;color:var(--text2);line-height:1.7">'+(SE[s.season]||'')+' '+s.best+'</p></div>';
+  openModal(h,b)}
+
+
+function openSchedule(idx){var s=filSch()[idx];if(!s)return;
+  var h='<h2 class="serif" style="font-size:clamp(1.4rem,4vw,1.9rem);padding-right:44px;margin-bottom:8px">'+s.icon+' '+s.n+'</h2><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px">'+pillH(s.cat,'var(--accent)','var(--accent-dim)')+pillH(s.time,'#06b6d4','rgba(6,182,212,.1)')+'</div>';
+  var b='';
+  s.items.forEach(function(it,i){
+    b+='<div style="margin-bottom:20px;padding:16px;background:var(--input);border-radius:14px;border-left:3px solid var(--accent)">';
+    b+='<div style="display:flex;gap:6px;align-items:center;margin-bottom:6px"><span style="font-size:10px;padding:3px 10px;border-radius:8px;background:var(--accent-dim);color:var(--accent);font-weight:600">'+it.type+'</span><span style="font-size:10px;color:var(--text3)">'+it.timing+'</span></div>';
+    b+='<div class="serif" style="font-size:1.05rem;margin-bottom:6px">'+it.what+'</div>';
+    b+='<div style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:10px">'+it.why+'</div>';
+    b+=slabelH('Sources');
+    b+='<div style="display:flex;flex-direction:column;gap:6px">';
+    b+='<div style="padding:8px 12px;background:rgba(74,222,128,.05);border-radius:8px"><span style="font-size:10px;font-weight:600;color:var(--veg)">🥬 VEG: </span><span style="font-size:12px;color:var(--text2)">'+it.sources.veg+'</span></div>';
+    b+='<div style="padding:8px 12px;background:rgba(248,113,113,.05);border-radius:8px"><span style="font-size:10px;font-weight:600;color:var(--nv)">🍗 NON-VEG: </span><span style="font-size:12px;color:var(--text2)">'+it.sources.nv+'</span></div>';
+    b+='<div style="padding:8px 12px;background:rgba(167,139,250,.05);border-radius:8px"><span style="font-size:10px;font-weight:600;color:#a78bfa">🌿 HERBAL: </span><span style="font-size:12px;color:var(--text2)">'+it.sources.herbal+'</span></div>';
+    b+='</div></div>';
+  });
+  openModal(h,b)}
+
+function openVital(idx){var v=filVit()[idx];if(!v)return;
+  var col={Vitamin:'#f59e0b',Mineral:'#2dd4bf',"Essential Fat":'#ef4444'}[v.cat]||'#a78bfa';
+  var h='<h2 class="serif" style="font-size:clamp(1.4rem,4vw,1.9rem);padding-right:44px;margin-bottom:8px">'+v.icon+' '+v.n+'</h2><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px">'+pillH(v.cat,col,col+'18')+pillH('RDA: '+v.rda)+pillH('⏰ '+v.timing,'#06b6d4','rgba(6,182,212,.1)')+'</div>';
+  var b='<div style="padding:10px 14px;background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.15);border-radius:12px;margin-bottom:18px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#06b6d4;font-weight:600;margin-bottom:3px">Best Timing</div><div style="font-size:14px;color:var(--text)">'+v.timing+'</div></div>';
+  b+='<div style="margin-bottom:18px">'+slabelH('Why You Need It')+'<p style="font-size:14px;color:var(--text2);line-height:1.7">'+v.why+'</p></div>';
+  b+='<div style="margin-bottom:18px">'+slabelH('🥬 Vegetarian Sources')+igridH(v.veg,'var(--veg)')+'</div>';
+  b+='<div style="margin-bottom:18px">'+slabelH('🍗 Non-Veg Sources')+igridH(v.nv,'var(--nv)')+'</div>';
+  b+='<div style="margin-bottom:18px">'+slabelH('🌿 Herbal & Medicinal')+igridH(v.herbal,'#a78bfa')+'</div>';
+  b+='<div style="padding:12px 16px;background:var(--accent-dim);border:1px solid rgba(212,165,74,.15);border-radius:12px">'+slabelH('💡 Pro Tip')+'<p style="font-size:14px;color:var(--text);line-height:1.7;font-weight:400">'+v.best+'</p></div>';
+  openModal(h,b)}
+
+
+function openDetox(idx){var d=filDet()[idx];if(!d)return;
+  var h='<h2 class="serif" style="font-size:clamp(1.4rem,4vw,1.9rem);padding-right:44px;margin-bottom:8px">'+d.icon+' '+d.n+'</h2><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px">'+pillH(d.cat,'#10b981','rgba(16,185,129,.1)')+pillH((SE[d.season]||'')+' '+d.season,'#06b6d4','rgba(6,182,212,.1)')+pillH('⏰ '+d.timing.split(' — ')[0],'var(--accent)','var(--accent-dim)')+'</div>';
+  var b='<div style="margin-bottom:18px;padding:14px 16px;background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.12);border-radius:14px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#06b6d4;font-weight:600;margin-bottom:6px">⏰ Best Time to Drink</div><div style="font-size:14px;color:var(--text);line-height:1.6">'+d.timing+'</div></div>';
+  b+='<div style="margin-bottom:18px">'+slabelH('Ingredients · '+d.i.length)+igridH(d.i,'#10b981')+'</div>';
+  b+='<div style="margin-bottom:18px">'+slabelH('Method')+'<p style="font-size:14px;color:var(--text2);line-height:1.8">'+d.m+'</p></div>';
+  b+='<div style="margin-bottom:18px">'+slabelH('Detox Benefits · '+d.benefits.length+' proven');
+  b+='<div style="display:flex;flex-direction:column;gap:6px">';
+  d.benefits.forEach(function(ben,i){
+    b+='<div style="display:flex;gap:10px;padding:10px 14px;background:var(--input);border-radius:12px;border-left:3px solid #10b981">';
+    b+='<span class="ig-num" style="background:rgba(16,185,129,.12);color:#10b981;flex-shrink:0;margin-top:2px">'+(i+1)+'</span>';
+    b+='<span style="font-size:13px;color:var(--text2);line-height:1.5">'+ben+'</span></div>';
+  });
+  b+='</div></div>';
+  b+='<div style="padding:12px 16px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.1);border-radius:14px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--nv);font-weight:600;margin-bottom:6px">⚠️ Caution</div><p style="font-size:13px;color:var(--text2);line-height:1.7">'+d.avoid+'</p></div>';
+  openModal(h,b)}
+
+function toggleTheme(){var h=document.documentElement,n=h.dataset.theme==='dark'?'light':'dark';h.dataset.theme=n;document.getElementById('thBtn').textContent=n==='dark'?'🌙':'☀️';try{localStorage.setItem('gym-t',n)}catch(e){}}
+try{var s=localStorage.getItem('gym-t');if(s){document.documentElement.dataset.theme=s;document.getElementById('thBtn').textContent=s==='dark'?'🌙':'☀️'}}catch(e){}
+
+document.getElementById('searchInput').addEventListener('input',function(e){search=e.target.value;renderGrid()});
+
+renderNav();renderHero();renderFilters();renderGrid();
+
 </script>
 </body>
 </html>
